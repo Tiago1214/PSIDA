@@ -8,5 +8,15 @@ namespace da_projeto
         {
             InitializeComponent();
         }
+
+        private void btnGestaoClientes_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
