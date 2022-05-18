@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button3 = new System.Windows.Forms.Button();
             this.btnGestaoClientes = new System.Windows.Forms.Button();
@@ -51,6 +48,7 @@
             this.button3.Text = "Restaurantes";
             this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnGestaoClientes
             // 
@@ -68,6 +66,7 @@
             this.btnGestaoClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGestaoClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGestaoClientes.UseVisualStyleBackColor = false;
+            this.btnGestaoClientes.Click += new System.EventHandler(this.btnGestaoClientes_Click);
             // 
             // button1
             // 
@@ -112,9 +111,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 540);
