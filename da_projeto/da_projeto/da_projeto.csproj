@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +55,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="MenuPrincipal.cs">
+=======
+    <Compile Include="Categoria.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Estado.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+>>>>>>> eae42760143533408911c3f45cc7f484bd58139f
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
@@ -58,19 +80,68 @@
     <Compile Include="GestaoClientes.Designer.cs">
       <DependentUpon>GestaoClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemMenu.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetodoPagamento.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Morada.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamento.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pedido.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pessoa.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <EmbeddedResource Include="GestaoClientes.resx">
       <DependentUpon>GestaoClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+=======
+    <Compile Include="Restaurante.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="restaurantebd.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurantebd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="restaurantebd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="restaurantebd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurantebd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Trabalhador.cs">
+      <DependentUpon>restaurantebd.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+>>>>>>> eae42760143533408911c3f45cc7f484bd58139f
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -85,11 +156,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EntityDeploy Include="restaurantebd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>restaurantebd.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="restaurantebd.edmx.diagram">
+      <DependentUpon>restaurantebd.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="restaurantebd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>restaurantebd.Context.cs</LastGenOutput>
+      <DependentUpon>restaurantebd.edmx</DependentUpon>
+    </Content>
+    <Content Include="restaurantebd.edmx.sql" />
+    <Content Include="restaurantebd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>restaurantebd.cs</LastGenOutput>
+      <DependentUpon>restaurantebd.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <None Include="Resources\352514_local_restaurant_icon.png" />
   </ItemGroup>
   <ItemGroup>
