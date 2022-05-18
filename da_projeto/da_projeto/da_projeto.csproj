@@ -46,16 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoClientes.Designer.cs">
+      <DependentUpon>GestaoClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="GestaoClientes.resx">
+      <DependentUpon>GestaoClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\61816_business_buyers_clients_users_icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\185114_chef_restaurant_food_icon.png" />
+    <Content Include="Resources\2290855_check_document_done_list_paper_icon.png" />
+    <Content Include="Resources\290137_clipboard_document_file_list_report_icon.png" />
+    <Content Include="Resources\5402408_list_menu_options_playlist_checklist_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
