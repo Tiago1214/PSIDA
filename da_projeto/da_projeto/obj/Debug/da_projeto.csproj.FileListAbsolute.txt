@@ -1,0 +1,16 @@
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\da_projeto.exe.config
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\da_projeto.exe
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\da_projeto.pdb
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\EntityFramework.dll
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\EntityFramework.xml
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.AssemblyReference.cache
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.SuggestedBindingRedirects.cache
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.MenuPrincipal.resources
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.Properties.Resources.resources
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.GenerateResource.cache
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.CoreCompileInputs.cache
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.CopyComplete
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.exe
+C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.pdb

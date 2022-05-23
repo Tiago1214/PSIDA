@@ -64,11 +64,41 @@
     <Compile Include="Estado.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="GestaoCadeiaRest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="GestaoCadeiaRest.Designer.cs">
+      <DependentUpon>GestaoCadeiaRest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoClientes.Designer.cs">
+      <DependentUpon>GestaoClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoMenu.Designer.cs">
+      <DependentUpon>GestaoMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoPedidos.Designer.cs">
+      <DependentUpon>GestaoPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoRestaurante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoRestaurante.Designer.cs">
+      <DependentUpon>GestaoRestaurante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemMenu.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
@@ -111,8 +141,8 @@
     <Compile Include="Trabalhador.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,6 +152,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -145,6 +176,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\background.jpg" />
+    <None Include="Resources\61816_business_buyers_clients_users_icon.png" />
+    <None Include="Resources\352514_local_restaurant_icon.png" />
+    <None Include="Resources\185114_chef_restaurant_food_icon.png" />
+    <None Include="Resources\2290855_check_document_done_list_paper_icon.png" />
+    <None Include="Resources\290137_clipboard_document_file_list_report_icon.png" />
     <Content Include="restaurantebd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>restaurantebd.Context.cs</LastGenOutput>
