@@ -55,9 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="MenuPrincipal.cs">
-=======
+
+    <Compile Include="MenuPrincipal.cs"/>
+
     <Compile Include="Categoria.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
@@ -68,7 +68,7 @@
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
->>>>>>> eae42760143533408911c3f45cc7f484bd58139f
+
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
@@ -100,13 +100,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-    <EmbeddedResource Include="GestaoClientes.resx">
-      <DependentUpon>GestaoClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipal.resx">
-      <DependentUpon>MenuPrincipal.cs</DependentUpon>
-=======
+
+
     <Compile Include="Restaurante.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
@@ -130,7 +125,7 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
->>>>>>> eae42760143533408911c3f45cc7f484bd58139f
+
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
