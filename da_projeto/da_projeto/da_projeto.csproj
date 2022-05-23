@@ -141,6 +141,9 @@
     <Compile Include="Trabalhador.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GestaoClientes.resx">
+      <DependentUpon>GestaoClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,6 +185,11 @@
     <None Include="Resources\185114_chef_restaurant_food_icon.png" />
     <None Include="Resources\2290855_check_document_done_list_paper_icon.png" />
     <None Include="Resources\290137_clipboard_document_file_list_report_icon.png" />
+    <None Include="Resources\Add-icon %281%29.png" />
+    <None Include="Resources\Messaging-Trash-icon.png" />
+    <None Include="Resources\Pencil-icon.png" />
+    <None Include="Resources\Save-icon.png" />
+    <None Include="Resources\Back-2-2-icon.png" />
     <Content Include="restaurantebd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>restaurantebd.Context.cs</LastGenOutput>
