@@ -141,6 +141,9 @@
     <Compile Include="Trabalhador.cs">
       <DependentUpon>restaurantebd.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GestaoCadeiaRest.resx">
+      <DependentUpon>GestaoCadeiaRest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GestaoClientes.resx">
       <DependentUpon>GestaoClientes.cs</DependentUpon>
     </EmbeddedResource>

@@ -108,22 +108,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MoradaPessoa" TypeName="restaurantebd.MoradaPessoa" StoreEntitySet="Moradas">
-      <EndProperty Name="Pessoa">
-        <ScalarProperty Name="Id" ColumnName="Pessoa_Id" />
-      </EndProperty>
-      <EndProperty Name="Morada">
-        <ScalarProperty Name="id" ColumnName="id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="MoradaRestaurante" TypeName="restaurantebd.MoradaRestaurante" StoreEntitySet="Moradas">
-      <EndProperty Name="Restaurante">
-        <ScalarProperty Name="Id" ColumnName="Restaurante_Id" />
-      </EndProperty>
-      <EndProperty Name="Morada">
-        <ScalarProperty Name="id" ColumnName="id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="RestauranteItemMenu" TypeName="restaurantebd.RestauranteItemMenu" StoreEntitySet="RestauranteItemMenu">
       <EndProperty Name="Restaurante">
         <ScalarProperty Name="Id" ColumnName="Restaurante_Id" />
