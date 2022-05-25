@@ -31,13 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoClientes));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 
-
             this.registarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.voltarbutton = new System.Windows.Forms.ToolStripMenuItem();
-
             this.lbclientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
@@ -46,8 +44,6 @@
             this.masktxttele = new System.Windows.Forms.MaskedTextBox();
             this.masktxtnif = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-
-            this.cbmorada = new System.Windows.Forms.ComboBox();
 
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -67,8 +63,6 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-
-
             // registarbutton
             // 
             this.registarbutton.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
@@ -179,14 +173,6 @@
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
 
-            // cbmorada
-            // 
-            this.cbmorada.FormattingEnabled = true;
-            this.cbmorada.Location = new System.Drawing.Point(150, 112);
-            this.cbmorada.Name = "cbmorada";
-            this.cbmorada.Size = new System.Drawing.Size(298, 24);
-            this.cbmorada.TabIndex = 5;
-            // 
             // GestaoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -233,11 +219,14 @@
         private System.Windows.Forms.MaskedTextBox masktxtnif;
         private System.Windows.Forms.Label label4;
 
+
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbmorada;
 
 
 
 
+
+        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
     }
 }
