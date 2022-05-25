@@ -12,6 +12,7 @@ namespace da_projeto
 {
     public partial class GestaoClientes : Form
     {
+        public static restaurantebdContainer restaurante;
         public GestaoClientes()
         {
             InitializeComponent();
@@ -37,6 +38,13 @@ namespace da_projeto
         private void GestaoClientes_Load(object sender, EventArgs e)
         {
             Desativar();
+            restaurante = new restaurantebdContainer();
+            LerDados();
+
+        }
+        private void LerDados()
+        {
+            lbclientes.DataSource = restaurante.Pessoas.ToList<Pessoa>();
 
         }
 
@@ -46,6 +54,8 @@ namespace da_projeto
             cbmorada.Enabled= false;
             masktxtnif.Enabled= false;
             masktxttele.Enabled= false;
+            guardarbutton.Enabled= false;
+
             //lbclientes.Enabled= false;
         
         }
@@ -56,6 +66,7 @@ namespace da_projeto
             cbmorada.Enabled = true;
             masktxtnif.Enabled = true;
             masktxttele.Enabled = true;
+            guardarbutton.Enabled = true;
             //lbclientes.Enabled = true;
 
         }
@@ -63,6 +74,8 @@ namespace da_projeto
         private void registarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Ativar();
+            apagarbutton.Enabled = false;
+            alterarbuton.Enabled = false;
             Pessoa pessoa = new Pessoa();
             Cliente cliente = new Cliente();
             pessoa.Id = 0;
@@ -72,6 +85,12 @@ namespace da_projeto
 
 
 
+        }
+
+        private void guardarbutton_Click(object sender, EventArgs e)
+        {
+            minhaOficina.SaveChanges();
+            LerDados();
         }
     }
 }

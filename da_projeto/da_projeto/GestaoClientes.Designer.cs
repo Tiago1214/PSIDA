@@ -30,11 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoClientes));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+<<<<<<< Updated upstream
             this.registarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.registarbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.voltarbutton = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> Stashed changes
             this.lbclientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
@@ -43,7 +51,10 @@
             this.masktxttele = new System.Windows.Forms.MaskedTextBox();
             this.masktxtnif = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
+<<<<<<< Updated upstream
             this.cbmorada = new System.Windows.Forms.ComboBox();
+=======
+>>>>>>> Stashed changes
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,17 +62,18 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registarToolStripMenuItem,
-            this.apagarToolStripMenuItem,
-            this.alterarToolStripMenuItem,
-            this.guardarToolStripMenuItem,
-            this.voltarToolStripMenuItem});
+            this.registarbutton,
+            this.apagarbutton,
+            this.alterarbuton,
+            this.guardarbutton,
+            this.voltarbutton});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+<<<<<<< Updated upstream
             // registarToolStripMenuItem
             // 
             this.registarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
@@ -98,6 +110,45 @@
             this.voltarToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.voltarToolStripMenuItem.Text = "Voltar";
             this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
+=======
+            // registarbutton
+            // 
+            this.registarbutton.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
+            this.registarbutton.Name = "registarbutton";
+            this.registarbutton.Size = new System.Drawing.Size(97, 24);
+            this.registarbutton.Text = "Registar";
+            this.registarbutton.Click += new System.EventHandler(this.registarToolStripMenuItem_Click);
+            // 
+            // apagarbutton
+            // 
+            this.apagarbutton.Image = global::da_projeto.Properties.Resources.Messaging_Trash_icon;
+            this.apagarbutton.Name = "apagarbutton";
+            this.apagarbutton.Size = new System.Drawing.Size(92, 24);
+            this.apagarbutton.Text = "Apagar";
+            // 
+            // alterarbuton
+            // 
+            this.alterarbuton.Image = global::da_projeto.Properties.Resources.Pencil_icon;
+            this.alterarbuton.Name = "alterarbuton";
+            this.alterarbuton.Size = new System.Drawing.Size(88, 24);
+            this.alterarbuton.Text = "Alterar";
+            // 
+            // guardarbutton
+            // 
+            this.guardarbutton.Image = global::da_projeto.Properties.Resources.Save_icon;
+            this.guardarbutton.Name = "guardarbutton";
+            this.guardarbutton.Size = new System.Drawing.Size(96, 24);
+            this.guardarbutton.Text = "Guardar";
+            this.guardarbutton.Click += new System.EventHandler(this.guardarbutton_Click);
+            // 
+            // voltarbutton
+            // 
+            this.voltarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
+            this.voltarbutton.Name = "voltarbutton";
+            this.voltarbutton.Size = new System.Drawing.Size(82, 24);
+            this.voltarbutton.Text = "Voltar";
+            this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
+>>>>>>> Stashed changes
             // 
             // lbclientes
             // 
@@ -169,6 +220,7 @@
             this.label4.Text = "Número Contribuinte";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
+<<<<<<< Updated upstream
             // cbmorada
             // 
             this.cbmorada.FormattingEnabled = true;
@@ -177,6 +229,8 @@
             this.cbmorada.Size = new System.Drawing.Size(298, 24);
             this.cbmorada.TabIndex = 5;
             // 
+=======
+>>>>>>> Stashed changes
             // GestaoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -210,10 +264,10 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem registarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem apagarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registarbutton;
+        private System.Windows.Forms.ToolStripMenuItem apagarbutton;
+        private System.Windows.Forms.ToolStripMenuItem alterarbuton;
+        private System.Windows.Forms.ToolStripMenuItem guardarbutton;
         private System.Windows.Forms.ListBox lbclientes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtnome;
@@ -222,7 +276,11 @@
         private System.Windows.Forms.MaskedTextBox masktxttele;
         private System.Windows.Forms.MaskedTextBox masktxtnif;
         private System.Windows.Forms.Label label4;
+<<<<<<< Updated upstream
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbmorada;
+=======
+        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
+>>>>>>> Stashed changes
     }
 }
