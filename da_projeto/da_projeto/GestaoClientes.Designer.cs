@@ -31,17 +31,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoClientes));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             this.registarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 =======
+=======
+>>>>>>> Stashed changes
             this.registarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.voltarbutton = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             this.lbclientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +58,10 @@
             this.masktxtnif = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             this.cbmorada = new System.Windows.Forms.ComboBox();
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             this.menuStrip1.SuspendLayout();
@@ -73,6 +82,7 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             // registarToolStripMenuItem
             // 
@@ -111,6 +121,8 @@
             this.voltarToolStripMenuItem.Text = "Voltar";
             this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
 =======
+=======
+>>>>>>> Stashed changes
             // registarbutton
             // 
             this.registarbutton.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
@@ -148,6 +160,9 @@
             this.voltarbutton.Size = new System.Drawing.Size(82, 24);
             this.voltarbutton.Text = "Voltar";
             this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             // 
             // lbclientes
@@ -221,6 +236,7 @@
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             // cbmorada
             // 
             this.cbmorada.FormattingEnabled = true;
@@ -229,6 +245,8 @@
             this.cbmorada.Size = new System.Drawing.Size(298, 24);
             this.cbmorada.TabIndex = 5;
             // 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             // GestaoClientes
@@ -277,8 +295,12 @@
         private System.Windows.Forms.MaskedTextBox masktxtnif;
         private System.Windows.Forms.Label label4;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbmorada;
+=======
+        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
+>>>>>>> Stashed changes
 =======
         private System.Windows.Forms.ToolStripMenuItem voltarbutton;
 >>>>>>> Stashed changes
