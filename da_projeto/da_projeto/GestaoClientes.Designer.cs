@@ -30,25 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoClientes));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            this.registarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.apagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-=======
-=======
->>>>>>> Stashed changes
+
+
             this.registarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.voltarbutton = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
             this.lbclientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
@@ -57,13 +46,9 @@
             this.masktxttele = new System.Windows.Forms.MaskedTextBox();
             this.masktxtnif = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
             this.cbmorada = new System.Windows.Forms.ComboBox();
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,47 +67,8 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            // registarToolStripMenuItem
-            // 
-            this.registarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
-            this.registarToolStripMenuItem.Name = "registarToolStripMenuItem";
-            this.registarToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
-            this.registarToolStripMenuItem.Text = "Registar";
-            this.registarToolStripMenuItem.Click += new System.EventHandler(this.registarToolStripMenuItem_Click);
-            // 
-            // apagarToolStripMenuItem
-            // 
-            this.apagarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Messaging_Trash_icon;
-            this.apagarToolStripMenuItem.Name = "apagarToolStripMenuItem";
-            this.apagarToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
-            this.apagarToolStripMenuItem.Text = "Apagar";
-            // 
-            // alterarToolStripMenuItem
-            // 
-            this.alterarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Pencil_icon;
-            this.alterarToolStripMenuItem.Name = "alterarToolStripMenuItem";
-            this.alterarToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
-            this.alterarToolStripMenuItem.Text = "Alterar";
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Save_icon;
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            // 
-            // voltarToolStripMenuItem
-            // 
-            this.voltarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
-            this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
-            this.voltarToolStripMenuItem.Text = "Voltar";
-            this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
-=======
-=======
->>>>>>> Stashed changes
+
+
             // registarbutton
             // 
             this.registarbutton.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
@@ -160,10 +106,7 @@
             this.voltarbutton.Size = new System.Drawing.Size(82, 24);
             this.voltarbutton.Text = "Voltar";
             this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
             // 
             // lbclientes
             // 
@@ -235,8 +178,7 @@
             this.label4.Text = "Número Contribuinte";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
             // cbmorada
             // 
             this.cbmorada.FormattingEnabled = true;
@@ -245,10 +187,6 @@
             this.cbmorada.Size = new System.Drawing.Size(298, 24);
             this.cbmorada.TabIndex = 5;
             // 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             // GestaoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -294,15 +232,12 @@
         private System.Windows.Forms.MaskedTextBox masktxttele;
         private System.Windows.Forms.MaskedTextBox masktxtnif;
         private System.Windows.Forms.Label label4;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbmorada;
-=======
-        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
->>>>>>> Stashed changes
-=======
-        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
->>>>>>> Stashed changes
+
+
+
+
     }
 }
