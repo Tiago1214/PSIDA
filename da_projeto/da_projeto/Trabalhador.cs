@@ -14,19 +14,7 @@ namespace da_projeto
     
     public partial class Trabalhador : Pessoa
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Trabalhador()
-        {
-            this.Pedido = new HashSet<Pedido>();
-        }
-    
-        public int idrestaurante { get; set; }
-        public int salario { get; set; }
+        public string salario { get; set; }
         public string posicao { get; set; }
-        public int RestauranteId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
-        public virtual Restaurante Restaurante { get; set; }
     }
 }

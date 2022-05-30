@@ -17,14 +17,14 @@ namespace da_projeto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Categoria()
         {
-            this.ItemMenu = new HashSet<ItemMenu>();
+            this.ItemMenus = new HashSet<ItemMenu>();
         }
     
         public int Id { get; set; }
         public string nome { get; set; }
-        public bool ativo { get; set; }
+        public string ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemMenu> ItemMenu { get; set; }
+        public virtual ICollection<ItemMenu> ItemMenus { get; set; }
     }
 }

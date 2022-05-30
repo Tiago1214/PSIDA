@@ -17,21 +17,14 @@ namespace da_projeto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Restaurante()
         {
-            this.Pedido = new HashSet<Pedido>();
-            this.ItemMenu = new HashSet<ItemMenu>();
-            this.Trabalhador = new HashSet<Trabalhador>();
+            this.ItemMenus = new HashSet<ItemMenu>();
         }
     
         public int Id { get; set; }
         public string nome { get; set; }
-        public string idmorada { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemMenu> ItemMenu { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trabalhador> Trabalhador { get; set; }
+        public virtual ICollection<ItemMenu> ItemMenus { get; set; }
         public virtual Morada Morada { get; set; }
     }
 }
