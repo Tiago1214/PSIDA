@@ -23,10 +23,10 @@ namespace da_projeto
     
         public int Id { get; set; }
         public string nome { get; set; }
-        public string fotografia { get; set; }
+        public int fotografia { get; set; }
         public string ingredientes { get; set; }
-        public string preco { get; set; }
-        public string ativo { get; set; }
+        public decimal preco { get; set; }
+        public bool ativo { get; set; }
         public int CategoriaId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -14,7 +14,7 @@ namespace da_projeto
     
     public partial class Trabalhador : Pessoa
     {
-        public string salario { get; set; }
+        public decimal salario { get; set; }
         public string posicao { get; set; }
     }
 }

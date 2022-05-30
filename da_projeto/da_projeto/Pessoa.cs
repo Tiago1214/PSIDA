@@ -16,7 +16,7 @@ namespace da_projeto
     {
         public int Id { get; set; }
         public string nome { get; set; }
-        public string telemovel { get; set; }
+        public int telemovel { get; set; }
     
         public virtual Morada Morada { get; set; }
     }

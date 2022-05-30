@@ -22,7 +22,7 @@ namespace da_projeto
     
         public int Id { get; set; }
         public string metodopagamento { get; set; }
-        public string ativo { get; set; }
+        public bool ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pagamento> Pagamentoes { get; set; }

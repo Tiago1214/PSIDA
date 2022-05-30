@@ -89,7 +89,7 @@ namespace da_projeto
 
         private void guardarbutton_Click(object sender, EventArgs e)
         {
-            minhaOficina.SaveChanges();
+            
             LerDados();
         }
     }

@@ -15,7 +15,7 @@ namespace da_projeto
     public partial class Pagamento
     {
         public int Id { get; set; }
-        public string valor { get; set; }
+        public decimal valor { get; set; }
         public int PedidoId { get; set; }
         public int MetodoPagamentoId { get; set; }
     

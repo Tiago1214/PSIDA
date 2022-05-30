@@ -14,7 +14,7 @@ namespace da_projeto
     
     public partial class Cliente : Pessoa
     {
-        public string totalgasto { get; set; }
-        public string numcontribuinte { get; set; }
+        public decimal totalgasto { get; set; }
+        public int numcontribuinte { get; set; }
     }
 }
