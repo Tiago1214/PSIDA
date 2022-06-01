@@ -29,6 +29,7 @@
         <AssociationConnector Association="RestauranteModel.PedidoItemMenu" />
         <AssociationConnector Association="RestauranteModel.PessoaMorada" />
         <AssociationConnector Association="RestauranteModel.RestauranteMorada" />
+        <AssociationConnector Association="RestauranteModel.TrabalhadorRestaurante" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

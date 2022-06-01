@@ -71,6 +71,10 @@
       <End Role="Restaurante" EntitySet="Restaurantes" />
       <End Role="Morada" EntitySet="Moradas" />
     </AssociationSet>
+    <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.Store.TrabalhadorRestaurante">
+      <End Role="Trabalhador" EntitySet="Pessoas_Trabalhador" />
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+    </AssociationSet>
     <AssociationSet Name="FK_Trabalhador_inherits_Pessoa" Association="RestauranteModel.Store.FK_Trabalhador_inherits_Pessoa">
       <End Role="Pessoa" EntitySet="Pessoas" />
       <End Role="Trabalhador" EntitySet="Pessoas_Trabalhador" />
@@ -96,7 +100,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="telemovel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="telemovel" Type="int" Nullable="false" />
     <Property Name="Morada_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Restaurantes">
@@ -113,10 +117,10 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fotografia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fotografia" Type="bigint" Nullable="false" />
     <Property Name="ingredientes" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="preco" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ativo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="preco" Type="decimal" Nullable="false" />
+    <Property Name="ativo" Type="bit" Nullable="false" />
     <Property Name="CategoriaId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias">
@@ -125,14 +129,14 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ativo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ativo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Pedidoes">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="valortotal" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="valortotal" Type="decimal" Nullable="false" />
     <Property Name="TrabalhadorId" Type="int" Nullable="false" />
     <Property Name="ClienteId" Type="int" Nullable="false" />
     <Property Name="RestauranteId" Type="int" Nullable="false" />
@@ -143,7 +147,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="valor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="valor" Type="decimal" Nullable="false" />
     <Property Name="PedidoId" Type="int" Nullable="false" />
     <Property Name="MetodoPagamentoId" Type="int" Nullable="false" />
   </EntityType>
@@ -153,7 +157,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="metodopagamento" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ativo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ativo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Estadoes">
     <Key>
@@ -166,16 +170,17 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="salario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="salario" Type="decimal" Nullable="false" />
     <Property Name="posicao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RestauranteId" Type="int" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Pessoas_Cliente">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="totalgasto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="numcontribuinte" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="totalgasto" Type="decimal" Nullable="false" />
+    <Property Name="numcontribuinte" Type="int" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RestauranteItemMenu">
@@ -292,13 +297,27 @@
   </Association>
   <Association Name="RestauranteMorada">
     <End Role="Restaurante" Type="RestauranteModel.Store.Restaurantes" Multiplicity="*" />
-    <End Role="Morada" Type="RestauranteModel.Store.Moradas" Multiplicity="1" />
+    <End Role="Morada" Type="RestauranteModel.Store.Moradas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <ReferentialConstraint>
       <Principal Role="Morada">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Restaurante">
         <PropertyRef Name="Morada_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TrabalhadorRestaurante">
+    <End Role="Trabalhador" Type="RestauranteModel.Store.Pessoas_Trabalhador" Multiplicity="*" />
+    <End Role="Restaurante" Type="RestauranteModel.Store.Restaurantes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trabalhador">
+        <PropertyRef Name="RestauranteId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -436,6 +455,10 @@
             <End Role="Restaurante" EntitySet="Restaurantes" />
             <End Role="Morada" EntitySet="Moradas" />
           </AssociationSet>
+          <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.TrabalhadorRestaurante">
+            <End Role="Trabalhador" EntitySet="Pessoas" />
+            <End Role="Restaurante" EntitySet="Restaurantes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Morada">
           <Key>
@@ -453,7 +476,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="String" Nullable="false" />
-          <Property Name="telemovel" Type="String" Nullable="false" />
+          <Property Name="telemovel" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Morada" Relationship="RestauranteModel.PessoaMorada" FromRole="Pessoa" ToRole="Morada" />
         </EntityType>
         <EntityType Name="Restaurante">
@@ -464,6 +487,7 @@
           <Property Name="nome" Type="String" Nullable="false" />
           <NavigationProperty Name="ItemMenus" Relationship="RestauranteModel.RestauranteItemMenu" FromRole="Restaurante" ToRole="ItemMenu" />
           <NavigationProperty Name="Morada" Relationship="RestauranteModel.RestauranteMorada" FromRole="Restaurante" ToRole="Morada" />
+          <NavigationProperty Name="Trabalhadors" Relationship="RestauranteModel.TrabalhadorRestaurante" FromRole="Restaurante" ToRole="Trabalhador" />
         </EntityType>
         <EntityType Name="ItemMenu">
           <Key>
@@ -471,10 +495,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="String" Nullable="false" />
-          <Property Name="fotografia" Type="String" Nullable="false" />
+          <Property Name="fotografia" Type="Int64" Nullable="false" />
           <Property Name="ingredientes" Type="String" Nullable="false" />
-          <Property Name="preco" Type="String" Nullable="false" />
-          <Property Name="ativo" Type="String" Nullable="false" />
+          <Property Name="preco" Type="Decimal" Nullable="false" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Restaurantes" Relationship="RestauranteModel.RestauranteItemMenu" FromRole="ItemMenu" ToRole="Restaurante" />
           <NavigationProperty Name="Categoria" Relationship="RestauranteModel.ItemMenuCategoria" FromRole="ItemMenu" ToRole="Categoria" />
           <Property Name="CategoriaId" Type="Int32" Nullable="false" />
@@ -486,23 +510,25 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="String" Nullable="false" />
-          <Property Name="ativo" Type="String" Nullable="false" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ItemMenus" Relationship="RestauranteModel.ItemMenuCategoria" FromRole="Categoria" ToRole="ItemMenu" />
         </EntityType>
         <EntityType Name="Cliente" BaseType="RestauranteModel.Pessoa" >
-          <Property Name="totalgasto" Type="String" Nullable="false" />
-          <Property Name="numcontribuinte" Type="String" Nullable="false" />
+          <Property Name="totalgasto" Type="Decimal" Nullable="false" />
+          <Property Name="numcontribuinte" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Trabalhador" BaseType="RestauranteModel.Pessoa" >
-          <Property Name="salario" Type="String" Nullable="false" />
+          <Property Name="salario" Type="Decimal" Nullable="false" />
           <Property Name="posicao" Type="String" Nullable="false" />
+          <NavigationProperty Name="Restaurante" Relationship="RestauranteModel.TrabalhadorRestaurante" FromRole="Trabalhador" ToRole="Restaurante" />
+          <Property Name="RestauranteId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="valortotal" Type="String" Nullable="false" />
+          <Property Name="valortotal" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="Trabalhador" Relationship="RestauranteModel.TrabalhadorPedido" FromRole="Pedido" ToRole="Trabalhador" />
           <Property Name="TrabalhadorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="RestauranteModel.ClientePedido" FromRole="Pedido" ToRole="Cliente" />
@@ -519,7 +545,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="valor" Type="String" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="Pedido" Relationship="RestauranteModel.PedidoPagamento" FromRole="Pagamento" ToRole="Pedido" />
           <Property Name="PedidoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MetodoPagamento" Relationship="RestauranteModel.PagamentoMetodoPagamento" FromRole="Pagamento" ToRole="MetodoPagamento" />
@@ -531,7 +557,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="metodopagamento" Type="String" Nullable="false" />
-          <Property Name="ativo" Type="String" Nullable="false" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Pagamentoes" Relationship="RestauranteModel.PagamentoMetodoPagamento" FromRole="MetodoPagamento" ToRole="Pagamento" />
         </EntityType>
         <EntityType Name="Estado">
@@ -639,8 +665,23 @@
           <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
         </Association>
         <Association Name="RestauranteMorada">
+          <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="1" >
+          </End>
+          <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+        </Association>
+        <Association Name="TrabalhadorRestaurante">
+          <End Type="RestauranteModel.Trabalhador" Role="Trabalhador" Multiplicity="*" />
           <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="1" />
-          <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Trabalhador">
+              <PropertyRef Name="RestauranteId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -672,6 +713,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="salario" ColumnName="salario" />
           <ScalarProperty Name="posicao" ColumnName="posicao" />
+          <ScalarProperty Name="RestauranteId" ColumnName="RestauranteId" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(RestauranteModel.Cliente)">

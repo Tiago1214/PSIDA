@@ -22,7 +22,7 @@ namespace da_projeto
         }
     
         public int Id { get; set; }
-        public string valortotal { get; set; }
+        public decimal valortotal { get; set; }
         public int TrabalhadorId { get; set; }
         public int ClienteId { get; set; }
         public int RestauranteId { get; set; }

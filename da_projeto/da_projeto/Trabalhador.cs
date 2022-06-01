@@ -16,5 +16,8 @@ namespace da_projeto
     {
         public decimal salario { get; set; }
         public string posicao { get; set; }
+        public int RestauranteId { get; set; }
+    
+        public virtual Restaurante Restaurante { get; set; }
     }
 }

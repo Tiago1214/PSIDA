@@ -183,7 +183,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.masktxttele);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbmorada);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtnome);
             this.Controls.Add(this.label1);

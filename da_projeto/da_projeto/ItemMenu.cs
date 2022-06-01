@@ -23,7 +23,7 @@ namespace da_projeto
     
         public int Id { get; set; }
         public string nome { get; set; }
-        public int fotografia { get; set; }
+        public long fotografia { get; set; }
         public string ingredientes { get; set; }
         public decimal preco { get; set; }
         public bool ativo { get; set; }
