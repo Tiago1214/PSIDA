@@ -17,22 +17,22 @@ namespace da_projeto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemMenu()
         {
-            this.Restaurante = new HashSet<Restaurante>();
-            this.Pedido = new HashSet<Pedido>();
+            this.Restaurantes = new HashSet<Restaurante>();
+            this.Pedidoes = new HashSet<Pedido>();
         }
     
         public int Id { get; set; }
         public string nome { get; set; }
-        public byte fotografia { get; set; }
+        public long fotografia { get; set; }
         public string ingredientes { get; set; }
         public decimal preco { get; set; }
         public bool ativo { get; set; }
         public int CategoriaId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Restaurante> Restaurantes { get; set; }
         public virtual Categoria Categoria { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Restaurante> Restaurante { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedido { get; set; }
+        public virtual ICollection<Pedido> Pedidoes { get; set; }
     }
 }

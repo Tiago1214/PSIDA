@@ -17,7 +17,7 @@ namespace da_projeto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MetodoPagamento()
         {
-            this.Pagamento = new HashSet<Pagamento>();
+            this.Pagamentoes = new HashSet<Pagamento>();
         }
     
         public int Id { get; set; }
@@ -25,6 +25,6 @@ namespace da_projeto
         public bool ativo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pagamento> Pagamento { get; set; }
+        public virtual ICollection<Pagamento> Pagamentoes { get; set; }
     }
 }

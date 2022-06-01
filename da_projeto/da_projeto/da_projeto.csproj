@@ -56,13 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Cliente.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Estado.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GestaoCadeiaRest.cs">
       <SubType>Form</SubType>
@@ -94,52 +94,52 @@
     <Compile Include="GestaoRestaurante.Designer.cs">
       <DependentUpon>GestaoRestaurante.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemMenu.cs">
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemMenu.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
-    </Compile>
     <Compile Include="MetodoPagamento.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Morada.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pagamento.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pedido.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pessoa.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurante.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="restaurantebd.Context.cs">
+    <Compile Include="RestauranteModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>restaurantebd.Context.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="restaurantebd.cs">
+    <Compile Include="RestauranteModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="restaurantebd.Designer.cs">
+    <Compile Include="RestauranteModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>restaurantebd.edmx</DependentUpon>
+      <DependentUpon>RestauranteModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Trabalhador.cs">
-      <DependentUpon>restaurantebd.tt</DependentUpon>
+      <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="GestaoCadeiaRest.resx">
       <DependentUpon>GestaoCadeiaRest.cs</DependentUpon>
@@ -170,18 +170,29 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="restaurantebd.edmx">
+    <EntityDeploy Include="RestauranteModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>restaurantebd.Designer.cs</LastGenOutput>
+      <LastGenOutput>RestauranteModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="restaurantebd.edmx.diagram">
-      <DependentUpon>restaurantebd.edmx</DependentUpon>
+    <None Include="RestauranteModel.edmx.diagram">
+      <DependentUpon>RestauranteModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RestauranteModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RestauranteModel.Context.cs</LastGenOutput>
+      <DependentUpon>RestauranteModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="RestauranteModel.edmx.sql" />
+    <Content Include="RestauranteModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RestauranteModel.cs</LastGenOutput>
+      <DependentUpon>RestauranteModel.edmx</DependentUpon>
+    </Content>
     <None Include="Resources\background.jpg" />
     <None Include="Resources\61816_business_buyers_clients_users_icon.png" />
     <None Include="Resources\352514_local_restaurant_icon.png" />
@@ -193,17 +204,6 @@
     <None Include="Resources\Pencil-icon.png" />
     <None Include="Resources\Save-icon.png" />
     <None Include="Resources\Back-2-2-icon.png" />
-    <Content Include="restaurantebd.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>restaurantebd.Context.cs</LastGenOutput>
-      <DependentUpon>restaurantebd.edmx</DependentUpon>
-    </Content>
-    <Content Include="restaurantebd.edmx.sql" />
-    <Content Include="restaurantebd.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>restaurantebd.cs</LastGenOutput>
-      <DependentUpon>restaurantebd.edmx</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

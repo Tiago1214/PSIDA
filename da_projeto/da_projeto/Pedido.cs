@@ -17,24 +17,24 @@ namespace da_projeto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pedido()
         {
-            this.Pagamento = new HashSet<Pagamento>();
-            this.ItemMenu = new HashSet<ItemMenu>();
+            this.Pagamentoes = new HashSet<Pagamento>();
+            this.ItemMenus = new HashSet<ItemMenu>();
         }
     
         public int Id { get; set; }
         public decimal valortotal { get; set; }
-        public int ClienteId { get; set; }
         public int TrabalhadorId { get; set; }
+        public int ClienteId { get; set; }
         public int RestauranteId { get; set; }
         public int EstadoId { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         public virtual Trabalhador Trabalhador { get; set; }
+        public virtual Cliente Cliente { get; set; }
         public virtual Restaurante Restaurante { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pagamento> Pagamentoes { get; set; }
         public virtual Estado Estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pagamento> Pagamento { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemMenu> ItemMenu { get; set; }
+        public virtual ICollection<ItemMenu> ItemMenus { get; set; }
     }
 }

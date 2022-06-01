@@ -14,13 +14,10 @@ namespace da_projeto
     
     public partial class Morada
     {
-        public int id { get; set; }
+        public int Id { get; set; }
+        public string pais { get; set; }
         public string rua { get; set; }
         public string cidade { get; set; }
         public string codpostal { get; set; }
-        public string pais { get; set; }
-    
-        public virtual Pessoa Pessoa { get; set; }
-        public virtual Restaurante Restaurante { get; set; }
     }
 }

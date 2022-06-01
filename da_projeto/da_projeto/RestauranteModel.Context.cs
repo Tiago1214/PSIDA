@@ -13,10 +13,10 @@ namespace da_projeto
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class restaurantebdContainer : DbContext
+    public partial class RestauranteModelContainer : DbContext
     {
-        public restaurantebdContainer()
-            : base("name=restaurantebdContainer")
+        public RestauranteModelContainer()
+            : base("name=RestauranteModelContainer")
         {
         }
     
@@ -28,11 +28,11 @@ namespace da_projeto
         public virtual DbSet<Morada> Moradas { get; set; }
         public virtual DbSet<Pessoa> Pessoas { get; set; }
         public virtual DbSet<Restaurante> Restaurantes { get; set; }
-        public virtual DbSet<ItemMenu> ItemMenuSet { get; set; }
-        public virtual DbSet<Pedido> Pedidos { get; set; }
+        public virtual DbSet<ItemMenu> ItemMenus { get; set; }
         public virtual DbSet<Categoria> Categorias { get; set; }
-        public virtual DbSet<Estado> Estados { get; set; }
-        public virtual DbSet<Pagamento> Pagamentos { get; set; }
-        public virtual DbSet<MetodoPagamento> MetodoPagamentos { get; set; }
+        public virtual DbSet<Pedido> Pedidoes { get; set; }
+        public virtual DbSet<Pagamento> Pagamentoes { get; set; }
+        public virtual DbSet<MetodoPagamento> MetodoPagamentoes { get; set; }
+        public virtual DbSet<Estado> Estadoes { get; set; }
     }
 }

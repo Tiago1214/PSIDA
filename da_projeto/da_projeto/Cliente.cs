@@ -14,6 +14,7 @@ namespace da_projeto
     
     public partial class Cliente : Pessoa
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
         {
@@ -25,5 +26,8 @@ namespace da_projeto
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }
+
+        public decimal totalgasto { get; set; }
+        public int numcontribuinte { get; set; }
     }
 }
