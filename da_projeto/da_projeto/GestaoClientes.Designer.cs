@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoClientes));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-
             this.registarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +43,7 @@
             this.masktxttele = new System.Windows.Forms.MaskedTextBox();
             this.masktxtnif = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +99,6 @@
             this.voltarbutton.Size = new System.Drawing.Size(82, 24);
             this.voltarbutton.Text = "Voltar";
             this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
-
             // 
             // lbclientes
             // 
@@ -172,18 +170,25 @@
             this.label4.Text = "Número Contribuinte";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(150, 117);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(238, 24);
+            this.comboBox1.TabIndex = 10;
+            // 
             // GestaoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.masktxtnif);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.masktxttele);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cbmorada);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtnome);
             this.Controls.Add(this.label1);
@@ -228,5 +233,6 @@
 
 
         private System.Windows.Forms.ToolStripMenuItem voltarbutton;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

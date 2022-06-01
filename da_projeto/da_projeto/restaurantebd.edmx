@@ -676,7 +676,9 @@
           <End Type="restaurantebd.Pedido" Role="Pedido" Multiplicity="*" />
         </Association>
         <Association Name="RestauranteTrabalhador">
-          <End Type="restaurantebd.Restaurante" Role="Restaurante" Multiplicity="1" />
+          <End Type="restaurantebd.Restaurante" Role="Restaurante" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="restaurantebd.Trabalhador" Role="Trabalhador" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Restaurante">

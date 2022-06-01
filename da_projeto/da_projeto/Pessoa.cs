@@ -20,7 +20,5 @@ namespace da_projeto
         public short telemovel { get; set; }
     
         public virtual Morada Morada { get; set; }
-
-        
     }
 }

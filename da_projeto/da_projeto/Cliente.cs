@@ -19,19 +19,11 @@ namespace da_projeto
         {
             this.Pedido = new HashSet<Pedido>();
         }
-        
+    
         public decimal totalgasto { get; set; }
         public string numcontribuinte { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }
-
-        public override string ToString()
-        {
-            Pessoa pessoa = new Pessoa();
-
-            return pessoa.nome + "(" + pessoa.Id + ") moradaid:" + pessoa.idmorada + " telemovel:" + pessoa.telemovel
-                +" totalgasto:"+this.totalgasto+" numcontribuinte:"+this.numcontribuinte;
-        }
     }
 }
