@@ -48,12 +48,6 @@ namespace da_projeto
 
         }
 
-        private void LerDadosMorada()
-        {
-            List<Morada> listMorada = new Morada();
-            cbmorada.DataSource = listMorada;
-        }
-
         private void Desativar()
         { 
             txtnome.Enabled= false;
@@ -83,11 +77,10 @@ namespace da_projeto
             apagarbutton.Enabled = false;
             alterarbuton.Enabled = false;
             Pessoa pessoa = new Pessoa();
-            Morada morada = new Morada();
             Cliente cliente = new Cliente();
-            pessoa.nome = txtnome.Text;
-            pessoa.idmorada = morada.id;
-            pessoa.telemovel = masktxttele.Text();
+            pessoa.Id = 0;
+            //pessoa.idmorada = cbmorada.Text;
+            //pessoa.telemovel = Convert.ToUInt16(masktxttele.Text());
             cliente.numcontribuinte = masktxtnif.ToString();
 
 
@@ -96,8 +89,7 @@ namespace da_projeto
 
         private void guardarbutton_Click(object sender, EventArgs e)
         {
-
-            restaurante.SaveChanges();
+            
             LerDados();
         }
     }

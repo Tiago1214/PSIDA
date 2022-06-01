@@ -1,8 +1,4 @@
-da_projeto/da_projeto/restaurantebd.Designer.cs
-﻿// T4 code generation is enabled for model 'C:\Users\berna\OneDrive - IPLeiria\Documents\GitHub\PSIDA\da_projeto\da_projeto\restaurantebd.edmx'. 
-
 ﻿// T4 code generation is enabled for model 'C:\Users\tiago\Downloads\da_projeto\da_projeto\RestauranteModel.edmx'. 
-c:da_projeto/da_projeto/RestauranteModel.Designer.cs
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
