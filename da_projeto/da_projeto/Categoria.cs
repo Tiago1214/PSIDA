@@ -26,5 +26,21 @@ namespace da_projeto
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemMenu> ItemMenus { get; set; }
+        public string GetEstado( bool ativo)
+        {
+            ativo = this.ativo;
+            if (ativo == true)
+            {
+                return "Sim";
+            }
+            else
+            {
+                return "Não";
+            }
+        }
+        public override string ToString()
+        {
+            return this.nome + " (Ativo: "+GetEstado(this.ativo)+")";
+        }
     }
 }

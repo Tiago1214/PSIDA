@@ -16,6 +16,7 @@ namespace da_projeto
         public MenuPrincipal()
         {
             InitializeComponent();
+            restaurante = new RestauranteModelContainer();
         }
 
         private void btnGestaoClientes_Click(object sender, EventArgs e)

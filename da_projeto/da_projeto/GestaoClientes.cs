@@ -38,10 +38,14 @@ namespace da_projeto
 
         private void GestaoClientes_Load(object sender, EventArgs e)
         {
+
             //Desativar();
             MenuPrincipal.restaurante = new RestauranteModelContainer();
             
             comboBox1.DataSource = MenuPrincipal.restaurante.Moradas.ToList();
+
+            Desativar();
+
             LerDados();
 
         }
@@ -81,11 +85,20 @@ namespace da_projeto
             alterarbuton.Enabled = false;
             
             Cliente cliente = new Cliente();
+
             cliente.Morada = (Morada) comboBox1.SelectedItem;
             cliente.nome = txtnome.Text;
             cliente.telemovel =int.Parse(masktxttele.Text);
             cliente.numcontribuinte = int.Parse(masktxtnif.Text);
             cliente.totalgasto = 0;
+
+            pessoa.Id = 0;
+            //pessoa.idmorada = cbmorada.Text;
+            //pessoa.telemovel = Convert.ToUInt16(masktxttele.Text());
+            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+
+
+
 
             MenuPrincipal.restaurante.Pessoas.Add(cliente);
             MenuPrincipal.restaurante.SaveChanges();

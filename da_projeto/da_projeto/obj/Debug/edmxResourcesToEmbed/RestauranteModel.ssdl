@@ -58,10 +58,12 @@
       <End Role="ItemMenu" EntitySet="ItemMenus" />
       <End Role="PedidoItemMenu" EntitySet="PedidoItemMenu" />
     </AssociationSet>
+
     <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.Store.TrabalhadorRestaurante">
       <End Role="Trabalhador" EntitySet="Pessoas_Trabalhador" />
       <End Role="Restaurante" EntitySet="Restaurantes" />
     </AssociationSet>
+
     <AssociationSet Name="PessoaMorada" Association="RestauranteModel.Store.PessoaMorada">
       <End Role="Pessoa" EntitySet="Pessoas" />
       <End Role="Morada" EntitySet="Moradas" />
@@ -70,6 +72,12 @@
       <End Role="Restaurante" EntitySet="Restaurantes" />
       <End Role="Morada" EntitySet="Moradas" />
     </AssociationSet>
+
+    <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.Store.TrabalhadorRestaurante">
+      <End Role="Trabalhador" EntitySet="Pessoas_Trabalhador" />
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+    </AssociationSet>
+
     <AssociationSet Name="FK_Trabalhador_inherits_Pessoa" Association="RestauranteModel.Store.FK_Trabalhador_inherits_Pessoa">
       <End Role="Pessoa" EntitySet="Pessoas" />
       <End Role="Trabalhador" EntitySet="Pessoas_Trabalhador" />
@@ -278,6 +286,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+
   <Association Name="TrabalhadorRestaurante">
     <End Role="Trabalhador" Type="RestauranteModel.Store.Pessoas_Trabalhador" Multiplicity="*" />
     <End Role="Restaurante" Type="RestauranteModel.Store.Restaurantes" Multiplicity="1" />
@@ -290,6 +299,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+
   <Association Name="PessoaMorada">
     <End Role="Pessoa" Type="RestauranteModel.Store.Pessoas" Multiplicity="*" />
     <End Role="Morada" Type="RestauranteModel.Store.Moradas" Multiplicity="1" />
@@ -304,7 +314,12 @@
   </Association>
   <Association Name="RestauranteMorada">
     <End Role="Restaurante" Type="RestauranteModel.Store.Restaurantes" Multiplicity="*" />
-    <End Role="Morada" Type="RestauranteModel.Store.Moradas" Multiplicity="1" />
+
+
+    <End Role="Morada" Type="RestauranteModel.Store.Moradas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+
     <ReferentialConstraint>
       <Principal Role="Morada">
         <PropertyRef Name="Id" />
@@ -314,6 +329,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+
+  <Association Name="TrabalhadorRestaurante">
+    <End Role="Trabalhador" Type="RestauranteModel.Store.Pessoas_Trabalhador" Multiplicity="*" />
+    <End Role="Restaurante" Type="RestauranteModel.Store.Restaurantes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trabalhador">
+        <PropertyRef Name="RestauranteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+
   <Association Name="FK_RestauranteItemMenu_Restaurante">
     <End Role="Restaurante" Type="RestauranteModel.Store.Restaurantes" Multiplicity="1" />
     <End Role="RestauranteItemMenu" Type="RestauranteModel.Store.RestauranteItemMenu" Multiplicity="*" />
