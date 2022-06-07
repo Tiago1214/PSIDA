@@ -134,6 +134,7 @@
             this.MinimizeBox = false;
             this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
+            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.ResumeLayout(false);
 
         }

@@ -26,5 +26,22 @@ namespace da_projeto
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pagamento> Pagamentoes { get; set; }
+
+        public string GetEstado(bool ativo)
+        {
+            ativo = this.ativo;
+            if (ativo == true)
+            {
+                return "Sim";
+            }
+            else
+            {
+                return "Não";
+            }
+        }
+        public override string ToString()
+        {
+            return this.metodopagamento + " (Ativo: " + GetEstado(this.ativo) + ")";
+        }
     }
 }

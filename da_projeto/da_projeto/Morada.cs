@@ -19,5 +19,12 @@ namespace da_projeto
         public string rua { get; set; }
         public string cidade { get; set; }
         public string codpostal { get; set; }
+
+        public override string ToString()
+        {
+            return this.rua + "(" + this.Id + "), " + this.cidade + "(" + this.codpostal + ")" + ", " + this.pais;
+        }
     }
+
+    
 }

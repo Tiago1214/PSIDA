@@ -123,6 +123,11 @@
     <Compile Include="Restaurante.cs">
       <DependentUpon>RestauranteModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="restaurantedbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurantedbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RestauranteModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -174,6 +179,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RestauranteModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="restaurantedbDataSet.xsc">
+      <DependentUpon>restaurantedbDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="restaurantedbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>restaurantedbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="restaurantedbDataSet.xss">
+      <DependentUpon>restaurantedbDataSet.xsd</DependentUpon>
+    </None>
     <None Include="RestauranteModel.edmx.diagram">
       <DependentUpon>RestauranteModel.edmx</DependentUpon>
     </None>

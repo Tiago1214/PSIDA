@@ -12,7 +12,7 @@ namespace da_projeto
 {
     public partial class GestaoClientes : Form
     {
-        public static restaurantebdContainer restaurante;
+        
         public GestaoClientes()
         {
             InitializeComponent();
@@ -38,13 +38,12 @@ namespace da_projeto
         private void GestaoClientes_Load(object sender, EventArgs e)
         {
             Desativar();
-            restaurante = new restaurantebdContainer();
             LerDados();
 
         }
         private void LerDados()
         {
-            lbclientes.DataSource = restaurante.Pessoas.ToList<Pessoa>();
+            lbclientes.DataSource = MenuPrincipal.restaurante.Pessoas.ToList<Pessoa>();
 
         }
 
@@ -81,7 +80,7 @@ namespace da_projeto
             pessoa.Id = 0;
             //pessoa.idmorada = cbmorada.Text;
             //pessoa.telemovel = Convert.ToUInt16(masktxttele.Text());
-            cliente.numcontribuinte = masktxtnif.ToString();
+            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
 
 
 
