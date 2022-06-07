@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Sql;
 
 namespace da_projeto
 {
     public partial class GestaoClientes : Form
     {
-        public static restaurantebdContainer restaurante;
+        
         public GestaoClientes()
         {
             InitializeComponent();
@@ -37,21 +38,23 @@ namespace da_projeto
 
         private void GestaoClientes_Load(object sender, EventArgs e)
         {
-            Desativar();
-            restaurante = new restaurantebdContainer();
+            //Desativar();
+            MenuPrincipal.restaurante = new RestauranteModelContainer();
+            
+            comboBox1.DataSource = MenuPrincipal.restaurante.Moradas.ToList();
             LerDados();
 
         }
         private void LerDados()
         {
-            lbclientes.DataSource = restaurante.Pessoas.ToList<Pessoa>();
+            lbclientes.DataSource = MenuPrincipal.restaurante.Pessoas.ToList<Pessoa>();
 
         }
 
         private void Desativar()
         { 
             txtnome.Enabled= false;
-            cbmorada.Enabled= false;
+            comboBox1.Enabled= false;
             masktxtnif.Enabled= false;
             masktxttele.Enabled= false;
             guardarbutton.Enabled= false;
@@ -63,7 +66,7 @@ namespace da_projeto
         private void Ativar()
         {
             txtnome.Enabled = true;
-            cbmorada.Enabled = true;
+            comboBox1.Enabled = true;
             masktxtnif.Enabled = true;
             masktxttele.Enabled = true;
             guardarbutton.Enabled = true;
@@ -73,24 +76,35 @@ namespace da_projeto
 
         private void registarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Ativar();
+            //Ativar();
             apagarbutton.Enabled = false;
             alterarbuton.Enabled = false;
-            Pessoa pessoa = new Pessoa();
+            
             Cliente cliente = new Cliente();
-            pessoa.Id = 0;
-            //pessoa.idmorada = cbmorada.Text;
-            //pessoa.telemovel = Convert.ToUInt16(masktxttele.Text());
-            cliente.numcontribuinte = masktxtnif.ToString();
+            cliente.Morada = (Morada) comboBox1.SelectedItem;
+            cliente.nome = txtnome.Text;
+            cliente.telemovel =int.Parse(masktxttele.Text);
+            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+            cliente.totalgasto = 0;
 
-
-
+            MenuPrincipal.restaurante.Pessoas.Add(cliente);
+            MenuPrincipal.restaurante.SaveChanges();
         }
 
         private void guardarbutton_Click(object sender, EventArgs e)
         {
             
             LerDados();
+        }
+
+        private void txtnome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -49,3 +49,21 @@ C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.cspro
 C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.exe
 C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.pdb
 C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoCadeiaRest.resources
+C:\Users\berna\OneDrive - IPLeiria\Documents\GitHub\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoCadeiaRest.resources
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\da_projeto.exe.config
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\da_projeto.exe
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\da_projeto.pdb
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\EntityFramework.dll
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\EntityFramework.SqlServer.dll
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\EntityFramework.xml
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\EntityFramework.SqlServer.xml
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.csprojAssemblyReference.cache
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoCadeiaRest.resources
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoClientes.resources
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.MenuPrincipal.resources
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.Properties.Resources.resources
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.GenerateResource.cache
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.CoreCompileInputs.cache
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.CopyComplete
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.exe
+E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.pdb

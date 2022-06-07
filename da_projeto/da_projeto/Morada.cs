@@ -19,5 +19,8 @@ namespace da_projeto
         public string rua { get; set; }
         public string cidade { get; set; }
         public string codpostal { get; set; }
+    
+        public virtual Pessoa Pessoa { get; set; }
+        public virtual Restaurante Restaurante { get; set; }
     }
 }

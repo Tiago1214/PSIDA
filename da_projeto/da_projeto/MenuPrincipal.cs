@@ -12,6 +12,7 @@ namespace da_projeto
 {
     public partial class MenuPrincipal : Form
     {
+        public static RestauranteModelContainer restaurante;
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -50,6 +51,11 @@ namespace da_projeto
             this.Hide();
             GestaoPedidos gestaoPedidos = new GestaoPedidos();
             gestaoPedidos.ShowDialog();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

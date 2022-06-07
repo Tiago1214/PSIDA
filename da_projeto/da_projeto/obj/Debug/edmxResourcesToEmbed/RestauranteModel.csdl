@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RestauranteModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="RestauranteModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Moradas" EntityType="RestauranteModel.Morada" />
+    <EntitySet Name="Pessoas" EntityType="RestauranteModel.Pessoa" />
+    <EntitySet Name="Restaurantes" EntityType="RestauranteModel.Restaurante" />
+    <EntitySet Name="ItemMenus" EntityType="RestauranteModel.ItemMenu" />
+    <EntitySet Name="Categorias" EntityType="RestauranteModel.Categoria" />
+    <EntitySet Name="Pedidoes" EntityType="RestauranteModel.Pedido" />
+    <EntitySet Name="Pagamentoes" EntityType="RestauranteModel.Pagamento" />
+    <EntitySet Name="MetodoPagamentoes" EntityType="RestauranteModel.MetodoPagamento" />
+    <EntitySet Name="Estadoes" EntityType="RestauranteModel.Estado" />
+    <AssociationSet Name="RestauranteItemMenu" Association="RestauranteModel.RestauranteItemMenu">
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+      <End Role="ItemMenu" EntitySet="ItemMenus" />
+    </AssociationSet>
+    <AssociationSet Name="TrabalhadorPedido" Association="RestauranteModel.TrabalhadorPedido">
+      <End Role="Trabalhador" EntitySet="Pessoas" />
+      <End Role="Pedido" EntitySet="Pedidoes" />
+    </AssociationSet>
+    <AssociationSet Name="ClientePedido" Association="RestauranteModel.ClientePedido">
+      <End Role="Cliente" EntitySet="Pessoas" />
+      <End Role="Pedido" EntitySet="Pedidoes" />
+    </AssociationSet>
+    <AssociationSet Name="RestaurantePedido" Association="RestauranteModel.RestaurantePedido">
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+      <End Role="Pedido" EntitySet="Pedidoes" />
+    </AssociationSet>
+    <AssociationSet Name="PedidoPagamento" Association="RestauranteModel.PedidoPagamento">
+      <End Role="Pedido" EntitySet="Pedidoes" />
+      <End Role="Pagamento" EntitySet="Pagamentoes" />
+    </AssociationSet>
+    <AssociationSet Name="PagamentoMetodoPagamento" Association="RestauranteModel.PagamentoMetodoPagamento">
+      <End Role="Pagamento" EntitySet="Pagamentoes" />
+      <End Role="MetodoPagamento" EntitySet="MetodoPagamentoes" />
+    </AssociationSet>
+    <AssociationSet Name="PedidoEstado" Association="RestauranteModel.PedidoEstado">
+      <End Role="Pedido" EntitySet="Pedidoes" />
+      <End Role="Estado" EntitySet="Estadoes" />
+    </AssociationSet>
+    <AssociationSet Name="ItemMenuCategoria" Association="RestauranteModel.ItemMenuCategoria">
+      <End Role="ItemMenu" EntitySet="ItemMenus" />
+      <End Role="Categoria" EntitySet="Categorias" />
+    </AssociationSet>
+    <AssociationSet Name="PedidoItemMenu" Association="RestauranteModel.PedidoItemMenu">
+      <End Role="Pedido" EntitySet="Pedidoes" />
+      <End Role="ItemMenu" EntitySet="ItemMenus" />
+    </AssociationSet>
+    <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.TrabalhadorRestaurante">
+      <End Role="Trabalhador" EntitySet="Pessoas" />
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+    </AssociationSet>
+    <AssociationSet Name="PessoaMorada" Association="RestauranteModel.PessoaMorada">
+      <End Role="Pessoa" EntitySet="Pessoas" />
+      <End Role="Morada" EntitySet="Moradas" />
+    </AssociationSet>
+    <AssociationSet Name="RestauranteMorada" Association="RestauranteModel.RestauranteMorada">
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+      <End Role="Morada" EntitySet="Moradas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Morada">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pais" Type="String" Nullable="false" />
+    <Property Name="rua" Type="String" Nullable="false" />
+    <Property Name="cidade" Type="String" Nullable="false" />
+    <Property Name="codpostal" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pessoa" Relationship="RestauranteModel.PessoaMorada" FromRole="Morada" ToRole="Pessoa" />
+    <NavigationProperty Name="Restaurante" Relationship="RestauranteModel.RestauranteMorada" FromRole="Morada" ToRole="Restaurante" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" />
+    <Property Name="telemovel" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Morada" Relationship="RestauranteModel.PessoaMorada" FromRole="Pessoa" ToRole="Morada" />
+  </EntityType>
+  <EntityType Name="Restaurante">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" />
+    <NavigationProperty Name="ItemMenus" Relationship="RestauranteModel.RestauranteItemMenu" FromRole="Restaurante" ToRole="ItemMenu" />
+    <NavigationProperty Name="Trabalhadors" Relationship="RestauranteModel.TrabalhadorRestaurante" FromRole="Restaurante" ToRole="Trabalhador" />
+    <NavigationProperty Name="Morada" Relationship="RestauranteModel.RestauranteMorada" FromRole="Restaurante" ToRole="Morada" />
+  </EntityType>
+  <EntityType Name="ItemMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" />
+    <Property Name="fotografia" Type="Int64" Nullable="false" />
+    <Property Name="ingredientes" Type="String" Nullable="false" />
+    <Property Name="preco" Type="Decimal" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Restaurantes" Relationship="RestauranteModel.RestauranteItemMenu" FromRole="ItemMenu" ToRole="Restaurante" />
+    <NavigationProperty Name="Categoria" Relationship="RestauranteModel.ItemMenuCategoria" FromRole="ItemMenu" ToRole="Categoria" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pedidoes" Relationship="RestauranteModel.PedidoItemMenu" FromRole="ItemMenu" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ItemMenus" Relationship="RestauranteModel.ItemMenuCategoria" FromRole="Categoria" ToRole="ItemMenu" />
+  </EntityType>
+  <EntityType Name="Cliente" BaseType="RestauranteModel.Pessoa">
+    <Property Name="totalgasto" Type="Decimal" Nullable="false" />
+    <Property Name="numcontribuinte" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trabalhador" BaseType="RestauranteModel.Pessoa">
+    <Property Name="salario" Type="Decimal" Nullable="false" />
+    <Property Name="posicao" Type="String" Nullable="false" />
+    <NavigationProperty Name="Restaurante" Relationship="RestauranteModel.TrabalhadorRestaurante" FromRole="Trabalhador" ToRole="Restaurante" />
+    <Property Name="RestauranteId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valortotal" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Trabalhador" Relationship="RestauranteModel.TrabalhadorPedido" FromRole="Pedido" ToRole="Trabalhador" />
+    <Property Name="TrabalhadorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="RestauranteModel.ClientePedido" FromRole="Pedido" ToRole="Cliente" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Restaurante" Relationship="RestauranteModel.RestaurantePedido" FromRole="Pedido" ToRole="Restaurante" />
+    <Property Name="RestauranteId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pagamentoes" Relationship="RestauranteModel.PedidoPagamento" FromRole="Pedido" ToRole="Pagamento" />
+    <NavigationProperty Name="Estado" Relationship="RestauranteModel.PedidoEstado" FromRole="Pedido" ToRole="Estado" />
+    <Property Name="EstadoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ItemMenus" Relationship="RestauranteModel.PedidoItemMenu" FromRole="Pedido" ToRole="ItemMenu" />
+  </EntityType>
+  <EntityType Name="Pagamento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valor" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Pedido" Relationship="RestauranteModel.PedidoPagamento" FromRole="Pagamento" ToRole="Pedido" />
+    <Property Name="PedidoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MetodoPagamento" Relationship="RestauranteModel.PagamentoMetodoPagamento" FromRole="Pagamento" ToRole="MetodoPagamento" />
+    <Property Name="MetodoPagamentoId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MetodoPagamento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="metodopagamento" Type="String" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Pagamentoes" Relationship="RestauranteModel.PagamentoMetodoPagamento" FromRole="MetodoPagamento" ToRole="Pagamento" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estado" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pedidoes" Relationship="RestauranteModel.PedidoEstado" FromRole="Estado" ToRole="Pedido" />
+  </EntityType>
+  <Association Name="RestauranteItemMenu">
+    <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="*" />
+    <End Type="RestauranteModel.ItemMenu" Role="ItemMenu" Multiplicity="*" />
+  </Association>
+  <Association Name="TrabalhadorPedido">
+    <End Type="RestauranteModel.Trabalhador" Role="Trabalhador" Multiplicity="1" />
+    <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabalhador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="TrabalhadorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientePedido">
+    <End Type="RestauranteModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RestaurantePedido">
+    <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="1" />
+    <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="RestauranteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PedidoPagamento">
+    <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="1" />
+    <End Type="RestauranteModel.Pagamento" Role="Pagamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="PedidoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PagamentoMetodoPagamento">
+    <End Type="RestauranteModel.Pagamento" Role="Pagamento" Multiplicity="*" />
+    <End Type="RestauranteModel.MetodoPagamento" Role="MetodoPagamento" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MetodoPagamento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pagamento">
+        <PropertyRef Name="MetodoPagamentoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PedidoEstado">
+    <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <End Type="RestauranteModel.Estado" Role="Estado" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="EstadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ItemMenuCategoria">
+    <End Type="RestauranteModel.ItemMenu" Role="ItemMenu" Multiplicity="*" />
+    <End Type="RestauranteModel.Categoria" Role="Categoria" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ItemMenu">
+        <PropertyRef Name="CategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PedidoItemMenu">
+    <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="*" />
+    <End Type="RestauranteModel.ItemMenu" Role="ItemMenu" Multiplicity="*" />
+  </Association>
+  <Association Name="TrabalhadorRestaurante">
+    <End Type="RestauranteModel.Trabalhador" Role="Trabalhador" Multiplicity="*" />
+    <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Restaurante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Trabalhador">
+        <PropertyRef Name="RestauranteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PessoaMorada">
+    <End Type="RestauranteModel.Pessoa" Role="Pessoa" Multiplicity="0..1" />
+    <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
+  </Association>
+  <Association Name="RestauranteMorada">
+    <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="0..1" />
+    <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
+  </Association>
+</Schema>
