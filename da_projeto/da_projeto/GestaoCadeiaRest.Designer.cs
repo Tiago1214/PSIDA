@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoCadeiaRest));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.btnCancelarRegistoRest = new System.Windows.Forms.Button();
             this.comboBoxMorada = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,15 +80,50 @@
             this.groupBox1.Controls.Add(this.btnEditarRestaurante);
             this.groupBox1.Controls.Add(this.btnRegistarRestaurante);
             this.groupBox1.Controls.Add(this.listBoxRestaurantes);
+=======
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.voltarToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(999, 28);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // voltarToolStripMenuItem
+            // 
+            this.voltarToolStripMenuItem.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
+            this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
+            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.voltarToolStripMenuItem.Text = "Voltar";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.listBox1);
+>>>>>>> 42849cd9f1bfde61fff6b68a9965579aa77d3f5b
             this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
+<<<<<<< HEAD
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Size = new System.Drawing.Size(455, 558);
+=======
+            this.groupBox1.Size = new System.Drawing.Size(397, 466);
+>>>>>>> 42849cd9f1bfde61fff6b68a9965579aa77d3f5b
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Restaurantes";
             // 
+<<<<<<< HEAD
             // btnCancelarRegistoRest
             // 
             this.btnCancelarRegistoRest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -487,15 +523,40 @@
             this.btnRegistarMetodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRegistarMetodo.UseVisualStyleBackColor = true;
             this.btnRegistarMetodo.Click += new System.EventHandler(this.btnRegistarMetodo_Click);
+=======
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(6, 269);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(382, 180);
+            this.listBox1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
+            this.button1.Location = new System.Drawing.Point(7, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(320, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "btnRegistarCliente";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+>>>>>>> 42849cd9f1bfde61fff6b68a9965579aa77d3f5b
             // 
             // GestaoCadeiaRest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(995, 602);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+=======
+            this.ClientSize = new System.Drawing.Size(999, 509);
+>>>>>>> 42849cd9f1bfde61fff6b68a9965579aa77d3f5b
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -503,6 +564,7 @@
             this.MinimizeBox = false;
             this.Name = "GestaoCadeiaRest";
             this.Text = "GestaoCadeiaRest";
+<<<<<<< HEAD
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoCadeiaRest_FormClosing);
             this.Load += new System.EventHandler(this.GestaoCadeiaRest_Load);
             this.groupBox1.ResumeLayout(false);
@@ -511,12 +573,18 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+=======
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+>>>>>>> 42849cd9f1bfde61fff6b68a9965579aa77d3f5b
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
+<<<<<<< HEAD
         private System.Windows.Forms.ListBox listBoxRestaurantes;
         private System.Windows.Forms.Button btnEliminarRestaurante;
         private System.Windows.Forms.Button btnEditarRestaurante;
@@ -549,5 +617,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnEditarMetodo;
         private System.Windows.Forms.Button btnRegistarMetodo;
+=======
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button1;
+>>>>>>> 42849cd9f1bfde61fff6b68a9965579aa77d3f5b
     }
 }
