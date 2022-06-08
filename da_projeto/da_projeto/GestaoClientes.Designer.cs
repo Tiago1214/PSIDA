@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoClientes));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-
             this.registarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +43,7 @@
             this.masktxttele = new System.Windows.Forms.MaskedTextBox();
             this.masktxtnif = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +58,7 @@
             this.voltarbutton});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,7 +66,7 @@
             // 
             this.registarbutton.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
             this.registarbutton.Name = "registarbutton";
-            this.registarbutton.Size = new System.Drawing.Size(97, 24);
+            this.registarbutton.Size = new System.Drawing.Size(97, 26);
             this.registarbutton.Text = "Registar";
             this.registarbutton.Click += new System.EventHandler(this.registarToolStripMenuItem_Click);
             // 
@@ -75,21 +74,21 @@
             // 
             this.apagarbutton.Image = global::da_projeto.Properties.Resources.Messaging_Trash_icon;
             this.apagarbutton.Name = "apagarbutton";
-            this.apagarbutton.Size = new System.Drawing.Size(92, 24);
+            this.apagarbutton.Size = new System.Drawing.Size(92, 26);
             this.apagarbutton.Text = "Apagar";
             // 
             // alterarbuton
             // 
             this.alterarbuton.Image = global::da_projeto.Properties.Resources.Pencil_icon;
             this.alterarbuton.Name = "alterarbuton";
-            this.alterarbuton.Size = new System.Drawing.Size(88, 24);
+            this.alterarbuton.Size = new System.Drawing.Size(88, 26);
             this.alterarbuton.Text = "Alterar";
             // 
             // guardarbutton
             // 
             this.guardarbutton.Image = global::da_projeto.Properties.Resources.Save_icon;
             this.guardarbutton.Name = "guardarbutton";
-            this.guardarbutton.Size = new System.Drawing.Size(96, 24);
+            this.guardarbutton.Size = new System.Drawing.Size(96, 26);
             this.guardarbutton.Text = "Guardar";
             this.guardarbutton.Click += new System.EventHandler(this.guardarbutton_Click);
             // 
@@ -97,10 +96,9 @@
             // 
             this.voltarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
             this.voltarbutton.Name = "voltarbutton";
-            this.voltarbutton.Size = new System.Drawing.Size(82, 24);
+            this.voltarbutton.Size = new System.Drawing.Size(82, 26);
             this.voltarbutton.Text = "Voltar";
             this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
-
             // 
             // lbclientes
             // 
@@ -126,6 +124,7 @@
             this.txtnome.Name = "txtnome";
             this.txtnome.Size = new System.Drawing.Size(298, 22);
             this.txtnome.TabIndex = 3;
+            this.txtnome.TextChanged += new System.EventHandler(this.txtnome_TextChanged);
             // 
             // label2
             // 
@@ -172,13 +171,22 @@
             this.label4.Text = "Número Contribuinte";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(150, 117);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(298, 24);
+            this.comboBox1.TabIndex = 10;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // GestaoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.masktxtnif);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.masktxttele);
@@ -227,5 +235,6 @@
 
 
         private System.Windows.Forms.ToolStripMenuItem voltarbutton;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

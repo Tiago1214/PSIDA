@@ -46,6 +46,12 @@
       <End Role="Pedido" EntitySet="Pedidoes" />
       <End Role="ItemMenu" EntitySet="ItemMenus" />
     </AssociationSet>
+
+    <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.TrabalhadorRestaurante">
+      <End Role="Trabalhador" EntitySet="Pessoas" />
+      <End Role="Restaurante" EntitySet="Restaurantes" />
+    </AssociationSet>
+
     <AssociationSet Name="PessoaMorada" Association="RestauranteModel.PessoaMorada">
       <End Role="Pessoa" EntitySet="Pessoas" />
       <End Role="Morada" EntitySet="Moradas" />
@@ -54,10 +60,12 @@
       <End Role="Restaurante" EntitySet="Restaurantes" />
       <End Role="Morada" EntitySet="Moradas" />
     </AssociationSet>
+
     <AssociationSet Name="TrabalhadorRestaurante" Association="RestauranteModel.TrabalhadorRestaurante">
       <End Role="Trabalhador" EntitySet="Pessoas" />
       <End Role="Restaurante" EntitySet="Restaurantes" />
     </AssociationSet>
+
   </EntityContainer>
   <EntityType Name="Morada">
     <Key>
@@ -68,6 +76,10 @@
     <Property Name="rua" Type="String" Nullable="false" />
     <Property Name="cidade" Type="String" Nullable="false" />
     <Property Name="codpostal" Type="String" Nullable="false" />
+
+    <NavigationProperty Name="Pessoa" Relationship="RestauranteModel.PessoaMorada" FromRole="Morada" ToRole="Pessoa" />
+    <NavigationProperty Name="Restaurante" Relationship="RestauranteModel.RestauranteMorada" FromRole="Morada" ToRole="Restaurante" />
+
   </EntityType>
   <EntityType Name="Pessoa">
     <Key>
@@ -85,8 +97,11 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nome" Type="String" Nullable="false" />
     <NavigationProperty Name="ItemMenus" Relationship="RestauranteModel.RestauranteItemMenu" FromRole="Restaurante" ToRole="ItemMenu" />
+
+   
     <NavigationProperty Name="Morada" Relationship="RestauranteModel.RestauranteMorada" FromRole="Restaurante" ToRole="Morada" />
     <NavigationProperty Name="Trabalhadors" Relationship="RestauranteModel.TrabalhadorRestaurante" FromRole="Restaurante" ToRole="Trabalhador" />
+
   </EntityType>
   <EntityType Name="ItemMenu">
     <Key>
@@ -259,6 +274,7 @@
     <End Type="RestauranteModel.Pedido" Role="Pedido" Multiplicity="*" />
     <End Type="RestauranteModel.ItemMenu" Role="ItemMenu" Multiplicity="*" />
   </Association>
+
   <Association Name="PessoaMorada">
     <End Type="RestauranteModel.Pessoa" Role="Pessoa" Multiplicity="1" />
     <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
@@ -269,6 +285,7 @@
       <OnDelete Action="Cascade" />
     </End>
   </Association>
+
   <Association Name="TrabalhadorRestaurante">
     <End Type="RestauranteModel.Trabalhador" Role="Trabalhador" Multiplicity="*" />
     <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="1" />
@@ -281,4 +298,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+
+  <Association Name="PessoaMorada">
+    <End Type="RestauranteModel.Pessoa" Role="Pessoa" Multiplicity="0..1" />
+    <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
+  </Association>
+  <Association Name="RestauranteMorada">
+    <End Type="RestauranteModel.Restaurante" Role="Restaurante" Multiplicity="0..1" />
+    <End Type="RestauranteModel.Morada" Role="Morada" Multiplicity="1" />
+  </Association>
+
 </Schema>

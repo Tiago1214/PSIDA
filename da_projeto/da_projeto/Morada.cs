@@ -20,10 +20,15 @@ namespace da_projeto
         public string cidade { get; set; }
         public string codpostal { get; set; }
 
+        public virtual Pessoa Pessoa { get; set; }
+        public virtual Restaurante Restaurante { get; set; }
+
+
         public override string ToString()
         {
             return this.rua + "(" + this.Id + "), " + this.cidade + "(" + this.codpostal + ")" + ", " + this.pais;
         }
+
     }
 
     

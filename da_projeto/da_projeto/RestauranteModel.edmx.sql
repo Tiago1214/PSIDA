@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/01/2022 09:17:46
--- Generated from EDMX file: C:\Users\tiago\Downloads\da_projeto\da_projeto\RestauranteModel.edmx
+-- Date Created: 06/06/2022 17:28:22
+-- Generated from EDMX file: E:\Users\Eduardo\Downloads\da_projeto\da_projeto\RestauranteModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -13,7 +13,7 @@ GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
 
--- -------------------------------------------------
+-- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
@@ -50,11 +50,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PedidoItemMenu_ItemMenu]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PedidoItemMenu] DROP CONSTRAINT [FK_PedidoItemMenu_ItemMenu];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TrabalhadorRestaurante]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pessoas_Trabalhador] DROP CONSTRAINT [FK_TrabalhadorRestaurante];
+GO
 IF OBJECT_ID(N'[dbo].[FK_PessoaMorada]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pessoas] DROP CONSTRAINT [FK_PessoaMorada];
+    ALTER TABLE [dbo].[Moradas] DROP CONSTRAINT [FK_PessoaMorada];
 GO
 IF OBJECT_ID(N'[dbo].[FK_RestauranteMorada]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Restaurantes] DROP CONSTRAINT [FK_RestauranteMorada];
+    ALTER TABLE [dbo].[Moradas] DROP CONSTRAINT [FK_RestauranteMorada];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Trabalhador_inherits_Pessoa]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pessoas_Trabalhador] DROP CONSTRAINT [FK_Trabalhador_inherits_Pessoa];
@@ -463,6 +466,21 @@ ON [dbo].[PedidoItemMenu]
     ([ItemMenus_Id]);
 GO
 
+-- Creating foreign key on [RestauranteId] in table 'Pessoas_Trabalhador'
+ALTER TABLE [dbo].[Pessoas_Trabalhador]
+ADD CONSTRAINT [FK_TrabalhadorRestaurante]
+    FOREIGN KEY ([RestauranteId])
+    REFERENCES [dbo].[Restaurantes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TrabalhadorRestaurante'
+CREATE INDEX [IX_FK_TrabalhadorRestaurante]
+ON [dbo].[Pessoas_Trabalhador]
+    ([RestauranteId]);
+GO
+
 -- Creating foreign key on [Morada_Id] in table 'Pessoas'
 ALTER TABLE [dbo].[Pessoas]
 ADD CONSTRAINT [FK_PessoaMorada]
@@ -484,28 +502,13 @@ ADD CONSTRAINT [FK_RestauranteMorada]
     FOREIGN KEY ([Morada_Id])
     REFERENCES [dbo].[Moradas]
         ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_RestauranteMorada'
 CREATE INDEX [IX_FK_RestauranteMorada]
 ON [dbo].[Restaurantes]
     ([Morada_Id]);
-GO
-
--- Creating foreign key on [RestauranteId] in table 'Pessoas_Trabalhador'
-ALTER TABLE [dbo].[Pessoas_Trabalhador]
-ADD CONSTRAINT [FK_TrabalhadorRestaurante]
-    FOREIGN KEY ([RestauranteId])
-    REFERENCES [dbo].[Restaurantes]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TrabalhadorRestaurante'
-CREATE INDEX [IX_FK_TrabalhadorRestaurante]
-ON [dbo].[Pessoas_Trabalhador]
-    ([RestauranteId]);
 GO
 
 -- Creating foreign key on [Id] in table 'Pessoas_Trabalhador'
