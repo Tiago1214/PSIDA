@@ -102,6 +102,8 @@ namespace da_projeto
             comboBoxAtivoCategoria.Enabled = true;
             btnGuardarCategoria.Enabled = true;
             btnCancelarRegistoCat.Enabled = true;
+            btnEditarCategoria.Enabled = false;
+            btnEliminarCategoria.Enabled = false;
         }
         //Criação da Categoria
         private void btnGuardarCategoria_Click(object sender, EventArgs e)
@@ -146,7 +148,26 @@ namespace da_projeto
         //Edição de uma categoria
         private void btnEditarCategoria_Click(object sender, EventArgs e)
         {
-            
+            Categoria categoria = (Categoria)listBoxCategorias.SelectedItem;
+            if (categoria == null)
+            {
+                return;
+            }
+            else
+            {
+                var clienteDb = MenuPrincipal.restaurante.Categorias.Find(categoria.Id);
+                clienteDb.nome = txtNomeCategoria.Text;
+                if (comboBoxAtivoCategoria.SelectedIndex == 0)
+                {
+                    clienteDb.ativo = true;
+                }
+                else if (comboBoxAtivoCategoria.SelectedIndex == 1)
+                {
+                    clienteDb.ativo = false;
+                }
+                MenuPrincipal.restaurante.SaveChanges();
+                LerDados();
+            }
         }
         private void btnCancelarRegistoCat_Click(object sender, EventArgs e)
         {
@@ -176,6 +197,8 @@ namespace da_projeto
             comboBoxAtivoMetodo.Enabled=true;
             btnGuardarMetodo.Enabled = true;
             btnCancelarMetodo.Enabled = true;
+            btnEditarMetodo.Enabled = false;
+            btnGuardarMetodo.Enabled = false;
         }
 
         private void btnGuardarMetodo_Click(object sender, EventArgs e)
@@ -228,7 +251,6 @@ namespace da_projeto
             btnEditarMetodo.Enabled = true;
             btnEliminarMetodo.Enabled = true;
         }
-
         private void btnCancelarMetodo_Click(object sender, EventArgs e)
         {
             LimparCampos();
@@ -246,6 +268,30 @@ namespace da_projeto
             this.Hide();
             MenuPrincipal menu = new MenuPrincipal();
             menu.ShowDialog();
+        }
+
+        private void btnEditarMetodo_Click(object sender, EventArgs e)
+        {
+            MetodoPagamento metodo = (MetodoPagamento)listBoxMetodos.SelectedItem;
+            if (metodo == null)
+            {
+                return;
+            }
+            else
+            {
+                var clienteDb = MenuPrincipal.restaurante.MetodoPagamentoes.Find(metodo.Id);
+                clienteDb.metodopagamento = txtNomeMetodo.Text;
+                if (comboBoxAtivoMetodo.SelectedIndex == 0)
+                {
+                    clienteDb.ativo = true;
+                }
+                else if (comboBoxAtivoMetodo.SelectedIndex == 1)
+                {
+                    clienteDb.ativo = false;
+                }
+                MenuPrincipal.restaurante.SaveChanges();
+                LerDados();
+            }
         }
     }
 }
