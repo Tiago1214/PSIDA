@@ -28,15 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            this.SuspendLayout();
-            // 
-            // GestaoCadeiaRest
-            // 
-            this.ClientSize = new System.Drawing.Size(733, 405);
-            this.Name = "GestaoCadeiaRest";
-
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoCadeiaRest));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancelarRegistoRest = new System.Windows.Forms.Button();
             this.comboBoxMorada = new System.Windows.Forms.ComboBox();
@@ -210,6 +201,7 @@
             this.listBoxRestaurantes.Name = "listBoxRestaurantes";
             this.listBoxRestaurantes.Size = new System.Drawing.Size(443, 276);
             this.listBoxRestaurantes.TabIndex = 0;
+            this.listBoxRestaurantes.SelectedIndexChanged += new System.EventHandler(this.listBoxRestaurantes_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -506,7 +498,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -520,7 +511,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-
             this.ResumeLayout(false);
 
         }
@@ -564,8 +554,7 @@
         private System.Windows.Forms.Button btnRegistarMetodo;
 
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+       
 
 
 

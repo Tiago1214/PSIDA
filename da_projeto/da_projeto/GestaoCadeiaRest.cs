@@ -293,5 +293,10 @@ namespace da_projeto
                 LerDados();
             }
         }
+
+        private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
