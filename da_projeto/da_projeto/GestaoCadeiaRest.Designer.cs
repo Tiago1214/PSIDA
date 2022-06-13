@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+
+            this.SuspendLayout();
+            // 
+            // GestaoCadeiaRest
+            // 
+            this.ClientSize = new System.Drawing.Size(733, 405);
+            this.Name = "GestaoCadeiaRest";
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoCadeiaRest));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancelarRegistoRest = new System.Windows.Forms.Button();
@@ -63,11 +70,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnEditarMetodo = new System.Windows.Forms.Button();
             this.btnRegistarMetodo = new System.Windows.Forms.Button();
-            this.spselectmoradaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spselectmoradaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -107,7 +112,6 @@
             // 
             // comboBoxMorada
             // 
-            this.comboBoxMorada.DataSource = this.spselectmoradaBindingSource;
             this.comboBoxMorada.FormattingEnabled = true;
             this.comboBoxMorada.Location = new System.Drawing.Point(89, 182);
             this.comboBoxMorada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -493,12 +497,6 @@
             this.btnRegistarMetodo.UseVisualStyleBackColor = true;
             this.btnRegistarMetodo.Click += new System.EventHandler(this.btnRegistarMetodo_Click);
             // 
-            // restaurantedbDataSet1
-            // 
-            // spselectmoradaBindingSource
-            // 
-            this.spselectmoradaBindingSource.DataMember = "sp_selectmorada";
-            // 
             // GestaoCadeiaRest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -522,13 +520,16 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spselectmoradaBindingSource)).EndInit();
+
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
+
+
+
         private System.Windows.Forms.ListBox listBoxRestaurantes;
         private System.Windows.Forms.Button btnEliminarRestaurante;
         private System.Windows.Forms.Button btnEditarRestaurante;
@@ -561,6 +562,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnEditarMetodo;
         private System.Windows.Forms.Button btnRegistarMetodo;
-        private System.Windows.Forms.BindingSource spselectmoradaBindingSource;
+
+
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button1;
+
+
+
     }
 }
