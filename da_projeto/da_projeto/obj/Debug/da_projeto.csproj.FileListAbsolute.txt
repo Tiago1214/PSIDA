@@ -49,7 +49,6 @@ C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.cspro
 C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.exe
 C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.pdb
 C:\Universidade\2Semestre\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoCadeiaRest.resources
-
 C:\Users\berna\OneDrive - IPLeiria\Documents\GitHub\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoCadeiaRest.resources
 E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\da_projeto.exe.config
 E:\Users\Eduardo\Downloads\da_projeto\da_projeto\bin\Debug\da_projeto.exe
@@ -68,7 +67,5 @@ E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.Cor
 E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.csproj.CopyComplete
 E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.exe
 E:\Users\Eduardo\Downloads\da_projeto\da_projeto\obj\Debug\da_projeto.pdb
-
 C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoCadeiaRest.resources
 C:\Universidade\2Semestre\DA\PSIDA\da_projeto\da_projeto\obj\Debug\da_projeto.GestaoClientes.resources
-

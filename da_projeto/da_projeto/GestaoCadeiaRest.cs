@@ -22,8 +22,12 @@ namespace da_projeto
         //Carregar Dados quando se abre o programa
         private void GestaoCadeiaRest_Load(object sender, EventArgs e)
         {
+            List<int> listIdsPessoas = MenuPrincipal.restaurante.Pessoas.Select(p => p.Morada.Id).ToList();
+            List<int> listIdsRestaurantes = MenuPrincipal.restaurante.Restaurantes.Select(r => r.Morada.Id).ToList();
+            List<Morada> moradas = MenuPrincipal.restaurante.Moradas.ToList();
+            moradas.RemoveAll(m => listIdsPessoas.Contains(m.Id)&&listIdsRestaurantes.Contains(m.Id));
+            comboBoxMorada.DataSource = moradas;
             LerDados();
-            comboBoxMorada.DataSource = MenuPrincipal.restaurante.Moradas.ToList();
             txtNomeRestaurante.Enabled = false;
             comboBoxMorada.Enabled = false;
             //comboBoxMorada.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -73,6 +77,7 @@ namespace da_projeto
             if (txtNomeRestaurante.Text != null & comboBoxMorada.Text != null)
             {
                 Restaurante restaurante = new Restaurante();
+                Morada morada = (Morada)comboBoxMorada.SelectedItem;
                 restaurante.nome = txtNomeRestaurante.Text;
                 restaurante.Morada = (Morada)comboBoxMorada.SelectedItem;
 

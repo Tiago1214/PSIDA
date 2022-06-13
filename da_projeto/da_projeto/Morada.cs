@@ -11,7 +11,9 @@ namespace da_projeto
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+    using System.Data.SqlClient;
+
     public partial class Morada
     {
         public int Id { get; set; }
@@ -28,7 +30,6 @@ namespace da_projeto
         {
             return this.rua + "(" + this.Id + "), " + this.cidade + "(" + this.codpostal + ")" + ", " + this.pais;
         }
-
     }
 
     

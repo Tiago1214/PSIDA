@@ -92,7 +92,7 @@ namespace da_projeto
             cliente.numcontribuinte = int.Parse(masktxtnif.Text);
             cliente.totalgasto = 0;
 
-            pessoa.Id = 0;
+            //pessoa.Id = 0;
             //pessoa.idmorada = cbmorada.Text;
             //pessoa.telemovel = Convert.ToUInt16(masktxttele.Text());
             cliente.numcontribuinte = int.Parse(masktxtnif.Text);
