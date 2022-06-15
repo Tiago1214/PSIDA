@@ -58,7 +58,7 @@
             this.voltarbutton});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -66,7 +66,7 @@
             // 
             this.registarbutton.Image = global::da_projeto.Properties.Resources.Add_icon__1_;
             this.registarbutton.Name = "registarbutton";
-            this.registarbutton.Size = new System.Drawing.Size(97, 24);
+            this.registarbutton.Size = new System.Drawing.Size(97, 26);
             this.registarbutton.Text = "Registar";
             this.registarbutton.Click += new System.EventHandler(this.registarToolStripMenuItem_Click);
             // 
@@ -74,23 +74,21 @@
             // 
             this.apagarbutton.Image = global::da_projeto.Properties.Resources.Messaging_Trash_icon;
             this.apagarbutton.Name = "apagarbutton";
-            this.apagarbutton.Size = new System.Drawing.Size(92, 24);
+            this.apagarbutton.Size = new System.Drawing.Size(92, 26);
             this.apagarbutton.Text = "Apagar";
-            this.apagarbutton.Click += new System.EventHandler(this.apagarbutton_Click);
             // 
             // alterarbuton
             // 
             this.alterarbuton.Image = global::da_projeto.Properties.Resources.Pencil_icon;
             this.alterarbuton.Name = "alterarbuton";
-            this.alterarbuton.Size = new System.Drawing.Size(88, 24);
+            this.alterarbuton.Size = new System.Drawing.Size(88, 26);
             this.alterarbuton.Text = "Alterar";
-            this.alterarbuton.Click += new System.EventHandler(this.alterarbuton_Click);
             // 
             // guardarbutton
             // 
             this.guardarbutton.Image = global::da_projeto.Properties.Resources.Save_icon;
             this.guardarbutton.Name = "guardarbutton";
-            this.guardarbutton.Size = new System.Drawing.Size(96, 24);
+            this.guardarbutton.Size = new System.Drawing.Size(96, 26);
             this.guardarbutton.Text = "Guardar";
             this.guardarbutton.Click += new System.EventHandler(this.guardarbutton_Click);
             // 
@@ -98,7 +96,7 @@
             // 
             this.voltarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
             this.voltarbutton.Name = "voltarbutton";
-            this.voltarbutton.Size = new System.Drawing.Size(82, 24);
+            this.voltarbutton.Size = new System.Drawing.Size(82, 26);
             this.voltarbutton.Text = "Voltar";
             this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
@@ -110,7 +108,6 @@
             this.lbclientes.Name = "lbclientes";
             this.lbclientes.Size = new System.Drawing.Size(756, 164);
             this.lbclientes.TabIndex = 1;
-            this.lbclientes.SelectedIndexChanged += new System.EventHandler(this.lbclientes_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -230,7 +227,8 @@
         private System.Windows.Forms.Label label4;
 
 
-        
+        private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbmorada;
 
 
 
