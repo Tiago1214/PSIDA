@@ -43,9 +43,10 @@
             this.btnGestaoClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnGestaoClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestaoClientes.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnGestaoClientes.Location = new System.Drawing.Point(22, 355);
+            this.btnGestaoClientes.Location = new System.Drawing.Point(16, 288);
+            this.btnGestaoClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGestaoClientes.Name = "btnGestaoClientes";
-            this.btnGestaoClientes.Size = new System.Drawing.Size(179, 154);
+            this.btnGestaoClientes.Size = new System.Drawing.Size(134, 125);
             this.btnGestaoClientes.TabIndex = 0;
             this.btnGestaoClientes.Text = "Gestão Clientes";
             this.btnGestaoClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -59,9 +60,10 @@
             this.btnGestaoCadeia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnGestaoCadeia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestaoCadeia.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnGestaoCadeia.Location = new System.Drawing.Point(207, 355);
+            this.btnGestaoCadeia.Location = new System.Drawing.Point(155, 288);
+            this.btnGestaoCadeia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGestaoCadeia.Name = "btnGestaoCadeia";
-            this.btnGestaoCadeia.Size = new System.Drawing.Size(179, 154);
+            this.btnGestaoCadeia.Size = new System.Drawing.Size(134, 125);
             this.btnGestaoCadeia.TabIndex = 1;
             this.btnGestaoCadeia.Text = "Gestão Cadeia Restaurantes";
             this.btnGestaoCadeia.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -75,9 +77,10 @@
             this.btnGestaoRest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnGestaoRest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGestaoRest.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnGestaoRest.Location = new System.Drawing.Point(392, 355);
+            this.btnGestaoRest.Location = new System.Drawing.Point(294, 288);
+            this.btnGestaoRest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGestaoRest.Name = "btnGestaoRest";
-            this.btnGestaoRest.Size = new System.Drawing.Size(179, 154);
+            this.btnGestaoRest.Size = new System.Drawing.Size(134, 125);
             this.btnGestaoRest.TabIndex = 2;
             this.btnGestaoRest.Text = "Gestão Individual Restaurante";
             this.btnGestaoRest.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -91,9 +94,10 @@
             this.btnMenuRest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMenuRest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuRest.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnMenuRest.Location = new System.Drawing.Point(577, 355);
+            this.btnMenuRest.Location = new System.Drawing.Point(433, 288);
+            this.btnMenuRest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMenuRest.Name = "btnMenuRest";
-            this.btnMenuRest.Size = new System.Drawing.Size(179, 154);
+            this.btnMenuRest.Size = new System.Drawing.Size(134, 125);
             this.btnMenuRest.TabIndex = 3;
             this.btnMenuRest.Text = "Gestao Menu Restaurante";
             this.btnMenuRest.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -107,9 +111,10 @@
             this.btnPedidos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPedidos.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnPedidos.Location = new System.Drawing.Point(762, 355);
+            this.btnPedidos.Location = new System.Drawing.Point(572, 288);
+            this.btnPedidos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Size = new System.Drawing.Size(179, 154);
+            this.btnPedidos.Size = new System.Drawing.Size(134, 125);
             this.btnPedidos.TabIndex = 4;
             this.btnPedidos.Text = "Pedidos";
             this.btnPedidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -118,23 +123,23 @@
             // 
             // MenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::da_projeto.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(959, 514);
+            this.ClientSize = new System.Drawing.Size(719, 418);
             this.Controls.Add(this.btnPedidos);
             this.Controls.Add(this.btnMenuRest);
             this.Controls.Add(this.btnGestaoRest);
             this.Controls.Add(this.btnGestaoCadeia);
             this.Controls.Add(this.btnGestaoClientes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MenuPrincipal";
             this.Text = "Menu Principal";
-            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.ResumeLayout(false);
 
         }

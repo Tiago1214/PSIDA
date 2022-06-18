@@ -19,5 +19,10 @@ namespace da_projeto
         public int telemovel { get; set; }
     
         public virtual Morada Morada { get; set; }
+
+        public override string ToString()
+        {
+            return this.nome + " Telemovel: " + this.telemovel;
+        }
     }
 }

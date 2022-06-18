@@ -28,15 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            this.SuspendLayout();
-            // 
-            // GestaoCadeiaRest
-            // 
-            this.ClientSize = new System.Drawing.Size(733, 405);
-            this.Name = "GestaoCadeiaRest";
-
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoCadeiaRest));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancelarRegistoRest = new System.Windows.Forms.Button();
             this.comboBoxMorada = new System.Windows.Forms.ComboBox();
@@ -116,7 +107,7 @@
             this.comboBoxMorada.Location = new System.Drawing.Point(89, 182);
             this.comboBoxMorada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxMorada.Name = "comboBoxMorada";
-            this.comboBoxMorada.Size = new System.Drawing.Size(259, 24);
+            this.comboBoxMorada.Size = new System.Drawing.Size(259, 21);
             this.comboBoxMorada.TabIndex = 8;
             // 
             // label2
@@ -125,7 +116,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(60, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Morada:";
             // 
@@ -134,7 +125,7 @@
             this.txtNomeRestaurante.Location = new System.Drawing.Point(89, 129);
             this.txtNomeRestaurante.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeRestaurante.Name = "txtNomeRestaurante";
-            this.txtNomeRestaurante.Size = new System.Drawing.Size(259, 22);
+            this.txtNomeRestaurante.Size = new System.Drawing.Size(259, 20);
             this.txtNomeRestaurante.TabIndex = 6;
             // 
             // label1
@@ -143,7 +134,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 129);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Nome:";
             // 
@@ -173,6 +164,7 @@
             this.btnEliminarRestaurante.TabIndex = 3;
             this.btnEliminarRestaurante.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarRestaurante.UseVisualStyleBackColor = true;
+            this.btnEliminarRestaurante.Click += new System.EventHandler(this.btnEliminarRestaurante_Click);
             // 
             // btnEditarRestaurante
             // 
@@ -186,6 +178,7 @@
             this.btnEditarRestaurante.TabIndex = 2;
             this.btnEditarRestaurante.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditarRestaurante.UseVisualStyleBackColor = true;
+            this.btnEditarRestaurante.Click += new System.EventHandler(this.btnEditarRestaurante_Click);
             // 
             // btnRegistarRestaurante
             // 
@@ -204,12 +197,12 @@
             // listBoxRestaurantes
             // 
             this.listBoxRestaurantes.FormattingEnabled = true;
-            this.listBoxRestaurantes.ItemHeight = 16;
             this.listBoxRestaurantes.Location = new System.Drawing.Point(5, 270);
             this.listBoxRestaurantes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxRestaurantes.Name = "listBoxRestaurantes";
-            this.listBoxRestaurantes.Size = new System.Drawing.Size(443, 276);
+            this.listBoxRestaurantes.Size = new System.Drawing.Size(443, 264);
             this.listBoxRestaurantes.TabIndex = 0;
+            this.listBoxRestaurantes.SelectedIndexChanged += new System.EventHandler(this.listBoxRestaurantes_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -249,11 +242,10 @@
             // listBoxCategorias
             // 
             this.listBoxCategorias.FormattingEnabled = true;
-            this.listBoxCategorias.ItemHeight = 16;
             this.listBoxCategorias.Location = new System.Drawing.Point(11, 164);
             this.listBoxCategorias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxCategorias.Name = "listBoxCategorias";
-            this.listBoxCategorias.Size = new System.Drawing.Size(431, 100);
+            this.listBoxCategorias.Size = new System.Drawing.Size(431, 95);
             this.listBoxCategorias.TabIndex = 13;
             this.listBoxCategorias.SelectedIndexChanged += new System.EventHandler(this.listBoxCategorias_SelectedIndexChanged);
             // 
@@ -263,7 +255,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(5, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 12;
             this.label3.Text = "Ativo:";
             // 
@@ -276,7 +268,7 @@
             this.comboBoxAtivoCategoria.Location = new System.Drawing.Point(83, 126);
             this.comboBoxAtivoCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxAtivoCategoria.Name = "comboBoxAtivoCategoria";
-            this.comboBoxAtivoCategoria.Size = new System.Drawing.Size(117, 24);
+            this.comboBoxAtivoCategoria.Size = new System.Drawing.Size(117, 21);
             this.comboBoxAtivoCategoria.TabIndex = 11;
             this.comboBoxAtivoCategoria.Text = "Sim ";
             // 
@@ -313,7 +305,7 @@
             this.txtNomeCategoria.Location = new System.Drawing.Point(83, 92);
             this.txtNomeCategoria.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeCategoria.Name = "txtNomeCategoria";
-            this.txtNomeCategoria.Size = new System.Drawing.Size(259, 22);
+            this.txtNomeCategoria.Size = new System.Drawing.Size(259, 20);
             this.txtNomeCategoria.TabIndex = 10;
             // 
             // label4
@@ -322,7 +314,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(5, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 20);
+            this.label4.Size = new System.Drawing.Size(49, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "Nome:";
             // 
@@ -392,11 +384,10 @@
             // listBoxMetodos
             // 
             this.listBoxMetodos.FormattingEnabled = true;
-            this.listBoxMetodos.ItemHeight = 16;
             this.listBoxMetodos.Location = new System.Drawing.Point(11, 164);
             this.listBoxMetodos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxMetodos.Name = "listBoxMetodos";
-            this.listBoxMetodos.Size = new System.Drawing.Size(431, 100);
+            this.listBoxMetodos.Size = new System.Drawing.Size(431, 95);
             this.listBoxMetodos.TabIndex = 13;
             this.listBoxMetodos.SelectedIndexChanged += new System.EventHandler(this.listBoxMetodos_SelectedIndexChanged);
             // 
@@ -406,7 +397,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(5, 129);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 12;
             this.label5.Text = "Ativo:";
             // 
@@ -419,7 +410,7 @@
             this.comboBoxAtivoMetodo.Location = new System.Drawing.Point(89, 124);
             this.comboBoxAtivoMetodo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxAtivoMetodo.Name = "comboBoxAtivoMetodo";
-            this.comboBoxAtivoMetodo.Size = new System.Drawing.Size(117, 24);
+            this.comboBoxAtivoMetodo.Size = new System.Drawing.Size(117, 21);
             this.comboBoxAtivoMetodo.TabIndex = 11;
             this.comboBoxAtivoMetodo.Text = "Sim ";
             // 
@@ -456,7 +447,7 @@
             this.txtNomeMetodo.Location = new System.Drawing.Point(89, 92);
             this.txtNomeMetodo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeMetodo.Name = "txtNomeMetodo";
-            this.txtNomeMetodo.Size = new System.Drawing.Size(259, 22);
+            this.txtNomeMetodo.Size = new System.Drawing.Size(259, 20);
             this.txtNomeMetodo.TabIndex = 10;
             // 
             // label6
@@ -465,7 +456,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(5, 92);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 20);
+            this.label6.Size = new System.Drawing.Size(59, 17);
             this.label6.TabIndex = 9;
             this.label6.Text = "Metodo:";
             // 
@@ -499,14 +490,13 @@
             // 
             // GestaoCadeiaRest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(995, 602);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -520,7 +510,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-
             this.ResumeLayout(false);
 
         }

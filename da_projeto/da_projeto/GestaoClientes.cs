@@ -13,7 +13,7 @@ namespace da_projeto
 {
     public partial class GestaoClientes : Form
     {
-        
+
         public GestaoClientes()
         {
             InitializeComponent();
@@ -38,33 +38,33 @@ namespace da_projeto
 
         private void GestaoClientes_Load(object sender, EventArgs e)
         {
-
+            var listIdsPessoas = MenuPrincipal.restaurante.Pessoas.Select(i => i.Morada.Id);
+            var listIdsRestaurantes = MenuPrincipal.restaurante.Restaurantes.Select(r => r.Morada.Id);
+            var moradas = MenuPrincipal.restaurante.Moradas.ToList();
+            moradas.RemoveAll(x => listIdsPessoas.Contains(x.Id));
+            moradas.RemoveAll(x => listIdsRestaurantes.Contains(x.Id));
             //Desativar();
-            MenuPrincipal.restaurante = new RestauranteModelContainer();
-            
-            comboBox1.DataSource = MenuPrincipal.restaurante.Moradas.ToList();
 
+            comboBox1.DataSource = moradas;
             Desativar();
-
             LerDados();
 
         }
         private void LerDados()
         {
             lbclientes.DataSource = MenuPrincipal.restaurante.Pessoas.ToList<Pessoa>();
-
         }
 
         private void Desativar()
-        { 
-            txtnome.Enabled= false;
-            comboBox1.Enabled= false;
-            masktxtnif.Enabled= false;
-            masktxttele.Enabled= false;
-            guardarbutton.Enabled= false;
+        {
+            txtnome.Enabled = false;
+            comboBox1.Enabled = false;
+            masktxtnif.Enabled = false;
+            masktxttele.Enabled = false;
+            guardarbutton.Enabled = false;
 
             //lbclientes.Enabled= false;
-        
+
         }
 
         private void Ativar()
@@ -80,33 +80,26 @@ namespace da_projeto
 
         private void registarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Ativar();
+            Ativar();
             apagarbutton.Enabled = false;
             alterarbuton.Enabled = false;
-            
-            Cliente cliente = new Cliente();
-
-            cliente.Morada = (Morada) comboBox1.SelectedItem;
-            cliente.nome = txtnome.Text;
-            cliente.telemovel =int.Parse(masktxttele.Text);
-            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
-            cliente.totalgasto = 0;
-
-            pessoa.Id = 0;
-            //pessoa.idmorada = cbmorada.Text;
-            //pessoa.telemovel = Convert.ToUInt16(masktxttele.Text());
-            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+            registarbutton.Enabled = false;
 
 
-
-
-            MenuPrincipal.restaurante.Pessoas.Add(cliente);
-            MenuPrincipal.restaurante.SaveChanges();
         }
 
         private void guardarbutton_Click(object sender, EventArgs e)
         {
-            
+            Cliente cliente = new Cliente();
+
+            cliente.Morada = (Morada)comboBox1.SelectedItem;
+            cliente.nome = txtnome.Text;
+            cliente.telemovel = int.Parse(masktxttele.Text);
+            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+            cliente.totalgasto = 0;
+            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+            MenuPrincipal.restaurante.Pessoas.Add(cliente);
+            MenuPrincipal.restaurante.SaveChanges();
             LerDados();
         }
 
@@ -115,9 +108,70 @@ namespace da_projeto
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void alterarbuton_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)lbclientes.SelectedItem;
+
+            if (cliente == null)
+            {
+                return;
+            }
+            else
+            {
+                var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
+                cliente.Morada = (Morada)comboBox1.SelectedItem;
+                cliente.nome = txtnome.Text;
+                cliente.telemovel = int.Parse(masktxttele.Text);
+                cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+                MenuPrincipal.restaurante.SaveChanges();
+                LerDados();
+
+
+            }
+        }
+
+        private void apagarbutton_Click(object sender, EventArgs e)
+        {
+            Cliente selctedcliente = (Cliente)lbclientes.SelectedItem;
+
+            if (selctedcliente == null)
+            {
+                return;
+            }
+            else
+            {
+
+
+                MenuPrincipal.restaurante.Pessoas.Remove(selctedcliente);
+                MenuPrincipal.restaurante.SaveChanges();
+                LerDados();
+
+
+            }
+        }
+
+        private void lbclientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Cliente editcliente = (Cliente)lbclientes.SelectedItem;
+            txtnome.Text = editcliente.nome;
+            comboBox1.Text = editcliente.Morada.ToString();
+            masktxttele.Text = editcliente.telemovel.ToString();
+            masktxtnif.Text = editcliente.numcontribuinte.ToString();
+            Desativar();
+            alterarbuton.Enabled = true;
+            apagarbutton.Enabled = true;
+            txtnome.Enabled= true;
+            comboBox1.Enabled=true;
+            masktxtnif.Enabled= true;
+            masktxttele.Enabled= true;
+        }
+
+        private void GestaoClientes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.ShowDialog();
         }
     }
 }

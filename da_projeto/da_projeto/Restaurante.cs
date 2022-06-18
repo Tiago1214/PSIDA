@@ -29,5 +29,10 @@ namespace da_projeto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Trabalhador> Trabalhadors { get; set; }
         public virtual Morada Morada { get; set; }
+
+        public override string ToString()
+        {
+            return this.nome + " Morada:"+this.Morada;
+        }
     }
 }

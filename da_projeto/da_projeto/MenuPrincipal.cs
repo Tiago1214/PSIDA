@@ -53,10 +53,5 @@ namespace da_projeto
             GestaoPedidos gestaoPedidos = new GestaoPedidos();
             gestaoPedidos.ShowDialog();
         }
-
-        private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

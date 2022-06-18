@@ -22,12 +22,14 @@ namespace da_projeto
         //Carregar Dados quando se abre o programa
         private void GestaoCadeiaRest_Load(object sender, EventArgs e)
         {
-            LerDados();
-            comboBoxMorada.DataSource = MenuPrincipal.restaurante.Moradas.ToList();
+            var listIdsPessoas = MenuPrincipal.restaurante.Pessoas.Select(i => i.Morada.Id);
+            var listIdsRestaurantes = MenuPrincipal.restaurante.Restaurantes.Select(r => r.Morada.Id);
+            var moradas= MenuPrincipal.restaurante.Moradas.ToList();
+            moradas.RemoveAll(x => listIdsPessoas.Contains(x.Id));
+            moradas.RemoveAll(x=>listIdsRestaurantes.Contains(x.Id));
+            comboBoxMorada.DataSource = moradas;
             txtNomeRestaurante.Enabled = false;
             comboBoxMorada.Enabled = false;
-            //comboBoxMorada.DropDownStyle = ComboBoxStyle.DropDownList;
-            //comboBoxAtivoCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             txtNomeCategoria.Enabled = false;
             comboBoxAtivoCategoria.Enabled = false;
             btnCancelarRegistoCat.Enabled = false;
@@ -42,6 +44,7 @@ namespace da_projeto
             btnEliminarMetodo.Enabled = false;
             btnGuardarMetodo.Enabled = false;
             btnCancelarMetodo.Enabled = false;
+            LerDados();
         }
         //Esta função limpa os campos de texto
         private void LimparCampos()
@@ -65,7 +68,9 @@ namespace da_projeto
             txtNomeRestaurante.Enabled = true;
             comboBoxMorada.Enabled = true;
             btnCancelarRegistoRest.Enabled = true;
-            btnGuardarRestaurante.Enabled = true;    
+            btnGuardarRestaurante.Enabled = true;
+            btnEliminarRestaurante.Enabled = false;
+            btnEditarRestaurante.Enabled=false;
         }
         //Guardar o registo do restaurante
         private void btnGuardarRestaurante_Click(object sender, EventArgs e)
@@ -289,6 +294,49 @@ namespace da_projeto
                 {
                     clienteDb.ativo = false;
                 }
+                MenuPrincipal.restaurante.SaveChanges();
+                LerDados();
+            }
+        }
+
+        private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Restaurante editRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+            txtNomeRestaurante.Text = editRestaurante.nome;
+            comboBoxMorada.Text = editRestaurante.Morada.ToString();
+            txtNomeRestaurante.Enabled = true;
+            comboBoxMorada.Enabled = true;
+            btnEditarRestaurante.Enabled = true;
+            btnEliminarRestaurante.Enabled = true;
+        }
+
+        private void btnEditarRestaurante_Click(object sender, EventArgs e)
+        {
+            Restaurante restaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+            if (restaurante == null)
+            {
+                return;
+            }
+            else
+            {
+                var clienteDb = MenuPrincipal.restaurante.Restaurantes.Find(restaurante.Id);
+                clienteDb.nome = txtNomeRestaurante.Text;
+                comboBoxMorada.Text=restaurante.Morada.ToString();
+                MenuPrincipal.restaurante.SaveChanges();
+                LerDados();
+            }
+        }
+
+        private void btnEliminarRestaurante_Click(object sender, EventArgs e)
+        {
+            Restaurante selectedRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+            if (selectedRestaurante == null)
+            {
+                return;
+            }
+            else
+            {
+                MenuPrincipal.restaurante.Restaurantes.Remove(selectedRestaurante);
                 MenuPrincipal.restaurante.SaveChanges();
                 LerDados();
             }

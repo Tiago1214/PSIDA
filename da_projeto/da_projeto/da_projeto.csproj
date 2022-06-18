@@ -152,6 +152,9 @@
     <EmbeddedResource Include="GestaoClientes.resx">
       <DependentUpon>GestaoClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GestaoMenu.resx">
+      <DependentUpon>GestaoMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +201,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\2931141_files_folder_storage_archive_data_icon.png" />
+    <None Include="Resources\211608_folder_icon.png" />
     <Content Include="RestauranteModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RestauranteModel.Context.cs</LastGenOutput>

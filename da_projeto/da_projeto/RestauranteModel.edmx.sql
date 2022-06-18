@@ -145,7 +145,7 @@ GO
 CREATE TABLE [dbo].[ItemMenus] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [nome] nvarchar(max)  NOT NULL,
-    [fotografia] bigint  NOT NULL,
+    [fotografia] varbinary(MAX)  NOT NULL,
     [ingredientes] nvarchar(max)  NOT NULL,
     [preco] decimal(18,0)  NOT NULL,
     [ativo] bit  NOT NULL,

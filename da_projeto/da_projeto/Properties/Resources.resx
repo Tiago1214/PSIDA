@@ -124,8 +124,11 @@
   <data name="Add-icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add-icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="61816_business_buyers_clients_users_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\61816_business_buyers_clients_users_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Messaging-Trash-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Messaging-Trash-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Back-2-2-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Back-2-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="185114_chef_restaurant_food_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\185114_chef_restaurant_food_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,13 +145,16 @@
   <data name="Pencil-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pencil-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Messaging-Trash-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Messaging-Trash-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="2931141_files_folder_storage_archive_data_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2931141_files_folder_storage_archive_data_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="352514_local_restaurant_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\352514_local_restaurant_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Back-2-2-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Back-2-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="61816_business_buyers_clients_users_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\61816_business_buyers_clients_users_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="211608_folder_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\211608_folder_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

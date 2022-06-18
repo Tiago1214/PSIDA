@@ -73,6 +73,16 @@ namespace da_projeto.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _211608_folder_icon {
+            get {
+                object obj = ResourceManager.GetObject("211608_folder_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _2290855_check_document_done_list_paper_icon {
             get {
                 object obj = ResourceManager.GetObject("2290855_check_document_done_list_paper_icon", resourceCulture);
@@ -86,6 +96,16 @@ namespace da_projeto.Properties {
         internal static System.Drawing.Bitmap _290137_clipboard_document_file_list_report_icon {
             get {
                 object obj = ResourceManager.GetObject("290137_clipboard_document_file_list_report_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2931141_files_folder_storage_archive_data_icon {
+            get {
+                object obj = ResourceManager.GetObject("2931141_files_folder_storage_archive_data_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
