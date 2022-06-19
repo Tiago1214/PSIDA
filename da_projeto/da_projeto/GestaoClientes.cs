@@ -111,7 +111,7 @@ namespace da_projeto
                         masktxttele.Enabled = false;
                         masktxtnif.Enabled = false;
                         guardarbutton.Enabled = false;
-                        voltarbutton.Enabled = false;
+                        cancelarbutton.Enabled = false;
                     }
                 }
                 else
@@ -273,7 +273,7 @@ namespace da_projeto
                         LerDados();
                         alterarbuton.Enabled = false;
                         guardarbutton.Enabled = false;
-                        voltarbutton.Enabled = false;
+                        cancelarbutton.Enabled = false;
                         apagarbutton.Enabled = false;
                         MessageBox.Show("Cliente " + selectedcliente.nome + "foi eliminado","Cliente Eliminado",MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);

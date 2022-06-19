@@ -69,7 +69,7 @@ namespace da_projeto
         }
         public override string ToString()
         {
-            return this.nome+"(Categoria: "+this.Categoria+")";
+            return this.nome+": Ativo("+GetEstado(this.ativo)+")";
         }
     }
 

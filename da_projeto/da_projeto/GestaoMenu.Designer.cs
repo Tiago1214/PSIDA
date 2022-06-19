@@ -34,11 +34,12 @@
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
-            this.voltarbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxMenu = new System.Windows.Forms.ListBox();
             this.listBoxCategorias = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnMenuRestaurante = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.pictureBoxImagem = new System.Windows.Forms.PictureBox();
             this.txtNomeItem = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnMenuRestaurante = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
@@ -66,7 +66,7 @@
             this.apagarbutton,
             this.alterarbuton,
             this.guardarbutton,
-            this.voltarbutton});
+            this.cancelarbutton});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -80,6 +80,7 @@
             this.registarbutton.Name = "registarbutton";
             this.registarbutton.Size = new System.Drawing.Size(81, 24);
             this.registarbutton.Text = "Registar";
+            this.registarbutton.Click += new System.EventHandler(this.registarbutton_Click);
             // 
             // apagarbutton
             // 
@@ -87,6 +88,7 @@
             this.apagarbutton.Name = "apagarbutton";
             this.apagarbutton.Size = new System.Drawing.Size(77, 24);
             this.apagarbutton.Text = "Apagar";
+            this.apagarbutton.Click += new System.EventHandler(this.apagarbutton_Click);
             // 
             // alterarbuton
             // 
@@ -103,27 +105,29 @@
             this.guardarbutton.Text = "Guardar";
             this.guardarbutton.Click += new System.EventHandler(this.guardarbutton_Click);
             // 
-            // voltarbutton
+            // cancelarbutton
             // 
-            this.voltarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
-            this.voltarbutton.Name = "voltarbutton";
-            this.voltarbutton.Size = new System.Drawing.Size(69, 24);
-            this.voltarbutton.Text = "Voltar";
+            this.cancelarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
+            this.cancelarbutton.Name = "cancelarbutton";
+            this.cancelarbutton.Size = new System.Drawing.Size(69, 24);
+            this.cancelarbutton.Text = "Voltar";
+            this.cancelarbutton.Click += new System.EventHandler(this.voltarbutton_Click);
             // 
             // listBoxMenu
             // 
             this.listBoxMenu.FormattingEnabled = true;
-            this.listBoxMenu.Location = new System.Drawing.Point(275, 19);
+            this.listBoxMenu.Location = new System.Drawing.Point(253, 19);
             this.listBoxMenu.Name = "listBoxMenu";
-            this.listBoxMenu.Size = new System.Drawing.Size(212, 368);
+            this.listBoxMenu.Size = new System.Drawing.Size(234, 368);
             this.listBoxMenu.TabIndex = 3;
+            this.listBoxMenu.SelectedIndexChanged += new System.EventHandler(this.listBoxMenu_SelectedIndexChanged);
             // 
             // listBoxCategorias
             // 
             this.listBoxCategorias.FormattingEnabled = true;
             this.listBoxCategorias.Location = new System.Drawing.Point(514, 57);
             this.listBoxCategorias.Name = "listBoxCategorias";
-            this.listBoxCategorias.Size = new System.Drawing.Size(224, 381);
+            this.listBoxCategorias.Size = new System.Drawing.Size(224, 368);
             this.listBoxCategorias.TabIndex = 4;
             // 
             // label2
@@ -160,6 +164,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items Menu";
             // 
+            // btnMenuRestaurante
+            // 
+            this.btnMenuRestaurante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuRestaurante.Location = new System.Drawing.Point(9, 20);
+            this.btnMenuRestaurante.Name = "btnMenuRestaurante";
+            this.btnMenuRestaurante.Size = new System.Drawing.Size(238, 61);
+            this.btnMenuRestaurante.TabIndex = 18;
+            this.btnMenuRestaurante.Text = "Ver Menu de cada Restaurante";
+            this.btnMenuRestaurante.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMenuRestaurante.UseVisualStyleBackColor = true;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -188,6 +203,7 @@
             // 
             // comboBoxAtivo
             // 
+            this.comboBoxAtivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAtivo.FormattingEnabled = true;
             this.comboBoxAtivo.Items.AddRange(new object[] {
             "Sim",
@@ -203,6 +219,7 @@
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(174, 20);
             this.txtPreco.TabIndex = 13;
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
             // 
             // label6
             // 
@@ -275,21 +292,11 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Nome:";
             // 
-            // btnMenuRestaurante
-            // 
-            this.btnMenuRestaurante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuRestaurante.Location = new System.Drawing.Point(9, 20);
-            this.btnMenuRestaurante.Name = "btnMenuRestaurante";
-            this.btnMenuRestaurante.Size = new System.Drawing.Size(238, 61);
-            this.btnMenuRestaurante.TabIndex = 18;
-            this.btnMenuRestaurante.Text = "Ver Menu de cada Restaurante";
-            this.btnMenuRestaurante.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMenuRestaurante.UseVisualStyleBackColor = true;
-            // 
             // GestaoMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(770, 453);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
@@ -300,6 +307,7 @@
             this.MinimizeBox = false;
             this.Name = "GestaoMenu";
             this.Text = "GestaoMenu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoMenu_FormClosing);
             this.Load += new System.EventHandler(this.GestaoMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -317,7 +325,7 @@
         private System.Windows.Forms.ToolStripMenuItem apagarbutton;
         private System.Windows.Forms.ToolStripMenuItem alterarbuton;
         private System.Windows.Forms.ToolStripMenuItem guardarbutton;
-        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
+        private System.Windows.Forms.ToolStripMenuItem cancelarbutton;
         private System.Windows.Forms.ListBox listBoxMenu;
         private System.Windows.Forms.ListBox listBoxCategorias;
         private System.Windows.Forms.Label label2;

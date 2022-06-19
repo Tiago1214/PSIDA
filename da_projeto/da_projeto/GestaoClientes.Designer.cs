@@ -34,7 +34,7 @@
             this.apagarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
-            this.voltarbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.lbclientes = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtnome = new System.Windows.Forms.TextBox();
@@ -55,7 +55,7 @@
             this.apagarbutton,
             this.alterarbuton,
             this.guardarbutton,
-            this.voltarbutton});
+            this.cancelarbutton});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -95,13 +95,13 @@
             this.guardarbutton.Text = "Guardar";
             this.guardarbutton.Click += new System.EventHandler(this.guardarbutton_Click);
             // 
-            // voltarbutton
+            // cancelarbutton
             // 
-            this.voltarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
-            this.voltarbutton.Name = "voltarbutton";
-            this.voltarbutton.Size = new System.Drawing.Size(69, 24);
-            this.voltarbutton.Text = "Voltar";
-            this.voltarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
+            this.cancelarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
+            this.cancelarbutton.Name = "cancelarbutton";
+            this.cancelarbutton.Size = new System.Drawing.Size(69, 24);
+            this.cancelarbutton.Text = "Voltar";
+            this.cancelarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
             // lbclientes
             // 
@@ -242,7 +242,7 @@
 
 
 
-        private System.Windows.Forms.ToolStripMenuItem voltarbutton;
+        private System.Windows.Forms.ToolStripMenuItem cancelarbutton;
         private System.Windows.Forms.ComboBox comboBox1;
     }
 }
