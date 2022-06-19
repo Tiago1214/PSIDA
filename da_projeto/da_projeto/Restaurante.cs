@@ -11,7 +11,7 @@ namespace da_projeto
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Restaurante
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +20,10 @@ namespace da_projeto
             this.ItemMenus = new HashSet<ItemMenu>();
             this.Trabalhadors = new HashSet<Trabalhador>();
         }
-    
+
         public int Id { get; set; }
         public string nome { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemMenu> ItemMenus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -32,7 +32,7 @@ namespace da_projeto
 
         public override string ToString()
         {
-            return this.nome + " Morada:"+this.Morada;
+            return this.nome + " Morada:" + this.Morada;
         }
     }
 }

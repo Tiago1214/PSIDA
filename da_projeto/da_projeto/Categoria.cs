@@ -11,7 +11,7 @@ namespace da_projeto
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +19,14 @@ namespace da_projeto
         {
             this.ItemMenus = new HashSet<ItemMenu>();
         }
-    
+
         public int Id { get; set; }
         public string nome { get; set; }
         public bool ativo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemMenu> ItemMenus { get; set; }
-        public string GetEstado( bool ativo)
+        public string GetEstado(bool ativo)
         {
             ativo = this.ativo;
             if (ativo == true)
@@ -40,7 +40,7 @@ namespace da_projeto
         }
         public override string ToString()
         {
-            return this.nome + " (Ativo: "+GetEstado(this.ativo)+")";
+            return this.nome + " (Ativo: " + GetEstado(this.ativo) + ")";
         }
     }
 }

@@ -169,7 +169,6 @@
             this.masktxtnif.Name = "masktxtnif";
             this.masktxtnif.Size = new System.Drawing.Size(66, 20);
             this.masktxtnif.TabIndex = 9;
-            this.masktxtnif.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
             // 
             // label4
             // 
@@ -180,7 +179,6 @@
             this.label4.Size = new System.Drawing.Size(103, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Número Contribuinte";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // comboBox1
             // 

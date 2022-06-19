@@ -13,6 +13,11 @@ namespace da_projeto
     public partial class MenuPrincipal : Form
     {
         public static RestauranteModelContainer restaurante;
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
         public MenuPrincipal()
         {
             InitializeComponent();

@@ -11,7 +11,7 @@ namespace da_projeto
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Morada
     {
         public int Id { get; set; }
@@ -31,5 +31,5 @@ namespace da_projeto
 
     }
 
-    
+
 }

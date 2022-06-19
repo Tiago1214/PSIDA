@@ -152,13 +152,8 @@
     <EmbeddedResource Include="GestaoClientes.resx">
       <DependentUpon>GestaoClientes.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="GestaoMenu.resx">
       <DependentUpon>GestaoMenu.cs</DependentUpon>
-=======
-    <EmbeddedResource Include="GestaoRestaurante.resx">
-      <DependentUpon>GestaoRestaurante.cs</DependentUpon>
->>>>>>> 64b0053df535baedc62f48a7554a9d3d9c673847
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

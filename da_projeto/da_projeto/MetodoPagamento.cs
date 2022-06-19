@@ -11,7 +11,7 @@ namespace da_projeto
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class MetodoPagamento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +19,11 @@ namespace da_projeto
         {
             this.Pagamentoes = new HashSet<Pagamento>();
         }
-    
+
         public int Id { get; set; }
         public string metodopagamento { get; set; }
         public bool ativo { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pagamento> Pagamentoes { get; set; }
 
@@ -36,7 +36,7 @@ namespace da_projeto
             }
             else
             {
-                return "Não";
+                return "N?o";
             }
         }
         public override string ToString()

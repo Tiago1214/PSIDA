@@ -11,18 +11,13 @@ namespace da_projeto
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Pessoa
     {
         public int Id { get; set; }
         public string nome { get; set; }
         public int telemovel { get; set; }
-    
-        public virtual Morada Morada { get; set; }
 
-        public override string ToString()
-        {
-            return this.nome + " Telemovel: " + this.telemovel;
-        }
+        public virtual Morada Morada { get; set; }
     }
 }
