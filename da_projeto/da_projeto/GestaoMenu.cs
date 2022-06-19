@@ -21,43 +21,74 @@ namespace da_projeto
         public string caminhoFoto = "";
         private void GestaoMenu_Load(object sender, EventArgs e)
         {
-            comboBoxCategoria.DataSource = MenuPrincipal.restaurante.Categorias.ToList();
+            LerDados();
         }
-
+        private void LerDados()
+        {
+            comboBoxCategoria.DataSource = MenuPrincipal.restaurante.Categorias.ToList();
+            listBoxMenu.DataSource=MenuPrincipal.restaurante.ItemMenus.ToList();
+        }
         private void btnCarregarFoto_Click(object sender, EventArgs e)
         {
             CarregarFoto();
         }
         private void CarregarFoto()
         {
-            var openFile=new OpenFileDialog();
-            openFile.Filter = "Arquivos de images jpg e png|*.jpg; *.png";
-            openFile.Multiselect = false;
-
-            if(openFile.ShowDialog() == DialogResult.OK)
+            //Tirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
+            try
             {
-                caminhoFoto = openFile.FileName;
+                var openFile = new OpenFileDialog();
+                openFile.Filter = "Arquivos de images jpg e png|*.jpg; *.png";
+                openFile.Multiselect = false;
+
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    caminhoFoto = openFile.FileName;
+                }
+                if (caminhoFoto != "")
+                    pictureBoxImagem.Load(caminhoFoto);
             }
-            if(caminhoFoto!="")
-                pictureBoxImagem.Load(caminhoFoto);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void guardarbutton_Click(object sender, EventArgs e)
         {
-            ItemMenu itemmenu = new ItemMenu();
-            itemmenu.nome = txtNomeItem.Text;
-            byte[] foto;
-            using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
+            try
             {
-                using (var reader = new BinaryReader(stream))
+                if ()
                 {
-                    foto = reader.ReadBytes((int)stream.Length);
+                    ItemMenu itemmenu = new ItemMenu();
+                    itemmenu.nome = txtNomeItem.Text;
+                    byte[] foto;
+                    //Tirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
+                    using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
+                    {
+                        using (var reader = new BinaryReader(stream))
+                        {
+                            foto = reader.ReadBytes((int)stream.Length);
+                        }
+                    }
+                    itemmenu.fotografia = foto;
+                    itemmenu.ingredientes = txtIngridientes.Text;
+                    if (int.Parse(txtPreco.Text) > 0)
+                    {
+                        itemmenu.preco = int.Parse(txtPreco.Text);
+                    }
+                    itemmenu.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                    itemmenu.ativo = true;
+
+                    MenuPrincipal.restaurante.ItemMenus.Add(itemmenu);
+                    MenuPrincipal.restaurante.SaveChanges();
+                    LerDados();
                 }
             }
-            itemmenu.fotografia = foto;
-            itemmenu.ingredientes =txtIngridientes.Text;
-            itemmenu.preco = int.Parse(txtPreco.Text);
-            itemmenu.ativo = true;
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -36,7 +36,7 @@ namespace da_projeto
             }
             else
             {
-                return "N?o";
+                return "Não";
             }
         }
         public override string ToString()

@@ -103,7 +103,6 @@
             // 
             // comboBoxMorada
             // 
-            this.comboBoxMorada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMorada.FormattingEnabled = true;
             this.comboBoxMorada.Location = new System.Drawing.Point(89, 182);
             this.comboBoxMorada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -552,10 +551,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnEditarMetodo;
         private System.Windows.Forms.Button btnRegistarMetodo;
-
-
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
 
 
 

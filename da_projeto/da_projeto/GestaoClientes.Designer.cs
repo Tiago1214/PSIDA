@@ -130,7 +130,6 @@
             this.txtnome.Name = "txtnome";
             this.txtnome.Size = new System.Drawing.Size(224, 20);
             this.txtnome.TabIndex = 3;
-            this.txtnome.TextChanged += new System.EventHandler(this.txtnome_TextChanged);
             // 
             // label2
             // 
@@ -238,8 +237,6 @@
         private System.Windows.Forms.Label label4;
 
 
-        private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
-        private System.Windows.Forms.ComboBox cbmorada;
 
 
 
