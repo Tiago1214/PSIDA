@@ -291,9 +291,6 @@ namespace da_projeto
         }
 
         //Edição de uma categoria
-        /*Caso já exista uma categoria com o mesmo nome na base de dados, a aplicação ignora o nome da categoria
-        * inserido e atualiza só se o campo está ativo ou não
-        */
         private void btnEditarCategoria_Click(object sender, EventArgs e)
         {
             try
@@ -309,32 +306,7 @@ namespace da_projeto
                     var guardarlistacat = MenuPrincipal.restaurante.Categorias.Select(c => c.nome);
                     if (String.IsNullOrEmpty(txtNomeCategoria.Text) == false)
                     {
-                        if (guardarlistacat.Contains(txtNomeCategoria.Text))
-                        {
-                            DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende editar a categoria "
-                            + categoria.nome + " visto que já existe uma categoria com o mesmo nome?"
-                            , "Editar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                            if (messageBox.Equals(DialogResult.Yes) == true)
-                            {
-                                var clienteDb = MenuPrincipal.restaurante.Categorias.Find(categoria.Id);
-                                clienteDb.nome = txtNomeCategoria.Text;
-                                if (comboBoxAtivoCategoria.SelectedIndex == 0)
-                                {
-                                    clienteDb.ativo = true;
-                                }
-                                else if (comboBoxAtivoCategoria.SelectedIndex == 1)
-                                {
-                                    clienteDb.ativo = false;
-                                }
-                                MenuPrincipal.restaurante.SaveChanges();
-                                LerDados();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Categoria não editada","Editar Categoria",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                            }
-                        }
-                        else
+                        if (guardarlistacat.Contains(txtNomeCategoria.Text)&&txtNomeCategoria.Text==categoria.nome)
                         {
                             var clienteDb = MenuPrincipal.restaurante.Categorias.Find(categoria.Id);
                             clienteDb.nome = txtNomeCategoria.Text;
@@ -348,6 +320,26 @@ namespace da_projeto
                             }
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
+                        }
+                        else if(guardarlistacat.Contains(txtNomeCategoria.Text)==false)
+                        {
+                            var clienteDb = MenuPrincipal.restaurante.Categorias.Find(categoria.Id);
+                            clienteDb.nome = txtNomeCategoria.Text;
+                            if (comboBoxAtivoCategoria.SelectedIndex == 0)
+                            {
+                                clienteDb.ativo = true;
+                            }
+                            else if (comboBoxAtivoCategoria.SelectedIndex == 1)
+                            {
+                                clienteDb.ativo = false;
+                            }
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Já existe uma categoria com o mesmo nome!", "Erro"
+                                , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
                     else
@@ -363,24 +355,35 @@ namespace da_projeto
         }
 
         //Eliminação de uma Categoria
+        /*Nesta função não é usado o try parse porque por causa que se uma categoria estivesse ligada a um item de menu, 
+         * e tentassemos apagar um registo de uma categoria que não estivesse associada a um item de menu o try parse não nos
+         * deixava apagar
+         */
         private void btnEliminarCategoria_Click(object sender, EventArgs e)
         {
-            try
+            Categoria selectedCategoria = (Categoria)listBoxCategorias.SelectedItem;
+            //Verifica se existe alguma categoria selecionada
+            if (selectedCategoria == null)
             {
-                Categoria selectedCategoria = (Categoria)listBoxCategorias.SelectedItem;
-                //Verifica se existe alguma categoria selecionada
-                if (selectedCategoria == null)
+                return;
+            }
+            else
+            {
+                /* Se a resposta for sim a categoria é eliminada e dá uma mensagem a dizer que a categoria foi eliminada,
+                    * caso a resposta seja não mostra uma mensagem a dizer que a categoria não foi eliminada
+                    */
+                DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende eliminar a categoria "
+                    + selectedCategoria.nome + "?", "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (messageBox.Equals(DialogResult.Yes) == true)
                 {
-                    return;
-                }
-                else
-                {
-                    /* Se a resposta for sim a categoria é eliminada e dá uma mensagem a dizer que a categoria foi eliminada,
-                     * caso a resposta seja não mostra uma mensagem a dizer que a categoria não foi eliminada
-                     */
-                    DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende eliminar a categoria "
-                        + selectedCategoria.nome + "?", "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (messageBox.Equals(DialogResult.Yes) == true)
+                    var listaitensmenu = MenuPrincipal.restaurante.ItemMenus.Select(i => i.Categoria.Id);
+                    //Verificar se a categoria está associada a um item de menu
+                    if (listaitensmenu.Contains(selectedCategoria.Id)==true)
+                    {
+                        MessageBox.Show("Categoria não pode ser apagada devido a estar a ser usada num registo de um item de menu",
+                            "Erro eliminar categoria", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
                     {
                         MenuPrincipal.restaurante.Categorias.Remove(selectedCategoria);
                         MenuPrincipal.restaurante.SaveChanges();
@@ -392,15 +395,11 @@ namespace da_projeto
                         MessageBox.Show("Restaurante " + selectedCategoria.nome + " eliminado");
                         LerDados();
                     }
-                    else if (messageBox.Equals(DialogResult.No) == true)
-                    {
-                        MessageBox.Show("Categoria" + selectedCategoria.nome + "não apagada");
-                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                else if (messageBox.Equals(DialogResult.No) == true)
+                {
+                    MessageBox.Show("Categoria" + selectedCategoria.nome + "não apagada");
+                }
             }
         }
 
@@ -516,32 +515,7 @@ namespace da_projeto
                     {
                         var guardarlistametodos = MenuPrincipal.restaurante.MetodoPagamentoes.Select(m => m.metodopagamento);
                         //Verificar se já existe o método na base de dados, se sim não deixa atualizar o nome, só deixa atualizar o ativo
-                        if (guardarlistametodos.Contains(txtNomeMetodo.Text))
-                        {
-                            DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende editar o método "
-                            + metodo.metodopagamento + " visto que já existe um método com o mesmo nome?"
-                            , "Editar Categoria", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                            if (messageBox.Equals(DialogResult.Yes) == true)
-                            {
-                                var clienteDb = MenuPrincipal.restaurante.MetodoPagamentoes.Find(metodo.Id);
-                                clienteDb.metodopagamento = txtNomeMetodo.Text;
-                                if (comboBoxAtivoMetodo.SelectedIndex == 0)
-                                {
-                                    clienteDb.ativo = true;
-                                }
-                                else if (comboBoxAtivoMetodo.SelectedIndex == 1)
-                                {
-                                    clienteDb.ativo = false;
-                                }
-                                MenuPrincipal.restaurante.SaveChanges();
-                                LerDados();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Método não editado", "Editar Método", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            }
-                        }
-                        else
+                        if (guardarlistametodos.Contains(txtNomeMetodo.Text)&&txtNomeMetodo.Text==metodo.metodopagamento)
                         {
                             var clienteDb = MenuPrincipal.restaurante.MetodoPagamentoes.Find(metodo.Id);
                             clienteDb.metodopagamento = txtNomeMetodo.Text;
@@ -555,6 +529,26 @@ namespace da_projeto
                             }
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
+                        }
+                        else if (guardarlistametodos.Contains(txtNomeMetodo.Text)==false)
+                        {
+                            var clienteDb = MenuPrincipal.restaurante.MetodoPagamentoes.Find(metodo.Id);
+                            clienteDb.metodopagamento = txtNomeMetodo.Text;
+                            if (comboBoxAtivoMetodo.SelectedIndex == 0)
+                            {
+                                clienteDb.ativo = true;
+                            }
+                            else if (comboBoxAtivoMetodo.SelectedIndex == 1)
+                            {
+                                clienteDb.ativo = false;
+                            }
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Já existe um método com o mesmo nome!", "Erro"
+                               , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }   
                     }
                     else

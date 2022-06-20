@@ -42,7 +42,7 @@ namespace da_projeto
         public bool ativo { get; set; }
 
         public int CategoriaId { get; set; }
-
+        public string CaminhoFoto { get; set; }
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

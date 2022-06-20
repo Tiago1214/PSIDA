@@ -96,6 +96,7 @@
             this.alterarbuton.Name = "alterarbuton";
             this.alterarbuton.Size = new System.Drawing.Size(74, 24);
             this.alterarbuton.Text = "Alterar";
+            this.alterarbuton.Click += new System.EventHandler(this.alterarbuton_Click);
             // 
             // guardarbutton
             // 

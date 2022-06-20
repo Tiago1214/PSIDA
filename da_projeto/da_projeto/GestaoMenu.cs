@@ -128,6 +128,7 @@ namespace da_projeto
                             }
                         }
                         itemmenu.fotografia = foto;
+                        itemmenu.CaminhoFoto = caminhoFoto;
                         itemmenu.ingredientes = txtIngridientes.Text;
                         if (int.Parse(txtPreco.Text) > 0)
                         {
@@ -183,19 +184,107 @@ namespace da_projeto
             }
         }
 
-        //Desativar os campos necessários de um registo de um item de menu
-        private void voltarbutton_Click(object sender, EventArgs e)
+        //Alterar o registo de um item de menu
+        private void alterarbuton_Click(object sender, EventArgs e)
         {
-            txtIngridientes.Enabled = false;
-            txtNomeItem.Enabled = false;
-            comboBoxAtivo.Enabled = false;
-            comboBoxCategoria.Enabled = false;
-            txtPreco.Enabled = false;
-            btnCarregarFoto.Enabled = false;
-            guardarbutton.Enabled = false;
-            alterarbuton.Enabled = false;
-            apagarbutton.Enabled = false;
-            cancelarbutton.Enabled = false;
+            try
+            {
+                //Verifica se existe alguma categoria selecionado
+                ItemMenu selectedItemmenu = (ItemMenu)listBoxMenu.SelectedItem;
+                if (selectedItemmenu == null)
+                {
+                    return;
+                }
+                else
+                {
+                    var guardarlistanomes = MenuPrincipal.restaurante.ItemMenus.Select(i => i.nome);
+                    if (String.IsNullOrEmpty(txtNomeItem.Text) == false && String.IsNullOrEmpty(txtIngridientes.Text) == false
+                        && String.IsNullOrEmpty(txtPreco.Text) == false)
+                    {
+                        if (guardarlistanomes.Contains(txtNomeItem.Text) && txtNomeItem.Text == selectedItemmenu.nome)
+                        {
+                            var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
+                            itemmenudb.nome = txtNomeItem.Text;
+                            byte[] foto;
+                            //Retirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
+                            if (String.IsNullOrEmpty(caminhoFoto) == false)
+                            {
+                                if (itemmenudb.CaminhoFoto != caminhoFoto)
+                                {
+                                    using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
+                                    {
+                                        using (var reader = new BinaryReader(stream))
+                                        {
+                                            foto = reader.ReadBytes((int)stream.Length);
+                                        }
+                                    }
+                                    itemmenudb.fotografia = foto;
+                                }
+                            }
+                            itemmenudb.ingredientes = txtIngridientes.Text;
+                            itemmenudb.preco = int.Parse(txtPreco.Text);
+                            itemmenudb.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                            if (comboBoxAtivo.SelectedIndex == 0)
+                            {
+                                itemmenudb.ativo = true;
+                            }
+                            else if (comboBoxAtivo.SelectedIndex == 1)
+                            {
+                                itemmenudb.ativo = false;
+                            }
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                        }
+                        else if (guardarlistanomes.Contains(txtNomeItem.Text )==false)
+                        {
+                            var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
+                            itemmenudb.nome = txtNomeItem.Text;
+                            byte[] foto;
+                            //Retirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
+                            if (String.IsNullOrEmpty(caminhoFoto) == false)
+                            {
+                                if (itemmenudb.CaminhoFoto != caminhoFoto)
+                                {
+                                    using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
+                                    {
+                                        using (var reader = new BinaryReader(stream))
+                                        {
+                                            foto = reader.ReadBytes((int)stream.Length);
+                                        }
+                                    }
+                                    itemmenudb.fotografia = foto;
+                                }
+                            }
+                            itemmenudb.ingredientes = txtIngridientes.Text;
+                            itemmenudb.preco = int.Parse(txtPreco.Text);
+                            itemmenudb.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                            if (comboBoxAtivo.SelectedIndex == 0)
+                            {
+                                itemmenudb.ativo = true;
+                            }
+                            else if (comboBoxAtivo.SelectedIndex == 1)
+                            {
+                                itemmenudb.ativo = false;
+                            }
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                        }
+                        else 
+                        {
+                            MessageBox.Show("Já existe um item de menu com o mesmo nome!", "Erro"
+                                , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Os campos são todos obrigatórios!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Apagar um registo de um item do menu
@@ -260,10 +349,26 @@ namespace da_projeto
             txtIngridientes.Enabled = true;
             txtPreco.Enabled = true;
             pictureBoxImagem.Enabled = true;
+            comboBoxCategoria.Enabled = true;
             using (var foto=new MemoryStream(editItemMenu.fotografia))
             {
                 pictureBoxImagem.Image=Image.FromStream(foto);
             }
+        }
+
+        //Desativar os campos necessários de um registo de um item de menu
+        private void voltarbutton_Click(object sender, EventArgs e)
+        {
+            txtIngridientes.Enabled = false;
+            txtNomeItem.Enabled = false;
+            comboBoxAtivo.Enabled = false;
+            comboBoxCategoria.Enabled = false;
+            txtPreco.Enabled = false;
+            btnCarregarFoto.Enabled = false;
+            guardarbutton.Enabled = false;
+            alterarbuton.Enabled = false;
+            apagarbutton.Enabled = false;
+            cancelarbutton.Enabled = false;
         }
 
         //Esconder este ecrã e mostrar ecrã principal
