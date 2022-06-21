@@ -35,6 +35,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxAtivo = new System.Windows.Forms.ComboBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
@@ -55,7 +56,6 @@
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxCategorias = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
@@ -123,6 +123,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items Menu";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(250, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 17);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Itens de Menu";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -150,6 +160,7 @@
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(174, 20);
             this.txtPreco.TabIndex = 13;
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
             // 
             // label6
             // 
@@ -298,16 +309,6 @@
             this.listBoxCategorias.Name = "listBoxCategorias";
             this.listBoxCategorias.Size = new System.Drawing.Size(171, 368);
             this.listBoxCategorias.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(250, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 17);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Itens de Menu";
             // 
             // label9
             // 

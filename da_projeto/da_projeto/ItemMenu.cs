@@ -72,7 +72,7 @@ public partial class ItemMenu
     }
     public override string ToString()
     {
-        return this.nome + ": Ativo(" + GetEstado(this.ativo) + ")";
+            return "Item Menu:"+ this.nome + "  Cat:" + this.Categoria + " Ativo: " + GetEstado(this.ativo);
     }
     }
 

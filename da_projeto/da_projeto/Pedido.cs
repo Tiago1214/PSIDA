@@ -59,6 +59,11 @@ public partial class Pedido
 
     public virtual ICollection<ItemMenu> ItemMenus { get; set; }
 
-}
+    public override string ToString()
+    {
+        return this.Cliente.nome+"Estado: "+this.Estado.estado+" Total:"+this.valortotal;
+    }
+
+    }
 
 }

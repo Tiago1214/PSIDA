@@ -98,22 +98,20 @@ namespace da_projeto
             }
         }
         //Função que guarda a imagem
+        /*Nesta função não é feita a verificação se o nome de item de menu já existe porque como existem menus diferentes para cada restaurante e podem
+         * existir items de menu iguais mas com ingredientes diferentes não fazia sentido verificar essa situação
+         */
         private void guardarbutton_Click(object sender, EventArgs e)
         {
             try
             {
-                //Verificar se os campos estão todos preenchidos
-                if (String.IsNullOrEmpty(txtNomeItem.Text) == false && String.IsNullOrEmpty(txtIngridientes.Text) == false &&
-                    String.IsNullOrEmpty(txtPreco.Text) == false && String.IsNullOrEmpty(comboBoxCategoria.Text) == false)
+                //Restaurante Selecionado
+                Restaurante selecionaRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+                if (selecionaRestaurante != null)
                 {
-                    var listaitens = MenuPrincipal.restaurante.ItemMenus.Select(i => i.nome);
-                    //Verificar se já existe um item de menu com o mesmo nome na base de dados
-                    if (listaitens.Contains(txtNomeItem.Text))
-                    {
-                        MessageBox.Show("Item de menu já existente, por favor mude o nome do item!", "Erro criar item menu",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
+                    //Verificar se os campos estão todos preenchidos
+                    if (String.IsNullOrEmpty(txtNomeItem.Text) == false && String.IsNullOrEmpty(txtIngridientes.Text) == false &&
+                        String.IsNullOrEmpty(txtPreco.Text) == false && String.IsNullOrEmpty(comboBoxCategoria.Text) == false)
                     {
                         ItemMenu itemmenu = new ItemMenu();
                         itemmenu.nome = txtNomeItem.Text;
@@ -143,8 +141,7 @@ namespace da_projeto
                         {
                             itemmenu.ativo = false;
                         }
-                        //Restaurante Selecionado
-                        Restaurante selecionaRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+
                         //Varíavel auxiliar que guarda o id do restaurante selecionado
                         itemmenu.RestId = selecionaRestaurante.Id;
                         itemmenu.Restaurantes.Add(selecionaRestaurante);
@@ -161,10 +158,15 @@ namespace da_projeto
                         Limpar();
                         listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == selecionaRestaurante.Id).ToList<ItemMenu>();
                     }
+                    else
+                    {
+                        MessageBox.Show("Os campos são todos obrigatórios", "Erro criar item menu",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Os campos são todos obrigatórios", "Erro criar item menu",
+                    MessageBox.Show("Para adicionar um item de menu selecione um restaurante.", "Erro criar item de menu",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -203,95 +205,56 @@ namespace da_projeto
                 }
                 else
                 {
-                    var guardarlistanomes = MenuPrincipal.restaurante.ItemMenus.Select(i => i.nome);
                     if (String.IsNullOrEmpty(txtNomeItem.Text) == false && String.IsNullOrEmpty(txtIngridientes.Text) == false
                         && String.IsNullOrEmpty(txtPreco.Text) == false)
                     {
-                        //Verificar se já existe algum registo com o mesmo nome de item de menu
-                        if (guardarlistanomes.Contains(txtNomeItem.Text) && txtNomeItem.Text == selectedItemmenu.nome)
+                        //Atualizar Registo de ItemMenu
+                        var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
+                        itemmenudb.nome = txtNomeItem.Text;
+                        byte[] foto;
+                        //Retirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
+                        if (String.IsNullOrEmpty(caminhoFoto) == false)
                         {
-                            //Atualizar Registo de ItemMenu
-                            var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
-                            itemmenudb.nome = txtNomeItem.Text;
-                            byte[] foto;
-                            //Retirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
-                            if (String.IsNullOrEmpty(caminhoFoto) == false)
+                            if (itemmenudb.CaminhoFoto != caminhoFoto)
                             {
-                                if (itemmenudb.CaminhoFoto != caminhoFoto)
+                                using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
                                 {
-                                    using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
+                                    using (var reader = new BinaryReader(stream))
                                     {
-                                        using (var reader = new BinaryReader(stream))
-                                        {
-                                            foto = reader.ReadBytes((int)stream.Length);
-                                        }
+                                        foto = reader.ReadBytes((int)stream.Length);
                                     }
-                                    itemmenudb.fotografia = foto;
                                 }
+                                itemmenudb.fotografia = foto;
                             }
-                            itemmenudb.ingredientes = txtIngridientes.Text;
-                            itemmenudb.preco = int.Parse(txtPreco.Text);
-                            itemmenudb.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
-                            if (comboBoxAtivo.SelectedIndex == 0)
-                            {
-                                itemmenudb.ativo = true;
-                            }
-                            else if (comboBoxAtivo.SelectedIndex == 1)
-                            {
-                                itemmenudb.ativo = false;
-                            }
-                            MenuPrincipal.restaurante.SaveChanges();
-                            LerDados();
-                            Restaurante rest = (Restaurante)listBoxRestaurantes.SelectedItem;
-                            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
-                            txtIngridientes.Enabled = false;
-                            txtNomeItem.Enabled = false;
-                            txtPreco.Enabled = false;
-                            comboBoxCategoria.Enabled = false;
-                            comboBoxAtivo.Enabled = false;
-                            btnCarregarFoto.Enabled = false;
                         }
-                        else if (guardarlistanomes.Contains(txtNomeItem.Text) == false)
+                        itemmenudb.ingredientes = txtIngridientes.Text;
+                        itemmenudb.preco = int.Parse(txtPreco.Text);
+                        itemmenudb.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                        if (comboBoxAtivo.SelectedIndex == 0)
                         {
-                            var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
-                            itemmenudb.nome = txtNomeItem.Text;
-                            byte[] foto;
-                            //Retirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
-                            if (String.IsNullOrEmpty(caminhoFoto) == false)
-                            {
-                                if (itemmenudb.CaminhoFoto != caminhoFoto)
-                                {
-                                    using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
-                                    {
-                                        using (var reader = new BinaryReader(stream))
-                                        {
-                                            foto = reader.ReadBytes((int)stream.Length);
-                                        }
-                                    }
-                                    itemmenudb.fotografia = foto;
-                                }
-                            }
-                            itemmenudb.ingredientes = txtIngridientes.Text;
-                            itemmenudb.preco = int.Parse(txtPreco.Text);
-                            itemmenudb.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
-                            if (comboBoxAtivo.SelectedIndex == 0)
-                            {
-                                itemmenudb.ativo = true;
-                            }
-                            else if (comboBoxAtivo.SelectedIndex == 1)
-                            {
-                                itemmenudb.ativo = false;
-                            }
-                            MenuPrincipal.restaurante.SaveChanges();
-                            LerDados();
-                            Restaurante rest = (Restaurante)listBoxRestaurantes.SelectedItem;
-                            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
+                            itemmenudb.ativo = true;
                         }
-                        else
+                        else if (comboBoxAtivo.SelectedIndex == 1)
                         {
-                            MessageBox.Show("Já existe um item de menu com o mesmo nome!", "Erro"
-                                , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            itemmenudb.ativo = false;
                         }
+                        MenuPrincipal.restaurante.SaveChanges();
+                        Restaurante rest = (Restaurante)listBoxRestaurantes.SelectedItem;
+                        listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
+                        txtIngridientes.Enabled = false;
+                        txtNomeItem.Enabled = false;
+                        txtPreco.Enabled = false;
+                        comboBoxCategoria.Enabled = false;
+                        comboBoxAtivo.Enabled = false;
+                        btnCarregarFoto.Enabled = false;
+                        Limpar();
+                        LerDados();
+                        txtIngridientes.Enabled = false;
+                        txtNomeItem.Enabled = false;
+                        txtPreco.Enabled = false;
+                        comboBoxAtivo.Enabled = false;
+                        comboBoxCategoria.Enabled = false;
+                        btnCarregarFoto.Enabled = false;
                     }
                     else
                     {
@@ -409,13 +372,14 @@ namespace da_projeto
         {
             this.Hide();
             MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.Hide();
+            menuPrincipal.Show();
         }
 
+        //Mostar items de menu do restaurante selecionado
         private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Restaurante rest=(Restaurante)listBoxRestaurantes.SelectedItem;
             listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
-        }
+        }  
     }
 }

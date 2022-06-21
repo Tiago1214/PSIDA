@@ -13,21 +13,25 @@ namespace da_projeto
 {
 
 using System;
-    using System.Collections.Generic;
+using System.Collections.Generic;
     
-public partial class Trabalhador : Pessoa
-{
+    public partial class Trabalhador : Pessoa
+    {
 
-    public decimal salario { get; set; }
+        public decimal salario { get; set; }
 
-    public string posicao { get; set; }
+        public string posicao { get; set; }
 
-    public int RestauranteId { get; set; }
+        public int RestauranteId { get; set; }
 
 
 
-    public virtual Restaurante Restaurante { get; set; }
+        public virtual Restaurante Restaurante { get; set; }
 
-}
+        public override string ToString()
+        {
+            return "Nome: " + this.nome + " Salário:" + this.salario;
+        }
+    }
 
 }

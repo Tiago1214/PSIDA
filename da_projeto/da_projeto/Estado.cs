@@ -37,6 +37,11 @@ public partial class Estado
 
     public virtual ICollection<Pedido> Pedidoes { get; set; }
 
-}
+        public override string ToString()
+        {
+            return this.estado;
+        }
+
+    }
 
 }

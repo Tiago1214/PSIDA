@@ -144,7 +144,7 @@ namespace da_projeto
                     {
                         var clienteDb = MenuPrincipal.restaurante.Restaurantes.Find(restaurante.Id);
                         clienteDb.nome = txtNomeRestaurante.Text;
-                        if (restaurante.Morada != comboBoxMorada.SelectedItem)
+                        if (restaurante.Morada.ToString() != comboBoxMorada.Text)
                         {
                             restaurante.Morada = (Morada)comboBoxMorada.SelectedItem;
                         }

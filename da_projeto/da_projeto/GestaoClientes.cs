@@ -95,24 +95,32 @@ namespace da_projeto
                     }
                     else
                     {
-                        Cliente cliente = new Cliente();
-                        cliente.Morada = (Morada)comboBox1.SelectedItem;
-                        cliente.nome = txtnome.Text;
-                        cliente.telemovel = int.Parse(masktxttele.Text);
-                        cliente.numcontribuinte = int.Parse(masktxtnif.Text);
-                        cliente.totalgasto = 0;
-                        cliente.numcontribuinte = int.Parse(masktxtnif.Text);
-                        MenuPrincipal.restaurante.Pessoas.Add(cliente);
-                        MenuPrincipal.restaurante.SaveChanges();
-                        LerDados();
-                        txtnome.Clear();
-                        masktxttele.Clear();
-                        masktxtnif.Clear();
-                        txtnome.Enabled = false;
-                        masktxttele.Enabled = false;
-                        masktxtnif.Enabled = false;
-                        guardarbutton.Enabled = false;
-                        cancelarbutton.Enabled = false;
+                        if (masktxtnif.Text.Length == 9 && masktxttele.Text.Length == 9)
+                        {
+                            Cliente cliente = new Cliente();
+                            cliente.Morada = (Morada)comboBox1.SelectedItem;
+                            cliente.nome = txtnome.Text;
+                            cliente.telemovel = int.Parse(masktxttele.Text);
+                            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+                            cliente.totalgasto = 0;
+                            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+                            MenuPrincipal.restaurante.Pessoas.Add(cliente);
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                            txtnome.Clear();
+                            masktxttele.Clear();
+                            masktxtnif.Clear();
+                            txtnome.Enabled = false;
+                            masktxttele.Enabled = false;
+                            masktxtnif.Enabled = false;
+                            guardarbutton.Enabled = false;
+                            cancelarbutton.Enabled = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Dados de nif ou telemovel tem de ter exatamente 9 dígitos" +
+                            "!!", "Erro a Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else
@@ -136,7 +144,7 @@ namespace da_projeto
                 //Verificar se existe algum cliente selecionado
                 if (cliente == null)
                 {
-                    return;
+                    MessageBox.Show("Selecione um registo de um cliente para editar");
                 }
                 else
                 {
@@ -152,7 +160,7 @@ namespace da_projeto
                         if (listaclientesnif.Contains(int.Parse(masktxtnif.Text)) && listaclientestele.Contains(int.Parse(masktxttele.Text)))
                         {
                             var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
-                            if (cliente.Morada != comboBox1.SelectedItem)
+                            if (cliente.Morada.ToString() != comboBox1.Text)
                             {
                                 cliente.Morada = (Morada)comboBox1.SelectedItem;
                             }
@@ -174,71 +182,95 @@ namespace da_projeto
                         */
                         else if (listaclientesnif.Contains(int.Parse(masktxtnif.Text)))
                         {
-                            var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
-                            if (cliente.Morada != comboBox1.SelectedItem)
+                            if (masktxttele.Text.Length == 9)
                             {
-                                cliente.Morada = (Morada)comboBox1.SelectedItem;
+                                var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
+                                if (cliente.Morada.ToString() != comboBox1.Text)
+                                {
+                                    cliente.Morada = (Morada)comboBox1.SelectedItem;
+                                }
+                                cliente.nome = txtnome.Text;
+                                cliente.telemovel = int.Parse(masktxttele.Text);
+                                MenuPrincipal.restaurante.SaveChanges();
+                                LerDados();
+                                alterarbuton.Enabled = false;
+                                apagarbutton.Enabled = false;
+                                txtnome.Enabled = false;
+                                comboBox1.Enabled = false;
+                                masktxtnif.Enabled = false;
+                                masktxttele.Enabled = false;
+                                txtnome.Clear();
+                                masktxtnif.Clear();
+                                masktxttele.Clear();
                             }
-                            cliente.nome = txtnome.Text;
-                            cliente.telemovel = int.Parse(masktxttele.Text);
-                            MenuPrincipal.restaurante.SaveChanges();
-                            LerDados();
-                            alterarbuton.Enabled = false;
-                            apagarbutton.Enabled = false;
-                            txtnome.Enabled = false;
-                            comboBox1.Enabled = false;
-                            masktxtnif.Enabled = false;
-                            masktxttele.Enabled = false;
-                            txtnome.Clear();
-                            masktxtnif.Clear();
-                            masktxttele.Clear();
+                            else
+                            {
+                                MessageBox.Show("O campo telefone ou nif tem de ter exatamente 9 dígitos","Erro editar Cliente",
+                                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            }
                         }
                         /*Verificar se já existe algum registo com este telefone, caso isso 
                         * acontece não atualiza o telefone
                         */
                         else if (listaclientesnif.Contains(int.Parse(masktxttele.Text)))
                         {
-                            var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
-                            if (cliente.Morada != comboBox1.SelectedItem)
+                            if (masktxtnif.Text.Length == 9)
                             {
-                                cliente.Morada = (Morada)comboBox1.SelectedItem;
+                                var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
+                                if (cliente.Morada.ToString() != comboBox1.Text)
+                                {
+                                    cliente.Morada = (Morada)comboBox1.SelectedItem;
+                                }
+                                cliente.nome = txtnome.Text;
+                                cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+                                MenuPrincipal.restaurante.SaveChanges();
+                                LerDados();
+                                alterarbuton.Enabled = false;
+                                apagarbutton.Enabled = false;
+                                txtnome.Enabled = false;
+                                comboBox1.Enabled = false;
+                                masktxtnif.Enabled = false;
+                                masktxttele.Enabled = false;
+                                txtnome.Clear();
+                                masktxtnif.Clear();
+                                masktxttele.Clear();
                             }
-                            cliente.nome = txtnome.Text;
-                            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
-                            MenuPrincipal.restaurante.SaveChanges();
-                            LerDados();
-                            alterarbuton.Enabled = false;
-                            apagarbutton.Enabled = false;
-                            txtnome.Enabled = false;
-                            comboBox1.Enabled = false;
-                            masktxtnif.Enabled = false;
-                            masktxttele.Enabled = false;
-                            txtnome.Clear();
-                            masktxtnif.Clear();
-                            masktxttele.Clear();
+                            else
+                            {
+                                MessageBox.Show("O campo telefone ou nif tem de ter exatamente 9 dígitos", "Erro editar Cliente",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         /*Atualiza tudo*/
                         else
                         {
-                            var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
-                            if (cliente.Morada != comboBox1.SelectedItem)
+                            if (masktxtnif.Text.Length == 9 && masktxttele.Text.Length == 9)
                             {
-                                cliente.Morada = (Morada)comboBox1.SelectedItem;
+                                var clienteedit = MenuPrincipal.restaurante.Pessoas.Find(cliente.Id);
+                                if (cliente.Morada.ToString() != comboBox1.Text)
+                                {
+                                    cliente.Morada = (Morada)comboBox1.SelectedItem;
+                                }
+                                cliente.nome = txtnome.Text;
+                                cliente.numcontribuinte = int.Parse(masktxtnif.Text);
+                                cliente.telemovel = int.Parse(masktxttele.Text);
+                                MenuPrincipal.restaurante.SaveChanges();
+                                LerDados();
+                                alterarbuton.Enabled = false;
+                                apagarbutton.Enabled = false;
+                                txtnome.Enabled = false;
+                                comboBox1.Enabled = false;
+                                masktxtnif.Enabled = false;
+                                masktxttele.Enabled = false;
+                                txtnome.Clear();
+                                masktxtnif.Clear();
+                                masktxttele.Clear();
                             }
-                            cliente.nome = txtnome.Text;
-                            cliente.numcontribuinte = int.Parse(masktxtnif.Text);
-                            cliente.telemovel = int.Parse(masktxttele.Text);
-                            MenuPrincipal.restaurante.SaveChanges();
-                            LerDados();
-                            alterarbuton.Enabled = false;
-                            apagarbutton.Enabled = false;
-                            txtnome.Enabled = false;
-                            comboBox1.Enabled = false;
-                            masktxtnif.Enabled = false;
-                            masktxttele.Enabled = false;
-                            txtnome.Clear();
-                            masktxtnif.Clear();
-                            masktxttele.Clear();
+                            else
+                            {
+                                MessageBox.Show("O campo telefone ou nif tem de ter exatamente 9 dígitos", "Erro editar Cliente",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -276,12 +308,12 @@ namespace da_projeto
                         guardarbutton.Enabled = false;
                         cancelarbutton.Enabled = false;
                         apagarbutton.Enabled = false;
-                        MessageBox.Show("Cliente " + selectedcliente.nome + "foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
+                        MessageBox.Show("Cliente " + selectedcliente.nome + " foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
-                        MessageBox.Show("Cliente " + selectedcliente.nome + "não foi eliminado");
+                        MessageBox.Show("Cliente " + selectedcliente.nome + " não foi eliminado");
                     }
                 }
             }

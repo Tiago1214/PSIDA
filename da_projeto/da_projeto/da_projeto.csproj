@@ -155,6 +155,12 @@
     <EmbeddedResource Include="GestaoMenu.resx">
       <DependentUpon>GestaoMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GestaoPedidos.resx">
+      <DependentUpon>GestaoPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestaoRestaurante.resx">
+      <DependentUpon>GestaoRestaurante.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
