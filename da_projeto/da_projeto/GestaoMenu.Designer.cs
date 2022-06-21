@@ -54,6 +54,9 @@
             this.alterarbuton = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelarbutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBoxCategorias = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemMenusBindingSource)).BeginInit();
@@ -98,6 +101,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.comboBoxCategoria);
             this.groupBox1.Controls.Add(this.label7);
@@ -243,7 +247,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(770, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(941, 28);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -287,12 +291,42 @@
             this.cancelarbutton.Text = "Voltar";
             this.cancelarbutton.Click += new System.EventHandler(this.voltarbutton_Click);
             // 
+            // listBoxCategorias
+            // 
+            this.listBoxCategorias.FormattingEnabled = true;
+            this.listBoxCategorias.Location = new System.Drawing.Point(758, 65);
+            this.listBoxCategorias.Name = "listBoxCategorias";
+            this.listBoxCategorias.Size = new System.Drawing.Size(171, 368);
+            this.listBoxCategorias.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(250, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 17);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Itens de Menu";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(755, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(76, 17);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Categorias";
+            // 
             // GestaoMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(770, 453);
+            this.ClientSize = new System.Drawing.Size(941, 453);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.listBoxCategorias);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxRestaurantes);
             this.Controls.Add(this.groupBox1);
@@ -342,5 +376,8 @@
         private System.Windows.Forms.ToolStripMenuItem alterarbuton;
         private System.Windows.Forms.ToolStripMenuItem guardarbutton;
         private System.Windows.Forms.ToolStripMenuItem cancelarbutton;
+        private System.Windows.Forms.ListBox listBoxCategorias;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label9;
     }
 }

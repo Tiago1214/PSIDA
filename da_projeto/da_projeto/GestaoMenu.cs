@@ -50,7 +50,8 @@ namespace da_projeto
             comboBoxCategoria.DataSource = MenuPrincipal.restaurante.Categorias.Where(c => c.ativo == true).ToList();
             comboBoxAtivo.DataSource = comboBoxAtivo.Items;
             listBoxRestaurantes.DataSource = MenuPrincipal.restaurante.Restaurantes.ToList<Restaurante>();
-            
+            listBoxCategorias.DataSource= MenuPrincipal.restaurante.Categorias.Where(c => c.ativo == true).ToList();
+            listBoxCategorias.Enabled = false;
         }
 
         //Função utilizada para ativar campos para um novo registo de um item de menu
@@ -305,7 +306,6 @@ namespace da_projeto
         }
 
         //Apagar um registo de um item do menu
-        //Não é possível remover um item do menu se este estiver ligado com um restaurante
         private void apagarbutton_Click(object sender, EventArgs e)
         {
             try
@@ -325,24 +325,23 @@ namespace da_projeto
                         "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
-                        if (selectedItemMenu.Restaurantes == null)
-                        {
-                            MenuPrincipal.restaurante.ItemMenus.Remove(selectedItemMenu);
-                            MenuPrincipal.restaurante.SaveChanges();
-                            MessageBox.Show("Item de menu " + selectedItemMenu.nome + " eliminado");
-                            LerDados();
-                            alterarbuton.Enabled = false;
-                            guardarbutton.Enabled = false;
-                            cancelarbutton.Enabled = false;
-                            apagarbutton.Enabled = false;
-                            Limpar();
-                            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == selectedItemMenu.Id).ToList<ItemMenu>();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Não se pode apagar este item de menu por o mesmo estar relacionado com outra tabela",
-                                "Erro apagar registo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        }
+                        //Retirado de https://social.msdn.microsoft.com/Forums/en-US/ea18df09-4c4b-4186-8391-74e9831e4ebd/remove-doesnt-work-with-manytomany-relationship-in-entity-framework-4?forum=aspadoentitylinq
+                        var db = MenuPrincipal.restaurante;
+                        //
+                        var topic = db.ItemMenus.FirstOrDefault(x => x.Id == selectedItemMenu.Id);
+                        var subscription = db.Restaurantes.FirstOrDefault(x => x.Id == selectedItemMenu.RestId);
+                        topic.Restaurantes.Remove(subscription);
+                        db.SaveChanges(); // Flush changes
+                        MenuPrincipal.restaurante.ItemMenus.Remove(selectedItemMenu);
+                        MenuPrincipal.restaurante.SaveChanges();
+                        MessageBox.Show("Item de menu " + selectedItemMenu.nome + " eliminado");
+                        LerDados();
+                        alterarbuton.Enabled = false;
+                        guardarbutton.Enabled = false;
+                        cancelarbutton.Enabled = false;
+                        apagarbutton.Enabled = false;
+                        Limpar();
+                        listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == selectedItemMenu.Id).ToList<ItemMenu>();
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
