@@ -69,7 +69,7 @@ namespace da_projeto
         {
             listBoxRestaurantes.DataSource = MenuPrincipal.restaurante.Restaurantes.ToList<Restaurante>();
             listBoxCategorias.DataSource = MenuPrincipal.restaurante.Categorias.ToList<Categoria>();
-            listBoxMetodos.DataSource=MenuPrincipal.restaurante.MetodoPagamentoes.ToList<MetodoPagamento>();
+            listBoxMetodos.DataSource = MenuPrincipal.restaurante.MetodoPagamentoes.ToList<MetodoPagamento>();
             var listIdsPessoas = MenuPrincipal.restaurante.Pessoas.Select(i => i.Morada.Id);
             var listIdsRestaurantes = MenuPrincipal.restaurante.Restaurantes.Select(r => r.Morada.Id);
             var moradas = MenuPrincipal.restaurante.Moradas.ToList();
@@ -86,7 +86,9 @@ namespace da_projeto
             btnCancelarRegistoRest.Enabled = true;
             btnGuardarRestaurante.Enabled = true;
             btnEliminarRestaurante.Enabled = false;
-            btnEditarRestaurante.Enabled=false;
+            btnEditarRestaurante.Enabled = false;
+            txtNomeRestaurante.Clear();
+            comboBoxMorada.DataSource = comboBoxMorada.Items;
         }
 
         /*Guardar o registo do restaurante
@@ -98,7 +100,7 @@ namespace da_projeto
             try
             {
                 //Verifica se os campos estão vazios ou não
-                if (String.IsNullOrEmpty(txtNomeRestaurante.Text)==false && String.IsNullOrEmpty(comboBoxMorada.Text)==false)
+                if (String.IsNullOrEmpty(txtNomeRestaurante.Text) == false && String.IsNullOrEmpty(comboBoxMorada.Text) == false)
                 {
                     Restaurante restaurante = new Restaurante();
                     restaurante.nome = txtNomeRestaurante.Text;
@@ -114,11 +116,11 @@ namespace da_projeto
                 }
                 else
                 {
-                    MessageBox.Show("Os campos nome restaurante e morada devem ser preenchidos!","Aviso!",
-                        MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Os campos nome restaurante e morada devem ser preenchidos!", "Aviso!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -169,7 +171,7 @@ namespace da_projeto
         {
             Restaurante editRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
             txtNomeRestaurante.Text = editRestaurante.nome;
-            comboBoxMorada.Text =editRestaurante.Morada.ToString();
+            comboBoxMorada.Text = editRestaurante.Morada.ToString();
             txtNomeRestaurante.Enabled = true;
             comboBoxMorada.Enabled = true;
             btnEditarRestaurante.Enabled = true;
@@ -192,26 +194,26 @@ namespace da_projeto
                     //Perguntar se o utilizador quer mesmo apagar o registo
                     //Caso a resposta seja igual a sim é eliminado o restaurante é da uma mensagem para informar
                     //Caso a resposta seja não o programa dá uma mensagem a dizer que o restaurante não foi eliminado
-                    DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende eliminar o " +selectedRestaurante.nome+"?",
+                    DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende eliminar o " + selectedRestaurante.nome + "?",
                         "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
                         MenuPrincipal.restaurante.Restaurantes.Remove(selectedRestaurante);
                         MenuPrincipal.restaurante.SaveChanges();
-                        MessageBox.Show("Restaurante "+selectedRestaurante.nome +" eliminado");
+                        MessageBox.Show("Restaurante " + selectedRestaurante.nome + " eliminado");
                         LerDados();
                         btnEditarRestaurante.Enabled = false;
-                        btnGuardarRestaurante.Enabled=false;
+                        btnGuardarRestaurante.Enabled = false;
                         btnCancelarRegistoRest.Enabled = false;
                         btnEliminarRestaurante.Enabled = false;
                     }
-                    else if(messageBox.Equals(DialogResult.No) == true)
+                    else if (messageBox.Equals(DialogResult.No) == true)
                     {
                         MessageBox.Show("Restaurante " + selectedRestaurante.nome + "não foi eliminado");
                     }
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -222,11 +224,11 @@ namespace da_projeto
         {
             LimparCampos();
             txtNomeRestaurante.Enabled = false;
-            comboBoxMorada.Enabled=false;
+            comboBoxMorada.Enabled = false;
             btnCancelarRegistoRest.Enabled = false;
             btnEditarRestaurante.Enabled = false;
             btnEliminarRestaurante.Enabled = false;
-            btnGuardarRestaurante.Enabled=false;
+            btnGuardarRestaurante.Enabled = false;
         }
 
         //Ativar os campos necessários para a realização de um registo de uma categoria
@@ -240,7 +242,7 @@ namespace da_projeto
             btnEditarCategoria.Enabled = false;
             btnEliminarCategoria.Enabled = false;
         }
-        
+
         //Criação da Categoria
         private void btnGuardarCategoria_Click(object sender, EventArgs e)
         {
@@ -306,7 +308,7 @@ namespace da_projeto
                     var guardarlistacat = MenuPrincipal.restaurante.Categorias.Select(c => c.nome);
                     if (String.IsNullOrEmpty(txtNomeCategoria.Text) == false)
                     {
-                        if (guardarlistacat.Contains(txtNomeCategoria.Text)&&txtNomeCategoria.Text==categoria.nome)
+                        if (guardarlistacat.Contains(txtNomeCategoria.Text) && txtNomeCategoria.Text == categoria.nome)
                         {
                             var clienteDb = MenuPrincipal.restaurante.Categorias.Find(categoria.Id);
                             clienteDb.nome = txtNomeCategoria.Text;
@@ -321,7 +323,7 @@ namespace da_projeto
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
                         }
-                        else if(guardarlistacat.Contains(txtNomeCategoria.Text)==false)
+                        else if (guardarlistacat.Contains(txtNomeCategoria.Text) == false)
                         {
                             var clienteDb = MenuPrincipal.restaurante.Categorias.Find(categoria.Id);
                             clienteDb.nome = txtNomeCategoria.Text;
@@ -378,7 +380,7 @@ namespace da_projeto
                 {
                     var listaitensmenu = MenuPrincipal.restaurante.ItemMenus.Select(i => i.Categoria.Id);
                     //Verificar se a categoria está associada a um item de menu
-                    if (listaitensmenu.Contains(selectedCategoria.Id)==true)
+                    if (listaitensmenu.Contains(selectedCategoria.Id) == true)
                     {
                         MessageBox.Show("Categoria não pode ser apagada devido a estar a ser usada num registo de um item de menu",
                             "Erro eliminar categoria", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -434,7 +436,7 @@ namespace da_projeto
         {
             LimparCampos();
             txtNomeMetodo.Enabled = true;
-            comboBoxAtivoMetodo.Enabled=true;
+            comboBoxAtivoMetodo.Enabled = true;
             btnGuardarMetodo.Enabled = true;
             btnCancelarMetodo.Enabled = true;
             btnEditarMetodo.Enabled = false;
@@ -490,7 +492,7 @@ namespace da_projeto
                           MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -511,11 +513,11 @@ namespace da_projeto
                 else
                 {
                     //Verificar se o campo não é nulo
-                    if (String.IsNullOrEmpty(txtNomeMetodo.Text)==false)
+                    if (String.IsNullOrEmpty(txtNomeMetodo.Text) == false)
                     {
                         var guardarlistametodos = MenuPrincipal.restaurante.MetodoPagamentoes.Select(m => m.metodopagamento);
                         //Verificar se já existe o método na base de dados, se sim não deixa atualizar o nome, só deixa atualizar o ativo
-                        if (guardarlistametodos.Contains(txtNomeMetodo.Text)&&txtNomeMetodo.Text==metodo.metodopagamento)
+                        if (guardarlistametodos.Contains(txtNomeMetodo.Text) && txtNomeMetodo.Text == metodo.metodopagamento)
                         {
                             var clienteDb = MenuPrincipal.restaurante.MetodoPagamentoes.Find(metodo.Id);
                             clienteDb.metodopagamento = txtNomeMetodo.Text;
@@ -530,7 +532,7 @@ namespace da_projeto
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
                         }
-                        else if (guardarlistametodos.Contains(txtNomeMetodo.Text)==false)
+                        else if (guardarlistametodos.Contains(txtNomeMetodo.Text) == false)
                         {
                             var clienteDb = MenuPrincipal.restaurante.MetodoPagamentoes.Find(metodo.Id);
                             clienteDb.metodopagamento = txtNomeMetodo.Text;
@@ -549,12 +551,12 @@ namespace da_projeto
                         {
                             MessageBox.Show("Já existe um método com o mesmo nome!", "Erro"
                                , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }   
+                        }
                     }
                     else
                     {
                         MessageBox.Show("O campo nome método não pode ser nulo", "Erro a editar categoria",
-                            MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -626,8 +628,8 @@ namespace da_projeto
             LimparCampos();
             txtNomeMetodo.Enabled = false;
             comboBoxAtivoMetodo.Enabled = false;
-            btnCancelarMetodo.Enabled=false;
-            btnGuardarMetodo.Enabled=false;
+            btnCancelarMetodo.Enabled = false;
+            btnGuardarMetodo.Enabled = false;
             btnEliminarMetodo.Enabled = false;
             btnEditarMetodo.Enabled = false;
         }
@@ -637,7 +639,7 @@ namespace da_projeto
         private void GestaoCadeiaRest_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
-            MenuPrincipal menu= new MenuPrincipal();
+            MenuPrincipal menu = new MenuPrincipal();
             menu.Show();
         }
     }

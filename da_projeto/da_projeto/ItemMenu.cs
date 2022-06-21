@@ -12,65 +12,68 @@
 namespace da_projeto
 {
 
-    using System;
+using System;
     using System.Collections.Generic;
+    
+public partial class ItemMenu
+{
 
-    public partial class ItemMenu
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public ItemMenu()
     {
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ItemMenu()
+        this.Restaurantes = new HashSet<Restaurante>();
+
+        this.Pedidoes = new HashSet<Pedido>();
+
+    }
+
+
+    public int Id { get; set; }
+
+    public string nome { get; set; }
+
+    public byte[] fotografia { get; set; }
+
+
+    public string ingredientes { get; set; }
+
+    public decimal preco { get; set; }
+
+    public bool ativo { get; set; }
+
+    public int CategoriaId { get; set; }
+
+    public int RestId { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Restaurante> Restaurantes { get; set; }
+
+    public virtual Categoria Categoria { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Pedido> Pedidoes { get; set; }
+
+
+    public string CaminhoFoto { get; set; }
+    public string GetEstado(bool ativo)
+    {
+        ativo = this.ativo;
+        if (ativo == true)
         {
-
-            this.Restaurantes = new HashSet<Restaurante>();
-
-            this.Pedidoes = new HashSet<Pedido>();
-
+            return "Sim";
         }
-
-
-        public int Id { get; set; }
-
-        public string nome { get; set; }
-
-        public byte[] fotografia { get; set; }
-
-        public string ingredientes { get; set; }
-
-        public decimal preco { get; set; }
-
-        public bool ativo { get; set; }
-
-        public int CategoriaId { get; set; }
-        public string CaminhoFoto { get; set; }
-
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        public virtual ICollection<Restaurante> Restaurantes { get; set; }
-
-        public virtual Categoria Categoria { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        public virtual ICollection<Pedido> Pedidoes { get; set; }
-
-        public string GetEstado(bool ativo)
+        else
         {
-            ativo = this.ativo;
-            if (ativo == true)
-            {
-                return "Sim";
-            }
-            else
-            {
-                return "Não";
-            }
+            return "Não";
         }
-        public override string ToString()
-        {
-            return this.nome+": Ativo("+GetEstado(this.ativo)+")";
-        }
+    }
+    public override string ToString()
+    {
+        return this.nome + ": Ativo(" + GetEstado(this.ativo) + ")";
+    }
     }
 
 }

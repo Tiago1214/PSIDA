@@ -43,16 +43,14 @@ namespace da_projeto
             txtNomeItem.Clear();
             txtPreco.Clear();
             pictureBoxImagem.Image = null;
-            comboBoxAtivo.Text = null;
-            comboBoxCategoria.Text = null;
         }
         //Carregar dados para as listbox e combobox
         private void LerDados()
         {
-            comboBoxCategoria.DataSource = MenuPrincipal.restaurante.Categorias.ToList();
-            listBoxMenu.DataSource=MenuPrincipal.restaurante.ItemMenus.ToList();
+            comboBoxCategoria.DataSource = MenuPrincipal.restaurante.Categorias.Where(c => c.ativo == true).ToList();
             comboBoxAtivo.DataSource = comboBoxAtivo.Items;
-            listBoxCategorias.DataSource=MenuPrincipal.restaurante.Categorias.ToList();
+            listBoxRestaurantes.DataSource = MenuPrincipal.restaurante.Restaurantes.ToList<Restaurante>();
+            
         }
 
         //Função utilizada para ativar campos para um novo registo de um item de menu
@@ -65,7 +63,7 @@ namespace da_projeto
             txtPreco.Enabled = true;
             btnCarregarFoto.Enabled = true;
             guardarbutton.Enabled = true;
-            cancelarbutton.Enabled=true;
+            cancelarbutton.Enabled = true;
             Limpar();
         }
 
@@ -104,11 +102,11 @@ namespace da_projeto
             try
             {
                 //Verificar se os campos estão todos preenchidos
-                if (String.IsNullOrEmpty(txtNomeItem.Text)==false&&String.IsNullOrEmpty(txtIngridientes.Text)==false&&
-                    String.IsNullOrEmpty(txtPreco.Text)==false&&String.IsNullOrEmpty(comboBoxCategoria.Text)==false)
+                if (String.IsNullOrEmpty(txtNomeItem.Text) == false && String.IsNullOrEmpty(txtIngridientes.Text) == false &&
+                    String.IsNullOrEmpty(txtPreco.Text) == false && String.IsNullOrEmpty(comboBoxCategoria.Text) == false)
                 {
                     var listaitens = MenuPrincipal.restaurante.ItemMenus.Select(i => i.nome);
-                    //Verificar se já existe um item do menu igual na base de dados
+                    //Verificar se já existe um item de menu com o mesmo nome na base de dados
                     if (listaitens.Contains(txtNomeItem.Text))
                     {
                         MessageBox.Show("Item de menu já existente, por favor mude o nome do item!", "Erro criar item menu",
@@ -118,6 +116,7 @@ namespace da_projeto
                     {
                         ItemMenu itemmenu = new ItemMenu();
                         itemmenu.nome = txtNomeItem.Text;
+                        //Campo usado para obter os bytes da fotografia
                         byte[] foto;
                         //Retirado de https://www.youtube.com/watch?v=GHmC_XKEqXI
                         using (var stream = new FileStream(caminhoFoto, FileMode.Open, FileAccess.Read))
@@ -143,6 +142,11 @@ namespace da_projeto
                         {
                             itemmenu.ativo = false;
                         }
+                        //Restaurante Selecionado
+                        Restaurante selecionaRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+                        //Varíavel auxiliar que guarda o id do restaurante selecionado
+                        itemmenu.RestId = selecionaRestaurante.Id;
+                        itemmenu.Restaurantes.Add(selecionaRestaurante);
                         MenuPrincipal.restaurante.ItemMenus.Add(itemmenu);
                         MenuPrincipal.restaurante.SaveChanges();
                         LerDados();
@@ -154,6 +158,7 @@ namespace da_projeto
                         guardarbutton.Enabled = false;
                         cancelarbutton.Enabled = false;
                         Limpar();
+                        listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == selecionaRestaurante.Id).ToList<ItemMenu>();
                     }
                 }
                 else
@@ -162,13 +167,13 @@ namespace da_projeto
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        //Função para só permitir escrever números e . 
+        //Função para só permitir escrever números e . na textbox 
         private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -201,8 +206,10 @@ namespace da_projeto
                     if (String.IsNullOrEmpty(txtNomeItem.Text) == false && String.IsNullOrEmpty(txtIngridientes.Text) == false
                         && String.IsNullOrEmpty(txtPreco.Text) == false)
                     {
+                        //Verificar se já existe algum registo com o mesmo nome de item de menu
                         if (guardarlistanomes.Contains(txtNomeItem.Text) && txtNomeItem.Text == selectedItemmenu.nome)
                         {
+                            //Atualizar Registo de ItemMenu
                             var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
                             itemmenudb.nome = txtNomeItem.Text;
                             byte[] foto;
@@ -234,8 +241,16 @@ namespace da_projeto
                             }
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
+                            Restaurante rest = (Restaurante)listBoxRestaurantes.SelectedItem;
+                            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
+                            txtIngridientes.Enabled = false;
+                            txtNomeItem.Enabled = false;
+                            txtPreco.Enabled = false;
+                            comboBoxCategoria.Enabled = false;
+                            comboBoxAtivo.Enabled = false;
+                            btnCarregarFoto.Enabled = false;
                         }
-                        else if (guardarlistanomes.Contains(txtNomeItem.Text )==false)
+                        else if (guardarlistanomes.Contains(txtNomeItem.Text) == false)
                         {
                             var itemmenudb = MenuPrincipal.restaurante.ItemMenus.Find(selectedItemmenu.Id);
                             itemmenudb.nome = txtNomeItem.Text;
@@ -268,8 +283,10 @@ namespace da_projeto
                             }
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
+                            Restaurante rest = (Restaurante)listBoxRestaurantes.SelectedItem;
+                            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
                         }
-                        else 
+                        else
                         {
                             MessageBox.Show("Já existe um item de menu com o mesmo nome!", "Erro"
                                 , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -288,6 +305,7 @@ namespace da_projeto
         }
 
         //Apagar um registo de um item do menu
+        //Não é possível remover um item do menu se este estiver ligado com um restaurante
         private void apagarbutton_Click(object sender, EventArgs e)
         {
             try
@@ -307,15 +325,24 @@ namespace da_projeto
                         "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
-                        MenuPrincipal.restaurante.ItemMenus.Remove(selectedItemMenu);
-                        MenuPrincipal.restaurante.SaveChanges();
-                        MessageBox.Show("Item de menu " + selectedItemMenu.nome + " eliminado");
-                        LerDados();
-                        alterarbuton.Enabled = false;
-                        guardarbutton.Enabled = false;
-                        cancelarbutton.Enabled = false;
-                        apagarbutton.Enabled = false;
-                        Limpar();
+                        if (selectedItemMenu.Restaurantes == null)
+                        {
+                            MenuPrincipal.restaurante.ItemMenus.Remove(selectedItemMenu);
+                            MenuPrincipal.restaurante.SaveChanges();
+                            MessageBox.Show("Item de menu " + selectedItemMenu.nome + " eliminado");
+                            LerDados();
+                            alterarbuton.Enabled = false;
+                            guardarbutton.Enabled = false;
+                            cancelarbutton.Enabled = false;
+                            apagarbutton.Enabled = false;
+                            Limpar();
+                            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == selectedItemMenu.Id).ToList<ItemMenu>();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não se pode apagar este item de menu por o mesmo estar relacionado com outra tabela",
+                                "Erro apagar registo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        }
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
@@ -333,26 +360,33 @@ namespace da_projeto
         private void listBoxMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             ItemMenu editItemMenu = (ItemMenu)listBoxMenu.SelectedItem;
-            txtNomeItem.Text = editItemMenu.nome;
-            comboBoxAtivo.Text = editItemMenu.GetEstado(editItemMenu.ativo).ToString();
-            comboBoxCategoria.Text = editItemMenu.Categoria.ToString();
-            txtIngridientes.Text = editItemMenu.ingredientes;
-            txtPreco.Text = editItemMenu.preco.ToString();
-            txtNomeItem.Enabled = true;
-            btnCarregarFoto.Enabled = true;
-            pictureBoxImagem.Enabled = true;
-            comboBoxAtivo.Enabled = true;
-            alterarbuton.Enabled = true;
-            apagarbutton.Enabled = true;
-            guardarbutton.Enabled = false;
-            cancelarbutton.Enabled = false;
-            txtIngridientes.Enabled = true;
-            txtPreco.Enabled = true;
-            pictureBoxImagem.Enabled = true;
-            comboBoxCategoria.Enabled = true;
-            using (var foto=new MemoryStream(editItemMenu.fotografia))
+            if (editItemMenu == null)
             {
-                pictureBoxImagem.Image=Image.FromStream(foto);
+                return;
+            }
+            else
+            {
+                txtNomeItem.Text = editItemMenu.nome;
+                comboBoxAtivo.Text = editItemMenu.GetEstado(editItemMenu.ativo).ToString();
+                comboBoxCategoria.Text = editItemMenu.Categoria.ToString();
+                txtIngridientes.Text = editItemMenu.ingredientes;
+                txtPreco.Text = editItemMenu.preco.ToString();
+                txtNomeItem.Enabled = true;
+                btnCarregarFoto.Enabled = true;
+                pictureBoxImagem.Enabled = true;
+                comboBoxAtivo.Enabled = true;
+                alterarbuton.Enabled = true;
+                apagarbutton.Enabled = true;
+                guardarbutton.Enabled = false;
+                cancelarbutton.Enabled = false;
+                txtIngridientes.Enabled = true;
+                txtPreco.Enabled = true;
+                pictureBoxImagem.Enabled = true;
+                comboBoxCategoria.Enabled = true;
+                using (var foto = new MemoryStream(editItemMenu.fotografia))
+                {
+                    pictureBoxImagem.Image = Image.FromStream(foto);
+                }
             }
         }
 
@@ -372,11 +406,17 @@ namespace da_projeto
         }
 
         //Esconder este ecrã e mostrar ecrã principal
-        private void GestaoMenu_FormClosing(object sender, FormClosingEventArgs e)
+        private void GestaoMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
-            MenuPrincipal menu=new MenuPrincipal();
-            menu.Show();
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            menuPrincipal.Hide();
+        }
+
+        private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Restaurante rest=(Restaurante)listBoxRestaurantes.SelectedItem;
+            listBoxMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
         }
     }
 }

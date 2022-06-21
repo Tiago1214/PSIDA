@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/06/2022 17:28:22
--- Generated from EDMX file: E:\Users\Eduardo\Downloads\da_projeto\da_projeto\RestauranteModel.edmx
+-- Date Created: 06/21/2022 01:01:41
+-- Generated from EDMX file: C:\Users\mtjpa\Downloads\PSIDA-dev\da_projeto\da_projeto\RestauranteModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,23 +17,14 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_RestauranteItemMenu_Restaurante]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RestauranteItemMenu] DROP CONSTRAINT [FK_RestauranteItemMenu_Restaurante];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RestauranteItemMenu_ItemMenu]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RestauranteItemMenu] DROP CONSTRAINT [FK_RestauranteItemMenu_ItemMenu];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TrabalhadorPedido]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedidoes] DROP CONSTRAINT [FK_TrabalhadorPedido];
+IF OBJECT_ID(N'[dbo].[FK_Cliente_inherits_Pessoa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pessoas_Cliente] DROP CONSTRAINT [FK_Cliente_inherits_Pessoa];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ClientePedido]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pedidoes] DROP CONSTRAINT [FK_ClientePedido];
 GO
-IF OBJECT_ID(N'[dbo].[FK_RestaurantePedido]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedidoes] DROP CONSTRAINT [FK_RestaurantePedido];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PedidoPagamento]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pagamentoes] DROP CONSTRAINT [FK_PedidoPagamento];
+IF OBJECT_ID(N'[dbo].[FK_ItemMenuCategoria]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ItemMenus] DROP CONSTRAINT [FK_ItemMenuCategoria];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PagamentoMetodoPagamento]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pagamentoes] DROP CONSTRAINT [FK_PagamentoMetodoPagamento];
@@ -41,73 +32,82 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PedidoEstado]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pedidoes] DROP CONSTRAINT [FK_PedidoEstado];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ItemMenuCategoria]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ItemMenus] DROP CONSTRAINT [FK_ItemMenuCategoria];
+IF OBJECT_ID(N'[dbo].[FK_PedidoItemMenu_ItemMenu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PedidoItemMenu] DROP CONSTRAINT [FK_PedidoItemMenu_ItemMenu];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PedidoItemMenu_Pedido]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PedidoItemMenu] DROP CONSTRAINT [FK_PedidoItemMenu_Pedido];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PedidoItemMenu_ItemMenu]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PedidoItemMenu] DROP CONSTRAINT [FK_PedidoItemMenu_ItemMenu];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TrabalhadorRestaurante]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pessoas_Trabalhador] DROP CONSTRAINT [FK_TrabalhadorRestaurante];
+IF OBJECT_ID(N'[dbo].[FK_PedidoPagamento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pagamentoes] DROP CONSTRAINT [FK_PedidoPagamento];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PessoaMorada]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Moradas] DROP CONSTRAINT [FK_PessoaMorada];
+    ALTER TABLE [dbo].[Pessoas] DROP CONSTRAINT [FK_PessoaMorada];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestauranteItemMenu_ItemMenu]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RestauranteItemMenu] DROP CONSTRAINT [FK_RestauranteItemMenu_ItemMenu];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestauranteItemMenu_Restaurante]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RestauranteItemMenu] DROP CONSTRAINT [FK_RestauranteItemMenu_Restaurante];
 GO
 IF OBJECT_ID(N'[dbo].[FK_RestauranteMorada]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Moradas] DROP CONSTRAINT [FK_RestauranteMorada];
+    ALTER TABLE [dbo].[Restaurantes] DROP CONSTRAINT [FK_RestauranteMorada];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RestaurantePedido]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pedidoes] DROP CONSTRAINT [FK_RestaurantePedido];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Trabalhador_inherits_Pessoa]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pessoas_Trabalhador] DROP CONSTRAINT [FK_Trabalhador_inherits_Pessoa];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Cliente_inherits_Pessoa]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pessoas_Cliente] DROP CONSTRAINT [FK_Cliente_inherits_Pessoa];
+IF OBJECT_ID(N'[dbo].[FK_TrabalhadorPedido]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pedidoes] DROP CONSTRAINT [FK_TrabalhadorPedido];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TrabalhadorRestaurante]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pessoas_Trabalhador] DROP CONSTRAINT [FK_TrabalhadorRestaurante];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Moradas]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Moradas];
-GO
-IF OBJECT_ID(N'[dbo].[Pessoas]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pessoas];
-GO
-IF OBJECT_ID(N'[dbo].[Restaurantes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Restaurantes];
-GO
-IF OBJECT_ID(N'[dbo].[ItemMenus]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ItemMenus];
-GO
 IF OBJECT_ID(N'[dbo].[Categorias]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Categorias];
-GO
-IF OBJECT_ID(N'[dbo].[Pedidoes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pedidoes];
-GO
-IF OBJECT_ID(N'[dbo].[Pagamentoes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pagamentoes];
-GO
-IF OBJECT_ID(N'[dbo].[MetodoPagamentoes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[MetodoPagamentoes];
 GO
 IF OBJECT_ID(N'[dbo].[Estadoes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Estadoes];
 GO
-IF OBJECT_ID(N'[dbo].[Pessoas_Trabalhador]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Pessoas_Trabalhador];
+IF OBJECT_ID(N'[dbo].[ItemMenus]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ItemMenus];
+GO
+IF OBJECT_ID(N'[dbo].[MetodoPagamentoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MetodoPagamentoes];
+GO
+IF OBJECT_ID(N'[dbo].[Moradas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Moradas];
+GO
+IF OBJECT_ID(N'[dbo].[Pagamentoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pagamentoes];
+GO
+IF OBJECT_ID(N'[dbo].[Pedidoes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pedidoes];
+GO
+IF OBJECT_ID(N'[dbo].[PedidoItemMenu]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PedidoItemMenu];
+GO
+IF OBJECT_ID(N'[dbo].[Pessoas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pessoas];
 GO
 IF OBJECT_ID(N'[dbo].[Pessoas_Cliente]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Pessoas_Cliente];
 GO
+IF OBJECT_ID(N'[dbo].[Pessoas_Trabalhador]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pessoas_Trabalhador];
+GO
 IF OBJECT_ID(N'[dbo].[RestauranteItemMenu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[RestauranteItemMenu];
 GO
-IF OBJECT_ID(N'[dbo].[PedidoItemMenu]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PedidoItemMenu];
+IF OBJECT_ID(N'[dbo].[Restaurantes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Restaurantes];
 GO
 
 -- --------------------------------------------------
@@ -145,11 +145,12 @@ GO
 CREATE TABLE [dbo].[ItemMenus] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [nome] nvarchar(max)  NOT NULL,
-    [fotografia] varbinary(MAX)  NOT NULL,
+    [fotografia] varbinary(max)  NOT NULL,
     [ingredientes] nvarchar(max)  NOT NULL,
     [preco] decimal(18,0)  NOT NULL,
     [ativo] bit  NOT NULL,
-    [CategoriaId] int  NOT NULL
+    [CategoriaId] int  NOT NULL,
+    [RestId] int  NOT NULL
 );
 GO
 

@@ -72,6 +72,7 @@ namespace da_projeto
             txtnome.Clear();
             masktxtnif.Clear();
             masktxttele.Clear();
+            comboBox1.DataSource = comboBox1.Items;
         }
 
         //Função para guardar clientes
@@ -80,17 +81,17 @@ namespace da_projeto
             try
             {
                 //Verificar se os campos tão vazios
-                if(String.IsNullOrEmpty(txtnome.Text)==false&&
+                if (String.IsNullOrEmpty(txtnome.Text) == false &&
                     String.IsNullOrEmpty(masktxtnif.Text) == false && String.IsNullOrEmpty(masktxttele.Text) == false)
                 {
                     var listaclientestele = MenuPrincipal.restaurante.Pessoas.Select(c => c.telemovel);
-                    var listaclientesnif = MenuPrincipal.restaurante.Pessoas.OfType<Cliente>().Select(c=> c.numcontribuinte);
+                    var listaclientesnif = MenuPrincipal.restaurante.Pessoas.OfType<Cliente>().Select(c => c.numcontribuinte);
                     //Verificar se os dados do cliente já existem na base de dados, se já existir dá uma mensagem de erro 
                     //senão guarda o novo cliente
-                    if (listaclientesnif.Contains(int.Parse(masktxtnif.Text))||listaclientestele.Contains(int.Parse(masktxttele.Text)))
+                    if (listaclientesnif.Contains(int.Parse(masktxtnif.Text)) || listaclientestele.Contains(int.Parse(masktxttele.Text)))
                     {
                         MessageBox.Show("Dados de nif ou telemovel cliente são únicos" +
-                            "!!", "Erro a Guardar Cliente",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            "!!", "Erro a Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -117,7 +118,7 @@ namespace da_projeto
                 else
                 {
                     MessageBox.Show("Os campos são todos obrigatórios!!",
-                        "Erro inserir cliente",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                        "Erro inserir cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
             catch (Exception ex)
@@ -242,7 +243,7 @@ namespace da_projeto
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -264,8 +265,8 @@ namespace da_projeto
                     //Perguntar se o utilizador quer mesmo apagar o registo
                     //Caso a resposta seja igual a sim é eliminado o cliente é da uma mensagem para informar
                     //Caso a resposta seja não o programa dá uma mensagem a dizer que o cliente não foi eliminado
-                    DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende eliminar o cliente " + 
-                        selectedcliente.nome + "?","Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    DialogResult messageBox = MessageBox.Show("Tem a certeza que pretende eliminar o cliente " +
+                        selectedcliente.nome + "?", "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
                         MenuPrincipal.restaurante.Pessoas.Remove(selectedcliente);
@@ -275,7 +276,7 @@ namespace da_projeto
                         guardarbutton.Enabled = false;
                         cancelarbutton.Enabled = false;
                         apagarbutton.Enabled = false;
-                        MessageBox.Show("Cliente " + selectedcliente.nome + "foi eliminado","Cliente Eliminado",MessageBoxButtons.OK,
+                        MessageBox.Show("Cliente " + selectedcliente.nome + "foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
                             MessageBoxIcon.Exclamation);
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
@@ -284,7 +285,7 @@ namespace da_projeto
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -301,10 +302,10 @@ namespace da_projeto
             Desativar();
             alterarbuton.Enabled = true;
             apagarbutton.Enabled = true;
-            txtnome.Enabled= true;
-            comboBox1.Enabled=true;
-            masktxtnif.Enabled= true;
-            masktxttele.Enabled= true;
+            txtnome.Enabled = true;
+            comboBox1.Enabled = true;
+            masktxtnif.Enabled = true;
+            masktxttele.Enabled = true;
         }
 
         //Fechar Janela
@@ -319,8 +320,8 @@ namespace da_projeto
         {
             registarbutton.Enabled = true;
             apagarbutton.Enabled = false;
-            alterarbuton.Enabled=false;
-            guardarbutton.Enabled=false;
+            alterarbuton.Enabled = false;
+            guardarbutton.Enabled = false;
             txtnome.Enabled = false;
             comboBox1.Enabled = false;
             masktxtnif.Enabled = false;

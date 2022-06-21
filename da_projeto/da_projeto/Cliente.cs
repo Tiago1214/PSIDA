@@ -24,9 +24,9 @@ namespace da_projeto
 
         public override string ToString()
         {
-            return this.nome +"  NumCon: "+ numcontribuinte+"  Telemovel: " +
-                this.telemovel+ 
-                " Morada: "+this.Morada+" Total Gasto: "+totalgasto+"€";
+            return this.nome + "  NumCon: " + numcontribuinte + "  Telemovel: " +
+                this.telemovel +
+                " Morada: " + this.Morada + " Total Gasto: " + totalgasto + "€";
         }
     }
 }
