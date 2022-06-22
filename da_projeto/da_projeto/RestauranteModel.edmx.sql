@@ -530,7 +530,6 @@ ADD CONSTRAINT [FK_Cliente_inherits_Pessoa]
         ([Id])
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
-
 -- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------
