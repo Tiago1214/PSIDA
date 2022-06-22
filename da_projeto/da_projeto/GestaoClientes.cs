@@ -18,7 +18,7 @@ namespace da_projeto
         {
             InitializeComponent();
         }
-        //Carregar Dados mal se abre o formulário
+        //Carregar Dados quando o formulário é aberto
         private void GestaoClientes_Load(object sender, EventArgs e)
         {
             LerDados();
@@ -62,6 +62,14 @@ namespace da_projeto
             guardarbutton.Enabled = true;
             //lbclientes.Enabled = true;
 
+        }
+
+        //Limpar Campos
+        private void Limpar()
+        {
+            txtnome.Clear();
+            masktxtnif.Clear();
+            masktxttele.Clear();
         }
 
         //Ativar campos para ser possível criar um novo registo de um cliente
@@ -275,6 +283,9 @@ namespace da_projeto
                     {
                         //Obter a lista de todos os clientes associados a pedidos
                         var listapedidocliente = MenuPrincipal.restaurante.Pedidoes.Select(p => p.ClienteId);
+                        /*Se os pedidos tiver algum registo associado ao cliente selecionado vai dar uma mensagem de erro 
+                         * a dizer que o cliente está a ser usado em um registo de um pedido.
+                        */
                         if (listapedidocliente.Contains(selectedcliente.Id))
                         {
                             MessageBox.Show("Cliente não pode ser apagado devido a estar a ser usado num registo de um pedido",
@@ -289,6 +300,7 @@ namespace da_projeto
                             guardarbutton.Enabled = false;
                             cancelarbutton.Enabled = false;
                             apagarbutton.Enabled = false;
+                            registarbutton.Enabled = true;
                             MessageBox.Show("Cliente " + selectedcliente.nome + " foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
                                 MessageBoxIcon.Exclamation);
                         }
@@ -339,14 +351,6 @@ namespace da_projeto
             comboBox1.Enabled = false;
             masktxtnif.Enabled = false;
             masktxttele.Enabled = false;
-            txtnome.Clear();
-            masktxtnif.Clear();
-            masktxttele.Clear();
-        }
-
-        //Limpar Campos
-        private void Limpar()
-        {
             txtnome.Clear();
             masktxtnif.Clear();
             masktxttele.Clear();

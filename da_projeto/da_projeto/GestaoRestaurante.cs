@@ -16,6 +16,8 @@ namespace da_projeto
         {
             InitializeComponent();
         }
+
+        //Carregar Dados quando se abre o formulário
         private void GestaoRestaurante_Load(object sender, EventArgs e)
         {
             LerDados();
@@ -29,6 +31,8 @@ namespace da_projeto
             masktxttele.Enabled = false;
             comboBoxMorada.Enabled = false;
         }
+
+        //Função que ajuda a carregar dados quando se abre o formulário
         private void LerDados()
         {
             listBoxRestaurantes.DataSource = MenuPrincipal.restaurante.Restaurantes.ToList<Restaurante>();
@@ -40,6 +44,7 @@ namespace da_projeto
             comboBoxMorada.DataSource = moradas;
         }
 
+        //botão de registar ativa campos e botões para ser possível a inserção de um novo registo de trabalhador
         private void btnRegistar_Click(object sender, EventArgs e)
         {
             btnGuardar.Enabled = true;
@@ -49,13 +54,11 @@ namespace da_projeto
             txtSalario.Enabled = true;
             masktxttele.Enabled = true;
             comboBoxMorada.Enabled = true;
-            txtnome.Clear();
-            txtPosicao.Clear();
-            txtSalario.Clear();
-            masktxttele.Clear();
+            Limpar();
             comboBoxMorada.DataSource = comboBoxMorada.Items;
         }
 
+        //Função que mete a textbox de salário a só aceitar números positivos e não deixar escrever letras ou símbolos.
         private void txtSalario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -71,6 +74,7 @@ namespace da_projeto
             }
         }
 
+        //Guardar o registo de um trabalhador
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -96,6 +100,8 @@ namespace da_projeto
                         }
                         else
                         {
+                            //Validação de salário não é necessário porque a função que só deixa escrever números na txtSalario só deixa
+                            //escrever números positivos
                             if (masktxttele.Text.Length == 9)
                             {
                                 trabalhador.nome = txtnome.Text;
@@ -118,7 +124,7 @@ namespace da_projeto
                             }
                             else
                             {
-                                MessageBox.Show("O telemóvel tem de ter exatamente 9 dígitos.", "Erro Guardar Trabalhador",
+                                MessageBox.Show("O telemóvel tem de ter exatamente 9 dígitos ou o salário tem de ser maior que 0.", "Erro Guardar Trabalhador",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
@@ -136,6 +142,7 @@ namespace da_projeto
             }
         }
 
+        //Editar o registo de um trabalhador
         private void btnEditar_Click(object sender, EventArgs e)
         {
             try
@@ -160,6 +167,7 @@ namespace da_projeto
                         }
                         else
                         {
+                            //Verificar se o número de telemóvel tem 9 dígitos inseridos
                             if (masktxttele.Text.Length == 9)
                             {
                                 editTrabalhador.nome = txtnome.Text;
@@ -196,31 +204,51 @@ namespace da_projeto
             }
         }
 
+        //Selecionar um trabalhador para editar
         private void listBoxTrabalhadores_SelectedIndexChanged(object sender, EventArgs e)
         {
             Trabalhador editTrabalhador = (Trabalhador)listBoxTrabalhadores.SelectedItem;
-            txtnome.Text = editTrabalhador.nome;
-            comboBoxMorada.Text = editTrabalhador.Morada.ToString();
-            txtPosicao.Text = editTrabalhador.posicao;
-            txtSalario.Text = editTrabalhador.salario.ToString();
-            masktxttele.Text = editTrabalhador.telemovel.ToString();
-            btnGuardar.Enabled = false;
-            btnCancelar.Enabled = false;
-            txtnome.Enabled = true;
-            txtPosicao.Enabled = true;
-            txtSalario.Enabled = true;
-            masktxttele.Enabled = true;
-            comboBoxMorada.Enabled = true;
-            btnEditar.Enabled = true;
-            btnEliminar.Enabled = true;
+            if (editTrabalhador == null)
+            {
+                MessageBox.Show("selecione um trabalhador para pode editar ou eliminar","Selecionar Trabalhador",
+                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                txtnome.Text = editTrabalhador.nome;
+                comboBoxMorada.SelectedItem = editTrabalhador.Morada;
+                txtPosicao.Text = editTrabalhador.posicao;
+                txtSalario.Text = editTrabalhador.salario.ToString();
+                masktxttele.Text = editTrabalhador.telemovel.ToString();
+                btnGuardar.Enabled = false;
+                btnCancelar.Enabled = false;
+                txtnome.Enabled = true;
+                txtPosicao.Enabled = true;
+                txtSalario.Enabled = true;
+                masktxttele.Enabled = true;
+                comboBoxMorada.Enabled = true;
+                btnEditar.Enabled = true;
+                btnEliminar.Enabled = true;
+            }
         }
+
+        //Selecionar restaurante para adicionar trabalhador relacionado com este mesmo
         private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Restaurante rest = (Restaurante)listBoxRestaurantes.SelectedItem;
-            listBoxItemMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
-            listBoxTrabalhadores.DataSource = MenuPrincipal.restaurante.Pessoas.OfType<Trabalhador>().Where(t => t.RestauranteId == rest.Id).ToList();
+            if (rest == null)
+            {
+                MessageBox.Show("selecione um restaurante para pode adicionar trabalhadores", "Adicionar Trabalhador",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                listBoxItemMenu.DataSource = MenuPrincipal.restaurante.ItemMenus.Where(i => i.RestId == rest.Id).ToList<ItemMenu>();
+                listBoxTrabalhadores.DataSource = MenuPrincipal.restaurante.Pessoas.OfType<Trabalhador>().Where(t => t.RestauranteId == rest.Id).ToList();
+            }
         }
 
+        //Limpar Campos
         private void Limpar()
         {
             txtnome.Clear();
@@ -229,6 +257,7 @@ namespace da_projeto
             masktxttele.Clear();
         }
 
+        //Eliminar Trabalhador
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -244,16 +273,25 @@ namespace da_projeto
                         selectTrabalhador.nome + "?", "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
-                        MenuPrincipal.restaurante.Pessoas.Remove(selectTrabalhador);
-                        MenuPrincipal.restaurante.SaveChanges();
-                        LerDados();
-                        btnEditar.Enabled = false;
-                        btnEliminar.Enabled = false;
-                        btnCancelar.Enabled = false;
-                        btnGuardar.Enabled = false;
-                        Limpar();
-                        MessageBox.Show("Trabalhador " + selectTrabalhador.nome + " foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
-                            MessageBoxIcon.Exclamation);
+                        var listapedidostrabalhador = MenuPrincipal.restaurante.Pedidoes.Select(p => p.TrabalhadorId);
+                        if (listapedidostrabalhador.Contains(selectTrabalhador.Id))
+                        {
+                            MessageBox.Show("Erro a eliminar trabalhador por o mesmo estar associado a um pedido.",
+                                "Erro a eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MenuPrincipal.restaurante.Pessoas.Remove(selectTrabalhador);
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                            btnEditar.Enabled = false;
+                            btnEliminar.Enabled = false;
+                            btnCancelar.Enabled = false;
+                            btnGuardar.Enabled = false;
+                            Limpar();
+                            MessageBox.Show("Trabalhador " + selectTrabalhador.nome + " foi eliminado", "Trabalhador Eliminado", MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                        }
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
@@ -267,21 +305,16 @@ namespace da_projeto
             }
         }
 
-        private void GestaoRestaurante_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-        }
-
+        //Abrir menu de pedidos
         private void btnPedidos_Click(object sender, EventArgs e)
         {
-            this.Hide();
             GestaoPedidos pedidos = new GestaoPedidos();
             pedidos.Show();
         }
 
+        //abrir menu de items de menu
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            this.Hide();
             GestaoMenu menu = new GestaoMenu();
             menu.Show();
         }

@@ -57,6 +57,7 @@
             this.cancelarbutton = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxCategorias = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemMenusBindingSource)).BeginInit();
@@ -101,6 +102,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.comboBoxCategoria);
@@ -320,6 +322,16 @@
             this.label9.TabIndex = 19;
             this.label9.Text = "Categorias";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(6, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(149, 17);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Adicionar Trabalhador";
+            // 
             // GestaoMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,5 +391,6 @@
         private System.Windows.Forms.ListBox listBoxCategorias;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

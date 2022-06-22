@@ -330,7 +330,6 @@
             this.MinimizeBox = false;
             this.Name = "GestaoRestaurante";
             this.Text = "GestaoRestaurante";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoRestaurante_FormClosing);
             this.Load += new System.EventHandler(this.GestaoRestaurante_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

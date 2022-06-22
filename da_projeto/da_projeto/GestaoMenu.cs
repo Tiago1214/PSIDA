@@ -129,6 +129,7 @@ namespace da_projeto
                         itemmenu.fotografia = foto;
                         itemmenu.CaminhoFoto = caminhoFoto;
                         itemmenu.ingredientes = txtIngridientes.Text;
+                        //Verificar o Preço é maior que 0
                         if (int.Parse(txtPreco.Text) > 0)
                         {
                             itemmenu.preco = int.Parse(txtPreco.Text);

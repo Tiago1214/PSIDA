@@ -20,7 +20,7 @@ namespace da_projeto
             InitializeComponent();
         }
 
-        //Carregar Dados quando se abre o programa
+        //Carregar Dados quando se abre o formulário
         private void GestaoCadeiaRest_Load(object sender, EventArgs e)
         {
             LerDados();
@@ -175,12 +175,15 @@ namespace da_projeto
             {
                 return;
             }
-            txtNomeRestaurante.Text = editRestaurante.nome;
-            comboBoxMorada.Text = editRestaurante.Morada.ToString();
-            txtNomeRestaurante.Enabled = true;
-            comboBoxMorada.Enabled = true;
-            btnEditarRestaurante.Enabled = true;
-            btnEliminarRestaurante.Enabled = true;
+            else
+            {
+                txtNomeRestaurante.Text = editRestaurante.nome;
+                comboBoxMorada.Text = editRestaurante.Morada.ToString();
+                txtNomeRestaurante.Enabled = true;
+                comboBoxMorada.Enabled = true;
+                btnEditarRestaurante.Enabled = true;
+                btnEliminarRestaurante.Enabled = true;
+            }
         }
 
         //Nesta função eliminamos um restaurante
