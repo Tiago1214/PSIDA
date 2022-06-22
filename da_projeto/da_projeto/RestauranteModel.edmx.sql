@@ -530,6 +530,36 @@ ADD CONSTRAINT [FK_Cliente_inherits_Pessoa]
         ([Id])
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
+
+-- Inserir dados na tabela de estados
+SET IDENTITY_INSERT [dbo].[Estadoes] ON
+INSERT INTO [dbo].[Estadoes] ([Id], [estado]) VALUES (1, N'Recebido')
+INSERT INTO [dbo].[Estadoes] ([Id], [estado]) VALUES (2, N'Em Processamento')
+INSERT INTO [dbo].[Estadoes] ([Id], [estado]) VALUES (3, N'Cancelado')
+INSERT INTO [dbo].[Estadoes] ([Id], [estado]) VALUES (4, N'Concluído')
+SET IDENTITY_INSERT [dbo].[Estadoes] OFF
+
+-- Inserir dados na tabela de moradas
+
+SET IDENTITY_INSERT [dbo].[Moradas] ON
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (1, N'Portugal', N'Rua da Rosa n8', N'Benavente', N'2130-110')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (2, N'Portugal', N'Rua da Rosa n9', N'Benavente', N'2130-210')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (3, N'Portugal', N'Rua dos Pescadores n18', N'Leiria', N'2400-040')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (4, N'Portugal', N'Rua José Saramago', N'Leiria', N'2400-100')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (5, N'Portugal', N'Rua de França Lote12', N'Lisboa', N'1200-100')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (7, N'Portugal', N'Rua da Esquerda n15', N'Lisboa', N'1100-070')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (8, N'Portugal', N'Rua da Direita Lote 3', N'Lisboa', N'1100-120')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (9, N'Portugal', N'Praça de Espanha Lote 15 3esq', N'Lisboa', N'1500-120')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (10, N'Portugal', N'Praça de Espanha Lote 12 1DRT', N'Lisboa', N'1500-120')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (11, N'Portugal', N'Rua da Rosa Lote 15 3DRT', N'Samora Correia', N'2135-084')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (12, N'Portugal', N'Rua da Rosa Lote 15 2DRT', N'Samora Correia', N'2135-084')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (13, N'Portugal ', N'Rua da Esquerda n18', N'Lisboa', N'1000-100')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (14, N'Portugal', N'Rua da Direita n34', N'Lisboa', N'1200-120')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (15, N'Portugal', N'Rua da Esquerda', N'Lisboa', N'1500-150')
+INSERT INTO [dbo].[Moradas] ([Id], [pais], [rua], [cidade], [codpostal]) VALUES (17, N'Portugal', N'Rua da Direita n1', N'Lisboa', N'1300-115')
+SET IDENTITY_INSERT [dbo].[Moradas] OFF
+
+
 -- --------------------------------------------------
 -- Script has ended
 -- --------------------------------------------------

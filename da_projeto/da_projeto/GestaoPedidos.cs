@@ -75,6 +75,7 @@ namespace da_projeto
                     pedido.Cliente = cliente;
                     pedido.Restaurante = restaurante;
                     pedido.RestauranteId = restaurante.Id;
+                    pedido.valortotal = 0;
                     pedido.TrabalhadorId = trabalhador.Id;
                     pedido.ClienteId = cliente.Id;
                     //Quando se cria um pedido passa para o estado recebido
@@ -185,13 +186,20 @@ namespace da_projeto
                 }
                 else
                 {
-                    Estado estado = (Estado)comboBoxEstado.SelectedItem;
-                    var updateestado = MenuPrincipal.restaurante.Pedidoes.Find(selectpedido.Id);
-                    updateestado.EstadoId = estado.Id;
-                    //Varíavel auxiliar na classe que guarda quante falta pagar
-                    updateestado.faltapagar = updateestado.valortotal;
-                    MenuPrincipal.restaurante.SaveChanges();
-                    LerDados();
+                    if (selectpedido.valortotal == 0)
+                    {
+                        MessageBox.Show("Não pode atualizar um pedido sem items de menu para em processamento");
+                    }
+                    else
+                    {
+                        Estado estado = (Estado)comboBoxEstado.SelectedItem;
+                        var updateestado = MenuPrincipal.restaurante.Pedidoes.Find(selectpedido.Id);
+                        updateestado.EstadoId = estado.Id;
+                        //Varíavel auxiliar na classe que guarda quante falta pagar
+                        updateestado.faltapagar = updateestado.valortotal;
+                        MenuPrincipal.restaurante.SaveChanges();
+                        LerDados();
+                    }
                 }
             }
             catch(Exception ex)

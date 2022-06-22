@@ -62,7 +62,7 @@ namespace da_projeto
 
         public override string ToString()
         {
-            return this.Id+":"+ Cliente.nome +" "+ this.Estado.estado + " Total:" + this.valortotal+"€";
+            return this.Id+":"+ Cliente.nome + " Total:" + this.valortotal+"€";
         }
 
     }
