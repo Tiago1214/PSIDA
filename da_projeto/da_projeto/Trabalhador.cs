@@ -12,9 +12,9 @@
 namespace da_projeto
 {
 
-using System;
-using System.Collections.Generic;
-    
+    using System;
+    using System.Collections.Generic;
+
     public partial class Trabalhador : Pessoa
     {
 
@@ -30,7 +30,7 @@ using System.Collections.Generic;
 
         public override string ToString()
         {
-            return "Nome: " + this.nome + " Salário:" + this.salario;
+            return "Nome: " + this.nome + " Salário:" + this.salario+"€";
         }
     }
 

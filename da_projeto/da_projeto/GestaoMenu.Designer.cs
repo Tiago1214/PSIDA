@@ -337,7 +337,6 @@
             this.MinimizeBox = false;
             this.Name = "GestaoMenu";
             this.Text = "GestaoMenu";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestaoMenu_FormClosed);
             this.Load += new System.EventHandler(this.GestaoMenu_Load);
             this.Click += new System.EventHandler(this.GestaoMenu_Load);
             this.groupBox1.ResumeLayout(false);

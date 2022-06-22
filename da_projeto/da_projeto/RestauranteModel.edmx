@@ -123,6 +123,7 @@
     <Property Name="ativo" Type="bit" Nullable="false" />
     <Property Name="CategoriaId" Type="int" Nullable="false" />
     <Property Name="RestId" Type="int" Nullable="false" />
+    <Property Name="PedidoId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>
@@ -505,6 +506,7 @@
           <Property Name="CategoriaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Pedidoes" Relationship="RestauranteModel.PedidoItemMenu" FromRole="ItemMenu" ToRole="Pedido" />
           <Property Name="RestId" Type="Int32" Nullable="false" />
+          <Property Name="PedidoId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
@@ -742,6 +744,7 @@
           <ScalarProperty Name="ativo" ColumnName="ativo" />
           <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
           <ScalarProperty Name="RestId" ColumnName="RestId" />
+          <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

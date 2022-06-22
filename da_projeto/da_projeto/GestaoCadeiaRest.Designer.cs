@@ -502,7 +502,6 @@
             this.MinimizeBox = false;
             this.Name = "GestaoCadeiaRest";
             this.Text = "GestaoCadeiaRest";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoCadeiaRest_FormClosing);
             this.Load += new System.EventHandler(this.GestaoCadeiaRest_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

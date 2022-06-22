@@ -12,22 +12,22 @@
 namespace da_projeto
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Pessoa
-{
 
-    public int Id { get; set; }
+    public partial class Pessoa
+    {
 
-    public string nome { get; set; }
+        public int Id { get; set; }
 
-    public int telemovel { get; set; }
+        public string nome { get; set; }
+
+        public int telemovel { get; set; }
 
 
 
-    public virtual Morada Morada { get; set; }
+        public virtual Morada Morada { get; set; }
 
-}
+    }
 
 }

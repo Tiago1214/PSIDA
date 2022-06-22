@@ -105,6 +105,7 @@
     <Property Name="CategoriaId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Pedidoes" Relationship="RestauranteModel.PedidoItemMenu" FromRole="ItemMenu" ToRole="Pedido" />
     <Property Name="RestId" Type="Int32" Nullable="false" />
+    <Property Name="PedidoId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Categoria">
     <Key>

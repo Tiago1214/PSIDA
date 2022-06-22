@@ -26,7 +26,7 @@ namespace da_projeto
 
         public override string ToString()
         {
-            return this.rua + "(" + this.Id + "), " + this.cidade + "(" + this.codpostal + ")" + ", " + this.pais;
+            return this.rua + "," + this.cidade + "(" + this.codpostal + ")" + ", " + this.pais;
         }
 
     }

@@ -30,21 +30,23 @@ namespace da_projeto
         {
             var listIdsPessoas = MenuPrincipal.restaurante.Pessoas.Select(i => i.Morada.Id);
             var listIdsRestaurantes = MenuPrincipal.restaurante.Restaurantes.Select(r => r.Morada.Id);
+            //Remover todas as moradas usadas em registos
             var moradas = MenuPrincipal.restaurante.Moradas.ToList();
             moradas.RemoveAll(x => listIdsPessoas.Contains(x.Id));
             moradas.RemoveAll(x => listIdsRestaurantes.Contains(x.Id));
             comboBox1.DataSource = moradas;
-            lbclientes.DataSource = MenuPrincipal.restaurante.Pessoas.ToList<Pessoa>();
+            lbclientes.DataSource = MenuPrincipal.restaurante.Pessoas.OfType<Cliente>().ToList();
         }
 
         //Desativar botões e campos
         private void Desativar()
         {
+            alterarbuton.Enabled = false;
+            apagarbutton.Enabled = false;
             txtnome.Enabled = false;
             comboBox1.Enabled = false;
             masktxtnif.Enabled = false;
             masktxttele.Enabled = false;
-            guardarbutton.Enabled = false;
 
             //lbclientes.Enabled= false;
 
@@ -69,9 +71,8 @@ namespace da_projeto
             apagarbutton.Enabled = false;
             alterarbuton.Enabled = false;
             registarbutton.Enabled = false;
-            txtnome.Clear();
-            masktxtnif.Clear();
-            masktxttele.Clear();
+            cancelarbutton.Enabled = true;
+            Limpar();
             comboBox1.DataSource = comboBox1.Items;
         }
 
@@ -107,14 +108,13 @@ namespace da_projeto
                             MenuPrincipal.restaurante.Pessoas.Add(cliente);
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
-                            txtnome.Clear();
-                            masktxttele.Clear();
-                            masktxtnif.Clear();
+                            Limpar();
                             txtnome.Enabled = false;
                             masktxttele.Enabled = false;
                             masktxtnif.Enabled = false;
                             guardarbutton.Enabled = false;
                             cancelarbutton.Enabled = false;
+                            registarbutton.Enabled = true;
                         }
                         else
                         {
@@ -144,7 +144,7 @@ namespace da_projeto
                 //Verificar se existe algum cliente selecionado
                 if (cliente == null)
                 {
-                    MessageBox.Show("Selecione um registo de um cliente para editar");
+                    MessageBox.Show("Nenhum cliente selecionado", "Erro eliminar cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -167,15 +167,8 @@ namespace da_projeto
                             cliente.nome = txtnome.Text;
                             MenuPrincipal.restaurante.SaveChanges();
                             LerDados();
-                            alterarbuton.Enabled = false;
-                            apagarbutton.Enabled = false;
-                            txtnome.Enabled = false;
-                            comboBox1.Enabled = false;
-                            masktxtnif.Enabled = false;
-                            masktxttele.Enabled = false;
-                            txtnome.Clear();
-                            masktxtnif.Clear();
-                            masktxttele.Clear();
+                            Desativar();
+                            Limpar();
                         }
                         /*Verificar se já existe algum registo com este nif, caso isso 
                         * acontece não atualiza o nif
@@ -193,15 +186,8 @@ namespace da_projeto
                                 cliente.telemovel = int.Parse(masktxttele.Text);
                                 MenuPrincipal.restaurante.SaveChanges();
                                 LerDados();
-                                alterarbuton.Enabled = false;
-                                apagarbutton.Enabled = false;
-                                txtnome.Enabled = false;
-                                comboBox1.Enabled = false;
-                                masktxtnif.Enabled = false;
-                                masktxttele.Enabled = false;
-                                txtnome.Clear();
-                                masktxtnif.Clear();
-                                masktxttele.Clear();
+                                Desativar();
+                                Limpar();
                             }
                             else
                             {
@@ -225,15 +211,8 @@ namespace da_projeto
                                 cliente.numcontribuinte = int.Parse(masktxtnif.Text);
                                 MenuPrincipal.restaurante.SaveChanges();
                                 LerDados();
-                                alterarbuton.Enabled = false;
-                                apagarbutton.Enabled = false;
-                                txtnome.Enabled = false;
-                                comboBox1.Enabled = false;
-                                masktxtnif.Enabled = false;
-                                masktxttele.Enabled = false;
-                                txtnome.Clear();
-                                masktxtnif.Clear();
-                                masktxttele.Clear();
+                                Desativar();
+                                Limpar();
                             }
                             else
                             {
@@ -256,15 +235,8 @@ namespace da_projeto
                                 cliente.telemovel = int.Parse(masktxttele.Text);
                                 MenuPrincipal.restaurante.SaveChanges();
                                 LerDados();
-                                alterarbuton.Enabled = false;
-                                apagarbutton.Enabled = false;
-                                txtnome.Enabled = false;
-                                comboBox1.Enabled = false;
-                                masktxtnif.Enabled = false;
-                                masktxttele.Enabled = false;
-                                txtnome.Clear();
-                                masktxtnif.Clear();
-                                masktxttele.Clear();
+                                Desativar();
+                                Limpar();
                             }
                             else
                             {
@@ -290,7 +262,7 @@ namespace da_projeto
                 //Verificar se existe algum cliente selecionado
                 if (selectedcliente == null)
                 {
-                    return;
+                    MessageBox.Show("Nenhum cliente selecionado", "Erro eliminar cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -301,15 +273,25 @@ namespace da_projeto
                         selectedcliente.nome + "?", "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
-                        MenuPrincipal.restaurante.Pessoas.Remove(selectedcliente);
-                        MenuPrincipal.restaurante.SaveChanges();
-                        LerDados();
-                        alterarbuton.Enabled = false;
-                        guardarbutton.Enabled = false;
-                        cancelarbutton.Enabled = false;
-                        apagarbutton.Enabled = false;
-                        MessageBox.Show("Cliente " + selectedcliente.nome + " foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
-                            MessageBoxIcon.Exclamation);
+                        //Obter a lista de todos os clientes associados a pedidos
+                        var listapedidocliente = MenuPrincipal.restaurante.Pedidoes.Select(p => p.ClienteId);
+                        if (listapedidocliente.Contains(selectedcliente.Id))
+                        {
+                            MessageBox.Show("Cliente não pode ser apagado devido a estar a ser usado num registo de um pedido",
+                            "Erro eliminar pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MenuPrincipal.restaurante.Pessoas.Remove(selectedcliente);
+                            MenuPrincipal.restaurante.SaveChanges();
+                            LerDados();
+                            alterarbuton.Enabled = false;
+                            guardarbutton.Enabled = false;
+                            cancelarbutton.Enabled = false;
+                            apagarbutton.Enabled = false;
+                            MessageBox.Show("Cliente " + selectedcliente.nome + " foi eliminado", "Cliente Eliminado", MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+                        }
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
@@ -327,27 +309,26 @@ namespace da_projeto
         private void lbclientes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Cliente editcliente = (Cliente)lbclientes.SelectedItem;
+            if (editcliente == null)
+            {
+                return;
+            }
             txtnome.Text = editcliente.nome;
             comboBox1.Text = editcliente.Morada.ToString();
             masktxttele.Text = editcliente.telemovel.ToString();
             masktxtnif.Text = editcliente.numcontribuinte.ToString();
             Desativar();
+            guardarbutton.Enabled = false;
             alterarbuton.Enabled = true;
             apagarbutton.Enabled = true;
+            cancelarbutton.Enabled = false;
             txtnome.Enabled = true;
             comboBox1.Enabled = true;
             masktxtnif.Enabled = true;
             masktxttele.Enabled = true;
         }
 
-        //Fechar Janela
-        private void GestaoClientes_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.ShowDialog();
-        }
-
+        //Cancelar inserir um registo
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             registarbutton.Enabled = true;
@@ -358,6 +339,14 @@ namespace da_projeto
             comboBox1.Enabled = false;
             masktxtnif.Enabled = false;
             masktxttele.Enabled = false;
+            txtnome.Clear();
+            masktxtnif.Clear();
+            masktxttele.Clear();
+        }
+
+        //Limpar Campos
+        private void Limpar()
+        {
             txtnome.Clear();
             masktxtnif.Clear();
             masktxttele.Clear();

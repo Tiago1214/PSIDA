@@ -65,6 +65,7 @@ namespace da_projeto
             btnCarregarFoto.Enabled = true;
             guardarbutton.Enabled = true;
             cancelarbutton.Enabled = true;
+            pictureBoxImagem.Image = null;
             Limpar();
         }
 
@@ -291,9 +292,11 @@ namespace da_projeto
                         //Retirado de https://social.msdn.microsoft.com/Forums/en-US/ea18df09-4c4b-4186-8391-74e9831e4ebd/remove-doesnt-work-with-manytomany-relationship-in-entity-framework-4?forum=aspadoentitylinq
                         var db = MenuPrincipal.restaurante;
                         //
-                        var topic = db.ItemMenus.FirstOrDefault(x => x.Id == selectedItemMenu.Id);
-                        var subscription = db.Restaurantes.FirstOrDefault(x => x.Id == selectedItemMenu.RestId);
-                        topic.Restaurantes.Remove(subscription);
+                        var item = db.ItemMenus.FirstOrDefault(x => x.Id == selectedItemMenu.Id);
+                        var rest = db.Restaurantes.FirstOrDefault(x => x.Id == selectedItemMenu.RestId);
+                        var ped = db.Pedidoes.FirstOrDefault(x => x.Id == selectedItemMenu.PedidoId);
+                        item.Restaurantes.Remove(rest);
+                        item.Pedidoes.Remove(ped);
                         db.SaveChanges(); // Flush changes
                         MenuPrincipal.restaurante.ItemMenus.Remove(selectedItemMenu);
                         MenuPrincipal.restaurante.SaveChanges();
@@ -367,13 +370,6 @@ namespace da_projeto
             cancelarbutton.Enabled = false;
         }
 
-        //Esconder este ecrã e mostrar ecrã principal
-        private void GestaoMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            this.Hide();
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.Show();
-        }
 
         //Mostar items de menu do restaurante selecionado
         private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)

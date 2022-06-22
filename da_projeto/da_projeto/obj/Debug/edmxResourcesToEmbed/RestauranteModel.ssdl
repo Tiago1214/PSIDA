@@ -118,6 +118,7 @@
     <Property Name="ativo" Type="bit" Nullable="false" />
     <Property Name="CategoriaId" Type="int" Nullable="false" />
     <Property Name="RestId" Type="int" Nullable="false" />
+    <Property Name="PedidoId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>

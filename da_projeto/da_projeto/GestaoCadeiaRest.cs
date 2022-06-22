@@ -135,7 +135,7 @@ namespace da_projeto
                 Restaurante restaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
                 if (restaurante == null)
                 {
-                    return;
+                    MessageBox.Show("Nenhum restaurante selecionado", "Erro editar restaurante", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -150,6 +150,7 @@ namespace da_projeto
                         }
                         MenuPrincipal.restaurante.SaveChanges();
                         LerDados();
+                        LimparCampos();
                         btnEditarRestaurante.Enabled = false;
                         btnEliminarRestaurante.Enabled = false;
                     }
@@ -170,6 +171,10 @@ namespace da_projeto
         private void listBoxRestaurantes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Restaurante editRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
+            if (editRestaurante == null)
+            {
+                return;
+            }
             txtNomeRestaurante.Text = editRestaurante.nome;
             comboBoxMorada.Text = editRestaurante.Morada.ToString();
             txtNomeRestaurante.Enabled = true;
@@ -187,7 +192,7 @@ namespace da_projeto
                 Restaurante selectedRestaurante = (Restaurante)listBoxRestaurantes.SelectedItem;
                 if (selectedRestaurante == null)
                 {
-                    return;
+                    MessageBox.Show("Nenhum restaurante selecionado","Erro eliminar restaurante",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -198,14 +203,28 @@ namespace da_projeto
                         "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
-                        MenuPrincipal.restaurante.Restaurantes.Remove(selectedRestaurante);
-                        MenuPrincipal.restaurante.SaveChanges();
-                        MessageBox.Show("Restaurante " + selectedRestaurante.nome + " eliminado");
-                        LerDados();
-                        btnEditarRestaurante.Enabled = false;
-                        btnGuardarRestaurante.Enabled = false;
-                        btnCancelarRegistoRest.Enabled = false;
-                        btnEliminarRestaurante.Enabled = false;
+                        /*Verificar se o restaurante está associado com algum pedido ou item de menu,
+                         *caso o mesmo esteja relacionado com qualquer um deles o registo de restaurante não é apagado 
+                         *e dá uma mensagem de erro.
+                        */
+                        var listarestpedidos = MenuPrincipal.restaurante.Pedidoes.Select(p => p.RestauranteId);
+                        var listaitensrest = MenuPrincipal.restaurante.ItemMenus.Select(i => i.RestId);
+                        if (listarestpedidos.Contains(selectedRestaurante.Id) || listaitensrest.Contains(selectedRestaurante.Id))
+                        {
+                            MessageBox.Show("Erro a eliminar restaurante por o mesmo estar associado a um pedido ou item de menu.",
+                                "Erro a eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MenuPrincipal.restaurante.Restaurantes.Remove(selectedRestaurante);
+                            MenuPrincipal.restaurante.SaveChanges();
+                            MessageBox.Show("Restaurante " + selectedRestaurante.nome + " eliminado");
+                            LerDados();
+                            btnEditarRestaurante.Enabled = false;
+                            btnGuardarRestaurante.Enabled = false;
+                            btnCancelarRegistoRest.Enabled = false;
+                            btnEliminarRestaurante.Enabled = false;
+                        }
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
@@ -301,7 +320,8 @@ namespace da_projeto
                 Categoria categoria = (Categoria)listBoxCategorias.SelectedItem;
                 if (categoria == null)
                 {
-                    return;
+                    MessageBox.Show("Nenhuma categoria selecionado",
+                        "Erro editar categoria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -357,17 +377,14 @@ namespace da_projeto
         }
 
         //Eliminação de uma Categoria
-        /*Nesta função não é usado o try parse porque por causa que se uma categoria estivesse ligada a um item de menu, 
-         * e tentassemos apagar um registo de uma categoria que não estivesse associada a um item de menu o try parse não nos
-         * deixava apagar
-         */
         private void btnEliminarCategoria_Click(object sender, EventArgs e)
         {
             Categoria selectedCategoria = (Categoria)listBoxCategorias.SelectedItem;
             //Verifica se existe alguma categoria selecionada
             if (selectedCategoria == null)
             {
-                return;
+                MessageBox.Show("Nenhuma categoria selecionado",
+                        "Erro eliminar categoria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -383,7 +400,7 @@ namespace da_projeto
                     if (listaitensmenu.Contains(selectedCategoria.Id) == true)
                     {
                         MessageBox.Show("Categoria não pode ser apagada devido a estar a ser usada num registo de um item de menu",
-                            "Erro eliminar categoria", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            "Erro eliminar categoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -508,7 +525,8 @@ namespace da_projeto
                 //Verificar se existe algum método selecionado
                 if (metodo == null)
                 {
-                    return;
+                    MessageBox.Show("Nenhuma método selecionado",
+                        "Erro editar método", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -575,7 +593,8 @@ namespace da_projeto
                 //Verificar se existe algum método selecionado
                 if (selectedMetodo == null)
                 {
-                    return;
+                    MessageBox.Show("Nenhuma método selecionado",
+                        "Erro eliminar método", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
@@ -586,15 +605,27 @@ namespace da_projeto
                         + selectedMetodo.metodopagamento + "?", "Eliminar registo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                     if (messageBox.Equals(DialogResult.Yes) == true)
                     {
-                        MenuPrincipal.restaurante.MetodoPagamentoes.Remove(selectedMetodo);
-                        MenuPrincipal.restaurante.SaveChanges();
-                        txtNomeMetodo.Enabled = false;
-                        comboBoxAtivoMetodo.Enabled = false;
-                        btnEditarMetodo.Enabled = false;
-                        btnEliminarMetodo.Enabled = false;
-                        btnCancelarMetodo.Enabled = false;
-                        MessageBox.Show("Método " + selectedMetodo.metodopagamento + " eliminado");
-                        LerDados();
+                        //Obter lista de todos os pagamentos que contém o id de um método de pagamento
+                        var listapagamentos = MenuPrincipal.restaurante.Pagamentoes.Select(p=>p.MetodoPagamentoId);
+                        //Caso a lista tenha o método selecionado o método não é eliminado e dá uma mensagem de erro
+                        if (listapagamentos.Contains(selectedMetodo.Id))
+                        {
+                            MessageBox.Show("Não é possível eliminar este método porque o mesmo já esta relacionado com um registo de pagamento",
+                                "Falha a apagar método", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MenuPrincipal.restaurante.MetodoPagamentoes.Remove(selectedMetodo);
+                            MenuPrincipal.restaurante.SaveChanges();
+                            txtNomeMetodo.Enabled = false;
+                            comboBoxAtivoMetodo.Enabled = false;
+                            btnEditarMetodo.Enabled = false;
+                            btnEliminarMetodo.Enabled = false;
+                            btnCancelarMetodo.Enabled = false;
+                            MessageBox.Show("Método " + selectedMetodo.metodopagamento + " eliminado");
+                            LerDados();
+                        }
+                        
                     }
                     else if (messageBox.Equals(DialogResult.No) == true)
                     {
@@ -612,6 +643,10 @@ namespace da_projeto
         private void listBoxMetodos_SelectedIndexChanged(object sender, EventArgs e)
         {
             MetodoPagamento editMetodo = (MetodoPagamento)listBoxMetodos.SelectedItem;
+            if(editMetodo==null)
+            {
+                return;
+            }
             txtNomeMetodo.Text = editMetodo.metodopagamento;
             comboBoxAtivoCategoria.Text = editMetodo.GetEstado(editMetodo.ativo).ToString();
             txtNomeMetodo.Enabled = true;
@@ -632,15 +667,6 @@ namespace da_projeto
             btnGuardarMetodo.Enabled = false;
             btnEliminarMetodo.Enabled = false;
             btnEditarMetodo.Enabled = false;
-        }
-
-
-        //Função para abrir formulário do Menu Principal quando este se fecha
-        private void GestaoCadeiaRest_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.Hide();
-            MenuPrincipal menu = new MenuPrincipal();
-            menu.Show();
         }
     }
 }

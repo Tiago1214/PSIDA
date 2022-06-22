@@ -99,8 +99,8 @@
             // 
             this.cancelarbutton.Image = global::da_projeto.Properties.Resources.Back_2_2_icon;
             this.cancelarbutton.Name = "cancelarbutton";
-            this.cancelarbutton.Size = new System.Drawing.Size(69, 24);
-            this.cancelarbutton.Text = "Voltar";
+            this.cancelarbutton.Size = new System.Drawing.Size(85, 24);
+            this.cancelarbutton.Text = "Cancelar";
             this.cancelarbutton.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
             // lbclientes
@@ -211,7 +211,6 @@
             this.MinimizeBox = false;
             this.Name = "GestaoClientes";
             this.Text = "GestaoClientes";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoClientes_FormClosing);
             this.Load += new System.EventHandler(this.GestaoClientes_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

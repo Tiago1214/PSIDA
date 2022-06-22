@@ -12,57 +12,58 @@
 namespace da_projeto
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Pedido
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Pedido()
+    public partial class Pedido
     {
 
-        this.Pagamentoes = new HashSet<Pagamento>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pedido()
+        {
 
-        this.ItemMenus = new HashSet<ItemMenu>();
+            this.Pagamentoes = new HashSet<Pagamento>();
 
-    }
+            this.ItemMenus = new HashSet<ItemMenu>();
 
-
-    public int Id { get; set; }
-
-    public decimal valortotal { get; set; }
-
-    public int TrabalhadorId { get; set; }
-
-    public int ClienteId { get; set; }
-
-    public int RestauranteId { get; set; }
-
-    public int EstadoId { get; set; }
+        }
 
 
+        public int Id { get; set; }
 
-    public virtual Trabalhador Trabalhador { get; set; }
+        public decimal valortotal { get; set; }
 
-    public virtual Cliente Cliente { get; set; }
+        public int TrabalhadorId { get; set; }
 
-    public virtual Restaurante Restaurante { get; set; }
+        public int ClienteId { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public int RestauranteId { get; set; }
 
-    public virtual ICollection<Pagamento> Pagamentoes { get; set; }
+        public int EstadoId { get; set; }
 
-    public virtual Estado Estado { get; set; }
+        public decimal faltapagar { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<ItemMenu> ItemMenus { get; set; }
+        public virtual Trabalhador Trabalhador { get; set; }
 
-    public override string ToString()
-    {
-        return this.Cliente.nome+"Estado: "+this.Estado.estado+" Total:"+this.valortotal;
-    }
+        public virtual Cliente Cliente { get; set; }
+
+        public virtual Restaurante Restaurante { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Pagamento> Pagamentoes { get; set; }
+
+        public virtual Estado Estado { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<ItemMenu> ItemMenus { get; set; }
+
+        public override string ToString()
+        {
+            return this.Id+":"+ Cliente.nome +" "+ this.Estado.estado + " Total:" + this.valortotal+"€";
+        }
 
     }
 

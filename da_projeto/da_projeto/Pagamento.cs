@@ -12,26 +12,24 @@
 namespace da_projeto
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Pagamento
-{
 
-    public int Id { get; set; }
+    public partial class Pagamento
+    {
 
-    public decimal valor { get; set; }
+        public int Id { get; set; }
 
-    public int PedidoId { get; set; }
+        public decimal valor { get; set; }
 
-    public int MetodoPagamentoId { get; set; }
+        public int PedidoId { get; set; }
 
+        public int MetodoPagamentoId { get; set; }
 
+        public virtual Pedido Pedido { get; set; }
 
-    public virtual Pedido Pedido { get; set; }
+        public virtual MetodoPagamento MetodoPagamento { get; set; }
 
-    public virtual MetodoPagamento MetodoPagamento { get; set; }
-
-}
+    }
 
 }

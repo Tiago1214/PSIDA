@@ -55,6 +55,7 @@
           <ScalarProperty Name="ativo" ColumnName="ativo" />
           <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
           <ScalarProperty Name="RestId" ColumnName="RestId" />
+          <ScalarProperty Name="PedidoId" ColumnName="PedidoId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -12,30 +12,30 @@
 namespace da_projeto
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Estado
-{
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Estado()
+    public partial class Estado
     {
 
-        this.Pedidoes = new HashSet<Pedido>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Estado()
+        {
 
-    }
+            this.Pedidoes = new HashSet<Pedido>();
 
-
-    public int Id { get; set; }
-
-    public string estado { get; set; }
-
+        }
 
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public int Id { get; set; }
 
-    public virtual ICollection<Pedido> Pedidoes { get; set; }
+        public string estado { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Pedido> Pedidoes { get; set; }
 
         public override string ToString()
         {
