@@ -13,4 +13,4 @@ o professor disse que as moradas podiam ser inseridas diretamente na base de dad
 ### **Repositório** 
 * [link repositório] (https://github.com/Tiago1214/PSI_PWS)
 
-![logo] (https://www.ipleiria.pt/wp-content/themes/ipleiria/img/logo_ipl_header.png)
+![logo](https://www.ipleiria.pt/wp-content/themes/ipleiria/img/logo_ipl_header.png)
